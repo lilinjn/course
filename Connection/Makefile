@@ -3,8 +3,9 @@
 # Specify library locations here (add or remove "#" marks to comment/uncomment lines for your platform)
 
 # Mac OS X
-DDG_INCLUDE_PATH      =
-DDG_LIBRARY_PATH      =
+DDG_INCLUDE_PATH      = -I/Users/nehal/src/crane-dec/usr/include
+DDG_LIBRARY_PATH      = -L/Users/nehal/src/crane-dec/usr/lib
+
 DDG_BLAS_LIBS         = -framework Accelerate
 DDG_SUITESPARSE_LIBS  = -lspqr -lumfpack -lcholmod -lmetis -lcolamd -lccolamd -lcamd -lamd -ltbb -lm -lsuitesparseconfig
 DDG_OPENGL_LIBS       = -framework OpenGL -framework GLUT
@@ -28,8 +29,8 @@ DDG_OPENGL_LIBS       = -framework OpenGL -framework GLUT
 TARGET = connection
 CC = g++
 LD = g++
-CFLAGS = -O3 -Wall -Werror -ansi -pedantic  $(DDG_INCLUDE_PATH) -I./include -I./src
-LFLAGS = -O3 -Wall -Werror -ansi -pedantic $(DDG_LIBRARY_PATH)
+CFLAGS = -O3    $(DDG_INCLUDE_PATH) -I./include -I./src
+LFLAGS = -O3   $(DDG_LIBRARY_PATH)
 LIBS = $(DDG_OPENGL_LIBS) $(DDG_SUITESPARSE_LIBS) $(DDG_BLAS_LIBS)
 
 ########################################################################################

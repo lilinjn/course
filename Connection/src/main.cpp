@@ -7,14 +7,14 @@ using namespace DDG;
 
 int main( int argc, char** argv )
 {
-   if( argc != 2 )
+   const char *file = "bunny.obj";
+   if( argc == 2 )
    {
-      cerr << "usage: " << argv[0] << " in.obj" << endl;
-      return 1;
+      file = argv[1];
    }
 
    Viewer viewer;
-   viewer.mesh.read( argv[1] );
+   viewer.mesh.read( file );
    viewer.mesh.init();
    
    DirectionField field;
