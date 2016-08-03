@@ -1,0 +1,16 @@
+/*
+Theme Name: Current
+Theme URI: http://brickisland.net/cs177fa12
+Description: Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB
+Version: 0.0.1
+Author: keenan
+Author URI: 
+*/
+
+.hentry .entry {
+font-size:1.6em;
+line-height:1.6em;
+padding:0 4px;
+text-indent: 10px;
+}
+

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <title>October &raquo; 2012 &raquo;  CS 177: Discrete Differential Geometry</title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://brickisland.net/cs177fa12/wp-content/themes/constructor/js/html5.js"></script>
+    <![endif]-->
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="stylesheet" type="text/css" media="screen" href="wp-content/themes/constructor/style.css"/>
+    <link rel="stylesheet" type="text/css" media="print" href="wp-content/themes/constructor/print.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="wp-content/themes/constructor/style-480.css" />
+    <link rel="pingback" href="xmlrpc.php" />
+    	<link rel='archives' title='December 2012' href='index.html@m=201212.html' />
+	<link rel='archives' title='November 2012' href='index.html@m=201211.html' />
+	<link rel='archives' title='October 2012' href='index.html@m=201210.html' />
+    
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Feed" href="index.html@feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Comments Feed" href="index.html@feed=comments-rss2" />
+<link rel='stylesheet' id='constructor-style-css'  href='wp-content/uploads/constructor/cache/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='constructor-theme-css'  href='wp-content/uploads/constructor/themes/current/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#038;ver=3.4.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js@ver=1.7.2'></script>
+<script type='text/javascript' src='wp-content/themes/constructor/js/ready.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php@rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.4.2" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+<body class="archive date">
+	
+<div id="body">
+   <div id="wrapheader" class="wrapper">
+       <header id="header">
+                        <div id="title">
+					
+					<div id="name"><a href="index.html" title="CS 177: Discrete Differential Geometry &raquo; Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB">CS 177: Discrete Differential Geometry</a></div>
+				                <div id="description">Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB</div>
+            </div>
+       </header>
+   </div>
+   
+   <div id="wrapcontent" class="wrapper">
+       <div id="content" class="box shadow opacity layout-right">
+    <div id="container" >
+                            <article class="post-298 post type-post status-publish format-standard hentry category-notes" id="post-298">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=298.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a></h2>
+                </header>
+                <div class="entry">
+                	<p>In the <a href="http://brickisland.net/cs177/?p=248" title="A Quick and Dirty Introduction to Exterior Calculus — Part IV: Differential Operators" >last set of notes</a> we talked about how to <em>differentiate</em> \(k\)-forms using the exterior derivative \(d\).  We&#8217;d also like some way to <em>integrate</em> forms.  Actually, there&#8217;s surprisingly little to say about integration given the setup we already have.  Suppose we want to compute the total area \(A_\Omega\) of a region \(\Omega\) in the plane:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_integration.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_integration.svg" alt="" title="ddg_integration" class="aligncenter size-full wp-image-265" /></a></p>
+<p>If you remember back to calculus class, the basic idea was to break up the domain into a bunch of little pieces that are easy to measure (like squares) and add up their areas:</p>
+<p>\[ A_\Omega \approx \sum_i A_i. \]</p>
+<p>As these squares get smaller and smaller we get a better and better approximation, ultimately achieving the true area</p>
+<p>\[ A_\Omega = \int_\Omega dA. \]</p>
+<p>Alternatively, we could write the individual areas using differential forms &#8212; in particular, \(A_i = dx^1 \wedge dx^2(u,v)\).  Therefore, the area element \(dA\) is really nothing more than the standard volume form \(dx^1 \wedge dx^2\) on \(\mathbb{R}^2\).  (Not too surprising, since the whole point of \(k\)-forms was to measure volume!)</p>
+<p>To make things more interesting, let&#8217;s say that the contribution of each little square is weighted by some scalar function \(\phi\).  In this case we get the quantity</p>
+<p>\[ \int_\Omega \phi\ dA = \int_\Omega \phi\ dx^1 \wedge dx^2. \]</p>
+<p>Again the integrand \(\phi\ dx^1 \wedge dx^2\) can be thought of as a 2-form.  In other words, you&#8217;ve been working with differential forms your whole life, even if you didn&#8217;t realize it!  More generally, integrands on an \(n\)-dimensional space are always \(n\)-forms, since we need to &#8220;plug in&#8221; \(n\) orthogonal vectors representing the local volume.  For now, however, looking at surfaces (i.e., 2-manifolds) will give us all the intuition we need.</p>
+<p><u><b>Integration on Surfaces</b></u></p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_volumeform.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_volumeform.svg" alt="" title="ddg_volumeform" class="aligncenter size-full wp-image-266" /></a></p>
+<p>If you think back to our discussion of the Hodge star, you&#8217;ll remember the <em>volume form</em></p>
+<p>\[ \omega = \sqrt{\mathrm{det}(g)} dx^1 \wedge dx^2, \]</p>
+<p>which measures the area of little parallelograms on our surface.  The factor \(\sqrt{\mathrm{det}(g)}\) reminds us that we can&#8217;t simply measure the volume in the domain \(M\) &#8212; we also have to take into account any &#8220;stretching&#8221; induced by the map \(f: M \rightarrow \mathbb{R}^2\).  Of course, when we integrate a function on a surface, we should also take this stretching into account.  For instance, to integrate a function \(\phi: M \rightarrow \mathbb{R}\), we would write</p>
+<p>\[ \int_\Omega \phi \omega = \int_\Omega \phi \sqrt{\mathrm{det}(g)}\ dx^1 \wedge dx^2. \]</p>
+<p>In the case of a <em>conformal</em> parameterization things become even simpler &#8212; since \(\sqrt{\mathrm{det}(g)} = a\) we have just</p>
+<p>\[ \int_\Omega \phi a\ dx^1 \wedge dx^2, \]</p>
+<p>where \(a: M \rightarrow \mathbb{R}\) is the scaling factor.  In other words, we scale the value of \(\phi\) up or down depending on the amount by which the surface locally &#8220;inflates&#8221; or &#8220;deflates.&#8221;  In fact, this whole story gives a nice geometric interpretation to good old-fashioned integrals: you can imagine that \(\int_\Omega \phi\ dA\) represents the area of some suitably deformed version of the initially planar region \(\Omega\).</p>
+<p><u><b>Stokes&#8217; Theorem</b></u></p>
+<p>The main reason for studying integration on manifolds is to take advantage of the world&#8217;s most powerful tool: <em>Stokes&#8217; theorem</em>.  Without further ado, Stokes&#8217; theorem says that</p>
+<p>\[ \int_\Omega d\alpha = \int_{\partial\Omega} \alpha, \]</p>
+<p>where \(\alpha\) is any \(n-1\)-form on an \(n\)-dimensional domain \(\Omega\).  In other words, integrating a differential form over the boundary of a manifold is the same as integrating its derivative over the entire domain.</p>
+<p>If this trick sounds familiar to you, it&#8217;s probably because you&#8217;ve seen it time and again in different contexts and under different names: the <em>divergence theorem</em>, <em>Green&#8217;s theorem</em>, <em>the fundamental theorem of calculus</em>, <em>Cauchy&#8217;s integral formula</em>, etc.  Picking apart these special cases will really help us understand the more general meaning of Stokes&#8217; theorem.</p>
+<p><u><b>Divergence Theorem</b></u></p>
+<p>Let&#8217;s start with the divergence theorem from vector calculus, which says that</p>
+<p>\[ \int_\Omega \nabla \cdot X dA = \int_{\partial\Omega} N \cdot X d\ell, \]</p>
+<p>where \(X\) is a vector field on \(\Omega\) and \(N\) represents the (outward-pointing) unit normals on the boundary of \(\Omega\).  A better name for this theorem might have been the &#8220;what goes in must come out theorem&#8221;, because if you think about \(X\) as the flow of water throughout the domain \(\Omega\) then it&#8217;s clear that the amount of water being pumped into \(\Omega\) (via pipes in the ground) must be the same as the amount flowing out of its boundary at any moment in time:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_divergence_theorem.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_divergence_theorem.svg" alt="" title="ddg_divergence_theorem" class="aligncenter size-full wp-image-267" /></a></p>
+<p>Let&#8217;s try writing this theorem using exterior calculus.  First, remember that we can write the divergence of \(X\) as \(\nabla \cdot X = \star d \star X^\flat\).  It&#8217;s a bit harder to see how to write the right-hand side of the divergence theorem, but think about what integration does here: it takes tangents to the boundary and sticks them into a 1-form.  For instance, \(\int_\Omega X^\flat\) adds up the <em>tangential</em> components of \(X\).  To get the <em>normal</em> component we could rotate \(X^\flat\) by a quarter turn, which conveniently enough is achieved by hitting it with the Hodge star.  Overall we get</p>
+<p>\[  \int_\Omega d \star X^\flat = \int_{\partial\Omega} \star X^\flat,  \]</p>
+<p>which, as promised, is just a special case of Stokes&#8217; theorem.  Alternatively, we can use Stokes&#8217; theorem to provide a more geometric interpretation of the divergence operator itself: when integrated over <em>any</em> region \(\Omega\) &#8212; no matter how small &#8212; the divergence operator gives the total flux through the region boundary.  In the discrete case we&#8217;ll see that this boundary flux interpretation is the <em>only</em> notion of divergence &#8212; in other words, there&#8217;s no concept of divergence at a single point.</p>
+<p>By the way, why does \(d \star X^\flat\) appear on the left-hand side instead of \(\star d \star X^\flat\)?  The reason is that \(\star d \star X^\flat\) is a 0-form, so we have to hit it with another Hodge star to turn it into an object that measures areas (i.e., a 2-form).  Applying this transformation is no different from appending \(dA\) to \(\nabla \cdot X\) &#8212; we&#8217;re specifying how volume should be measured on our domain.</p>
+<p><u><b>Fundamental Theorem of Calculus</b></u></p>
+<p>The fundamental theorem of calculus is in fact <em>so</em> fundamental that you may not even remember what it is.  It basically says that for a real-valued function \(\phi: \mathbb{R} \rightarrow \mathbb{R}\) on the real line</p>
+<p>\[ \int_a^b \frac{\partial \phi}{\partial x} dx = \phi(b) - \phi(a). \]</p>
+<p>In other words, the total change over an interval \([a,b]\) is (as you might expect) how much you end up with minus how much you started with.  But soft, behold!  All we&#8217;ve done is written Stokes&#8217; theorem once again:</p>
+<p>\[ \int_{[a,b]} d\phi = \int_{\partial[a,b]} \phi, \]</p>
+<p>since the boundary of the interval \([a,b]\) consists only of the two endpoints \(a\) and \(b\).</p>
+<p>Hopefully these two examples give you a good feel for what Stokes&#8217; theorem says.  In the end, it reads almost like a Zen k&#333;an: what happens on the outside is purely a function of the change within.  (Perhaps it is Stokes&#8217; that deserves the name, &#8220;fundamental theorem of calculus!&#8221;)</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_enso1.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_enso1.svg" alt="" title="ddg_enso" class="aligncenter size-full wp-image-271" /></a></p>
+                </div>
+                <footer>
+                                        October 31, 2012 |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                <article class="post-296 post type-post status-publish format-standard hentry category-notes" id="post-296">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=296.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a></h2>
+                </header>
+                <div class="entry">
+                	<p>Originally we set out to develop <em>exterior calculus</em>.  The objects we&#8217;ve looked at so far &#8212; \(k\)-forms, the wedge product \(\wedge\) and the Hodge star \(\star\) &#8212; actually describe a more general structure called an <em>exterior algebra</em>.  To turn our algebra into a <em>calculus</em>, we also need to know how quantities <em>change</em>, as well as how to <em>measure</em> quantities.  In other words, we need some tools for <em>differentiation</em> and <em>integration</em>.  Let&#8217;s start with differentiation.</p>
+<p>In our discussion of surfaces we briefly looked at the <em>differential</em> \(df\) of a surface \(f: M \rightarrow \mathbb{R}^3\), which tells us something about the way tangent vectors get &#8220;stretched out&#8221; as we move from the domain \(M\) to a curved surface sitting in \(\mathbb{R}^3\).  More generally \(d\) is called the <em>exterior derivative</em> and is responsible for building up many of the differential operators in exterior calculus.  The basic idea is that \(d\) tells us how quickly a \(k\)-form changes along <em>every possible direction</em>.  But how exactly is it defined?  So far we&#8217;ve seen only a high-level geometric description.</p>
+<p><u><b>Div, Grad, and Curl</b></u></p>
+<p>Before jumping into the exterior derivative, it&#8217;s worth reviewing what the basic vector derivatives \(\mathrm{div}\), \(\mathrm{grad}\), and \(\mathrm{curl}\) do, and more importantly, what they <em>look like</em>.  The key player here is the operator \(\nabla\) (pronounced &#8220;nabla&#8221;) which can be expressed in coordinates as the vector of all partial derivatives:</p>
+<p>\[ \nabla := \left( \frac{\partial}{\partial x^1}, \ldots, \frac{\partial}{\partial x^n} \right). \]</p>
+<p>For instance, applying \(\nabla\) to a scalar function \(\phi: \mathbb{R}^n \rightarrow \mathbb{R}\) yields the <em>gradient</em></p>
+<p>\[ \nabla\phi = \left( \frac{\partial f}{\partial x^1}, \ldots, \frac{\partial f}{\partial x^n} \right), \]</p>
+<p>which can be visualized as the direction of steepest ascent on some terrain:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_gradient.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_gradient.svg" alt="" title="ddg_gradient" class="aligncenter size-full wp-image-249" /></a></p>
+<p>We can also apply \(\nabla\) to a vector field \(X\) in two different ways.  The dot product gives us the <em>divergence</em></p>
+<p>\[ \nabla \cdot X = \frac{\partial X^1}{\partial x^1} + \cdots + \frac{\partial X^n}{\partial x^n} \]</p>
+<p>which measures how quickly the vector field is &#8220;spreading out&#8221;, and on \(\mathbb{R}^3\) the cross product gives us the <em>curl</em></p>
+<p>\[ \nabla \times X = \left( \frac{\partial X_3}{\partial x^2} - \frac{\partial X_2}{\partial x^3}, \frac{\partial X_1}{\partial x^3} - \frac{\partial X_3}{\partial x^1}, \frac{\partial X_2}{\partial x^1} - \frac{\partial X_1}{\partial x^2} \right), \]</p>
+<p>which indicates how much a vector field is &#8220;spinning around.&#8221;  For instance, here&#8217;s a pair of vector fields with a lot of divergence and a lot of curl, respectively:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_div_curl.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_div_curl.svg" alt="" title="ddg_div_curl" class="aligncenter size-full wp-image-250" /></a></p>
+<p>(Note that in this case one field is just a 90-degree rotation of the other!)  On a typical day it&#8217;s a lot more useful to think of \(\mathrm{div}\), \(\mathrm{grad}\) and \(\mathrm{curl}\) in terms of these kinds of pictures rather than the ugly expressions above.</p>
+<p><u><b>Think Differential</b></u></p>
+<p>Not surprisingly, we can express similar notions using exterior calculus.  However, these notions will be a bit easier to generalize (for instance, what does &#8220;curl&#8221; mean for a vector field in \(\mathbb{R}^4\), where no cross product is defined?).  Let&#8217;s first take a look at the exterior derivative of 0-forms (i.e., functions), which is often just called the <em>differential</em>.  To keep things simple, we&#8217;ll start with <em>real</em>-valued functions \(\phi: \mathbb{R}^n \rightarrow \mathbb{R}\).  In coordinates, the differential is defined as</p>
+<p>\[ d\phi := \frac{\partial \phi}{\partial x^1} dx^1 + \cdots + \frac{\partial \phi}{\partial x^n} dx^n. \]</p>
+<p>It&#8217;s important to note that the terms \(\frac{\partial \phi}{\partial x^i}\) actually correspond to partial derivatives of our function \(\phi\), whereas the terms \(dx^i\) simply denote an orthonormal basis for \(\mathbb{R}^n\).  In other words, you can think of \(d\phi\) as just a list of all the partial derivatives of \(\phi\).  Of course, this object looks a lot like the <em>gradient</em> \(\nabla \phi\) we saw just a moment ago.  And indeed the two are closely related, except for the fact that \(\nabla \phi\) is a vector field and \(d\phi\) is a 1-form.  More precisely,</p>
+<p>\[ \nabla \phi = (d\phi)^\sharp. \]</p>
+<p><u><b>Directional Derivatives</b></u></p>
+<p>Another way to investigate the behavior of the exterior derivative is to see what happens when we stick a vector \(u\) into the 1-form \(df\).  In coordinates we get something that looks like a dot product between the gradient of \(f\) and the vector \(u\):</p>
+<p>\[ df(u) = \frac{\partial f}{\partial x^1} u^1 + \cdots + \frac{\partial f}{\partial x^n} u^n. \]</p>
+<p>For instance, in \(\mathbb{R}^2\) we could stick in the unit vector \(u = (1,0)\) to get the partial derivative \(\frac{\partial f}{\partial x^1}\) along the first coordinate axis:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_directional_derivative.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_directional_derivative.svg" alt="" title="ddg_directional_derivative" class="aligncenter size-full wp-image-251" /></a></p>
+<p>(Compare this picture to the picture of the gradient we saw above.) In general, \(df(u)\) represents the <em>directional derivative</em> of \(f\) along the direction \(u\).  In other words, it tells us how quickly \(f\) changes if we take a short walk in the direction \(u\).  Returning again to vector calculus notation, we have</p>
+<p>\[ df(u) = u \cdot \nabla f. \]</p>
+<p><u><b>Properties of the Exterior Derivative</b></u></p>
+<p>How do derivatives of arbitrary \(k\)-forms behave?  For one thing, we expect \(d\) to be <em>linear</em> &#8212; after all, a derivative is just the limit of a <em>difference</em>, and differences are certainly linear!  What about the derivative of a wedge of two forms?  Harkening back to good old-fashioned calculus, here&#8217;s a picture that explains the typical product rule \(\frac{\partial}{\partial x}(f(x)g(x)) = f&#8217;(x)g(x) + f(x)g&#8217;(x) \):</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_product_rule.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_product_rule.svg" alt="" title="ddg_product_rule" class="aligncenter size-full wp-image-252" /></a></p>
+<p>The dark region represents the value of \(fg\) at \(x\); the light blue region represents the <em>change</em> in this value as we move \(x\) some small distance \(h\).  As \(h\) gets smaller and smaller, the contribution of the upper-right quadrant becomes negligible and we can write the derivative as the change in \(f\) times \(g\) plus the change in \(g\) times \(f\).  (Can you make this argument more rigorous?)  Since a \(k\)-form also measures a (signed) volume, this intuition also carries over to the exterior derivative of a wedge product.  In particular, if \(\alpha\) is a \(k\)-form then \(d\) obeys the rule</p>
+<p>\[ d(\alpha \wedge \beta) = d\alpha \wedge \beta + (-1)^{k}\alpha \wedge d\beta.  \]</p>
+<p>which says that the rate of change of the overall volume can be expressed in terms of changes in the constituent volumes, exactly as in the picture above.</p>
+<p><u><b>Exterior Derivative of 1-Forms</b></u></p>
+<p>To be a little more concrete, let&#8217;s see what happens when we differentiate a 1-form on \(\mathbb{R}^3\).  Working things out in coordinates turns out to be a total mess, but in the end you may be pleasantly surprised with the simplicity of the outcome!  (Later on we&#8217;ll see that these ideas can also be expressed quite nicely <em>without</em> coordinates using <em>Stokes&#8217; theorem</em>, which paves the way to differentiation in the discrete setting.) Applying the linearity of \(d\), we have</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      d\alpha<br />
+      &#038;=&#038; d(\alpha_1 dx^1 + \alpha_2 dx^2 + \alpha_3 dx^3) \\<br />
+      &#038;=&#038; d(\alpha_1 dx^1) + d(\alpha_2 dx^2) + d(\alpha_3 dx^3).<br />
+   \end{array}<br />
+\]</p>
+<p>Each term \(\alpha_j dx^j\) can really be thought of a wedge product \(\alpha_j \wedge dx^j\) between a 0-form \(\alpha_j\) and the corresponding basis 1-form \(dx^j\).  Applying the exterior derivative to one of these terms we get</p>
+<p>\[ d(\alpha_j \wedge dx^j) = (d\alpha_j) \wedge dx^j + \alpha_j \wedge \underbrace{(ddx^j)}_{=0} = \frac{\partial \alpha_j}{\partial x^i} dx^i \wedge dx^j. \]</p>
+<p>To keep things short we used the Einstein summation convention here, but let&#8217;s really write out all the terms:</p>
+<p>\[<br />
+   \begin{array}{rcccccc}<br />
+      d\alpha &#038;=&#038; \frac{\partial \alpha_1}{\partial x^1} dx^1 \wedge dx^1 &#038;+&#038; \frac{\partial \alpha_1}{\partial x^2} dx^2 \wedge dx^1 &#038;+&#038; \frac{\partial \alpha_1}{\partial x^3} dx^3 \wedge dx^1 \\<br />
+               &#038;&#038; \frac{\partial \alpha_2}{\partial x^1} dx^1 \wedge dx^2 &#038;+&#038; \frac{\partial \alpha_2}{\partial x^2} dx^2 \wedge dx^2 &#038;+&#038; \frac{\partial \alpha_2}{\partial x^3} dx^3 \wedge dx^2 \\<br />
+               &#038;&#038; \frac{\partial \alpha_3}{\partial x^1} dx^1 \wedge dx^3 &#038;+&#038; \frac{\partial \alpha_3}{\partial x^2} dx^2 \wedge dx^3 &#038;+&#038; \frac{\partial \alpha_3}{\partial x^3} dx^3 \wedge dx^3. \\<br />
+   \end{array}<br />
+\]</p>
+<p>Using the fact that \(\alpha \wedge \beta = -\beta \wedge \alpha\), we get a much simpler expression</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      d\alpha &#038;=&#038; ( \frac{\partial \alpha_3}{\partial x^2} - \frac{\partial \alpha_2}{\partial x^3} ) dx^2 \wedge dx^3 \\<br />
+               &#038;&#038; ( \frac{\partial \alpha_1}{\partial x^3} - \frac{\partial \alpha_3}{\partial x^1} ) dx^3 \wedge dx^1 \\<br />
+               &#038;&#038; ( \frac{\partial \alpha_2}{\partial x^1} - \frac{\partial \alpha_1}{\partial x^2} ) dx^1 \wedge dx^2. \\<br />
+   \end{array}<br />
+\]</p>
+<p>Does this expression look familiar?  If you look again at our review of vector derivatives, you&#8217;ll recognize that \(d\alpha\) basically looks like the <em>curl</em> of \(\alpha^\sharp\), except that it&#8217;s expressed as a 2-form instead of a vector field.  Also remember (from our discussion of Hodge duality) that a 2-form and a 1-form are not so different here &#8212; geometrically they both specify some direction in \(\mathbb{R}^3\).  Therefore, we can express the curl of any vector field \(X\) as</p>
+<p>\[ \nabla \times X = \left( \star d X^\flat \right)^\sharp. \]</p>
+<p>It&#8217;s worth stepping through the sequence of operations here to check that everything makes sense: \(\flat\) converts the vector field \(X\) into a 1-form \(X^\flat\); \(d\) computes something that looks like the curl, but expressed as a 2-form \(dX^\flat\); \(\star\) turns this 2-form into a 1-form \(\star d X^\flat\); and finally \(\sharp\) converts this 1-form back into the vector field \(\left( \star d X^\flat \right)^\sharp\).  The take-home message here, though, is that <em>the exterior derivative of a 1-form looks like the curl of a vector field</em>.</p>
+<p>So far we know how to express the gradient and the curl using \(d\).  What about our other favorite vector derivative, the divergence?  Instead of grinding through another tedious derivation, let&#8217;s make a simple geometric observation: in \(\mathbb{R}^2\) at least, we can determine the divergence of a vector field by rotating it by 90 degrees and computing its curl (consider the example we saw earlier).  Moreover, in \(\mathbb{R}^2\) the Hodge star \(\star\) represents a rotation by 90 degrees, since it identifies any <em>line</em> with the direction orthogonal to that line:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_hodge_star_2d.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_hodge_star_2d.svg" alt="" title="ddg_hodge_star_2d" class="aligncenter size-full wp-image-253" /></a></p>
+<p>Therefore, we might suspect that divergence can be computed by first applying the Hodge star, then applying the exterior derivative:</p>
+<p>\[ \nabla \cdot X = \star d \star X^\flat. \]</p>
+<p>The leftmost Hodge star accounts for the fact that \(d \star X^\flat\) is an \(n\)-form instead of a 0-form &#8212; in vector calculus divergence is viewed as a scalar quantity.  Does this definition really work?  Let&#8217;s give it a try in coordinates on \(\mathbb{R}^3\).  First, we have</p>
+<p>\[<br />
+   \begin{array}{rcl} \star X^\flat &#038;=&#038; \star( X_1 dx^1 + X_2 dx^2 + X_3 dx^3 ) \\<br />
+                                    &#038;=&#038; X_1 dx^2 \wedge dx^3 + X_2 dx^3 \wedge dx^1 + X_3 dx^1 \wedge dx^2.<br />
+   \end{array}<br />
+\]</p>
+<p>Differentiating we get</p>
+<p>\[<br />
+   \begin{array}{rcl} d \star X^\flat &#038;=&#038; \frac{\partial X_1}{\partial x^1} dx^1 \wedge dx^2 \wedge dx^3 + \\<br />
+                                       &#038;&#038; \frac{\partial X_2}{\partial x^2} dx^2 \wedge dx^3 \wedge dx^1 + \\<br />
+                                       &#038;&#038; \frac{\partial X_3}{\partial x^3} dx^3 \wedge dx^1 \wedge dx^2, \\<br />
+   \end{array}<br />
+\]</p>
+<p>but of course we can rearrange these wedge products to simply</p>
+<p>\[ d \star X^\flat = \left( \frac{\partial X_1}{\partial x^1} + \frac{\partial X_2}{\partial x^2} + \frac{\partial X_3}{\partial x^3} \right) dx^1 \wedge dx^2 \wedge dx^3. \]</p>
+<p>A final application of the Hodge star gives us the divergence</p>
+<p>\[ \star d \star X^\flat = \frac{\partial X_1}{\partial x^1} + \frac{\partial X_2}{\partial x^2} + \frac{\partial X_3}{\partial x^3} \]</p>
+<p>as desired.</p>
+<p>In summary, for any scalar field \(\phi\) and vector field \(X\) we have</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      \nabla \phi &#038;=&#038; (d\phi)^\sharp \\<br />
+      \nabla \times X &#038;=&#038; \left( \star d X^\flat \right)^\sharp \\<br />
+      \nabla \cdot X &#038;=&#038; \star d \star X^\flat<br />
+   \end{array}<br />
+\]</p>
+<p>One cute thing to notice here is that (in \(\mathbb{R}^3\)) \(\mathrm{grad}\), \(\mathrm{curl}\), and \(\mathrm{div}\) are more or less just \(d\) applied to a \(0-\), \(1-\) and \(2-\) form, respectively.</p>
+<p><u><b>The Laplacian</b></u></p>
+<p>Another key differential operator from vector calculus is the scalar <em>Laplacian</em> which (confusingly!) is often denoted by \(\Delta\) or \(\nabla^2\), and is defined as</p>
+<p>\[ \Delta := \nabla \cdot \nabla, \]</p>
+<p>i.e., the divergence of the gradient.  Although the Laplacian may seem like just yet another in a long list of derivatives, it deserves your utmost respect: the Laplacian is central to the most fundamental of physical laws (any diffusion process and all forms of wave propagation, including the Schrödinger equation); its eigenvalues capture <em>almost</em> everything there is to know about a given piece of geometry (can you hear the shape of a drum?).  Heavy tomes and entire lives have been devoted to the Laplacian, and in the discrete setting we&#8217;ll see that this one simple operator can be applied to a diverse array of tasks (surface parameterization, surface smoothing, vector field design and decomposition, distance computation, fluid simulation&#8230; you name it, we got it!).</p>
+<p>Fortunately, now that we know how to write \(\mathrm{div}\), \(\mathrm{grad}\) and \(\mathrm{curl}\) using exterior calculus, expressing the scalar Laplacian is straightforward: \(\Delta = \star d \star d\).  More generally, the <em>\(k\)-form Laplacian</em> is given by</p>
+<p>\[ \Delta := \star d \star d + d \star d \star. \]</p>
+<p>The name &#8220;Laplace-<em>Beltrami</em>&#8221; is used merely to indicate that the domain may have some amount of curvature (encapsulated by the Hodge star).  Some people like to define the operator \(\delta := \star d \star\), called the <em>codifferential</em>, and write the Laplacian as \(\Delta = \delta d + d \delta\).</p>
+<p>One question you might ask is: why is the Laplacian for 0-forms different from the general \(k\)-form Laplacian?  Actually, it&#8217;s not &#8212; consider what happens when we apply the term \(d \star d \star\) to a 0-form \(\phi\): \(\star \phi\) is an \(n\)-form, and so \(d \star \phi\) must be an \((n+1)\)-form.  But there are no \((n+1)\)-forms on an \(n\)-dimensional space!  So this term is often omitted when writing the scalar Laplacian.</p>
+                </div>
+                <footer>
+                                         |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                <article class="post-294 post type-post status-publish format-standard hentry category-notes" id="post-294">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=294.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</a></h2>
+                </header>
+                <div class="entry">
+                	<p><a href="../cs177/wp-content/uploads/2011/10/ddg_hodge_duality.svg"><img class="aligncenter size-full wp-image-201" title="ddg_hodge_duality" src="../cs177/wp-content/uploads/2011/10/ddg_hodge_duality.svg" alt="" /></a></p>
+<p>Previously we saw that a \(k\)-form measures the (signed) projected volume of a \(k\)-dimensional parallelpiped. For instance, a 2-form measures the area of a parallelogram projected onto some plane, as depicted above. But here&#8217;s a nice observation: a plane in \(\mathbb{R}^3\) can be described <em>either</em> by a pair of basis directions \((\alpha,\beta)\), <em>or</em> by a normal direction \(\gamma\). So rather than measuring projected area, we could instead measure how well the normal of a parallelogram \((u,v)\) lines up with the normal of our plane. In other words, we could look for a 1-form \(\gamma\) such that</p>
+<p>\[ \gamma(u \times v) = \alpha \wedge \beta(u,v). \]</p>
+<p>This observation captures the idea behind <em>Hodge duality</em>: a \(k\)-dimensional volume in an \(n\)-dimensional space can be specified either by \(k\) directions or by a complementary set of \((n-k)\) directions. There should therefore be some kind of natural correspondence between \(k\)-forms and \((n-k)\)-forms.</p>
+<p><strong><span style="text-decoration: underline;">The Hodge Star</span></strong></p>
+<p>Let&#8217;s investigate this idea further by constructing an explicit basis for the space of 0-forms, 1-forms, 2-forms, etc. &#8212; to keep things manageable we&#8217;ll work with \(\mathbb{R}^3\) and its standard coordinate system \((x^1, x^2, x^3)\). 0-forms are easy: any 0-form can be thought of as some function times the <em>constant</em> 0-from, which we&#8217;ll denote &#8220;\(1\).&#8221; We&#8217;ve already seen the 1-form basis \(dx^1, dx^2, dx^3\), which looks like the standard orthonormal basis of a vector space:</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_oneform_basis.svg"><img class="aligncenter size-full wp-image-202" title="ddg_oneform_basis" src="../cs177/wp-content/uploads/2011/10/ddg_oneform_basis.svg" alt="" /></a></p>
+<p>What about 2-forms? Well, consider that any 2-form can be expressed as the wedge of two 1-forms:</p>
+<p>\[ \alpha \wedge \beta = (\alpha_i dx^i) \wedge (\beta_j dx^j) = \alpha_i \beta_j dx^i \wedge dx^j. \]</p>
+<p>In other words, any 2-form looks like some linear combination of the basis 2-forms \(dx^i \wedge dx^j\). How many of these bases are there? Initially it looks like there are a bunch of possibilities:</p>
+<p>\[<br />
+\begin{array}{ccc}<br />
+dx^1 \wedge dx^1 &amp; dx^1 \wedge dx^2 &amp; dx^1 \wedge dx^3 \\<br />
+dx^2 \wedge dx^1 &amp; dx^2 \wedge dx^2 &amp; dx^2 \wedge dx^3 \\<br />
+dx^3 \wedge dx^1 &amp; dx^3 \wedge dx^2 &amp; dx^3 \wedge dx^3 \\<br />
+\end{array}<br />
+\]</p>
+<p>But of course, not all of these guys are distinct: remember that the wedge product is antisymmetric (\(\alpha \wedge \beta = -\beta \wedge \alpha\)), which has the important consequence \(\alpha \wedge \alpha = 0\). So really our table looks more like this:</p>
+<p>\[<br />
+\begin{array}{ccc}<br />
+0 &amp; dx^1 \wedge dx^2 &amp; -dx^3 \wedge dx^1 \\<br />
+-dx^1 \wedge dx^2 &amp; 0 &amp; dx^2 \wedge dx^3 \\<br />
+dx^3 \wedge dx^1 &amp; -dx^2 \wedge dx^3 &amp; 0 \\<br />
+\end{array}<br />
+\]</p>
+<p>and we&#8217;re left with only three distinct bases: \(dx^2 \wedge dx^3\), \(dx^3 \wedge dx^1\), and \(dx^1 \wedge dx^2\). Geometrically all we&#8217;ve said is that there are three linearly-independent &#8220;planes&#8221; in \(\mathbb{R}^3\):</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_twoform_basis1.svg"><img class="aligncenter size-full wp-image-215" title="ddg_twoform_basis" src="../cs177/wp-content/uploads/2011/10/ddg_twoform_basis1.svg" alt="" /></a></p>
+<p>How about 3-form bases? We certainly have at least one:</p>
+<p>\[ dx^1 \wedge dx^2 \wedge dx^3. \]</p>
+<p>Are there any others? Again the antisymmetry of \(\wedge\) comes into play: many potential bases are just permutations of this first one:</p>
+<p>\[ dx^2 \wedge dx^3 \wedge dx^1 = -dx^2 \wedge dx^1 \wedge dx^3 = dx^1 \wedge dx^2 \wedge dx^3, \]</p>
+<p>and the rest vanish due to the appearance of repeated 1-forms:</p>
+<p>\[ dx^2 \wedge dx^1 \wedge dx^2 = -dx^2 \wedge dx^2 \wedge dx^1 = 0 \wedge dx^1 = 0. \]</p>
+<p>In general there is only <em>one</em> basis \(n\)-form \(dx^1 \wedge \cdots \wedge dx^n\), which measures the usual Euclidean volume of a parallelpiped:</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_threeform_basis.svg"><img class="aligncenter size-full wp-image-204" title="ddg_threeform_basis" src="../cs177/wp-content/uploads/2011/10/ddg_threeform_basis.svg" alt="" /></a></p>
+<p>Finally, what about 4-forms on \(\mathbb{R}^3\)? At this point it&#8217;s probably pretty easy to see that there are none, since we&#8217;d need to pick four <em>distinct</em> 1-form bases from a collection of only three. Geometrically: there are no four-dimensional volumes contained in \(\mathbb{R}^3\)! (Or volumes of any greater dimension, for that matter.) The complete list of \(k\)-form bases on \(\mathbb{R}^3\) is then</p>
+<ul>
+<li><strong>0-form bases:</strong> 1</li>
+<li><strong>1-form bases:</strong> \(dx^1\), \(dx^2\), \(dx^3\)</li>
+<li><strong>2-form bases:</strong> \(dx^2 \wedge dx^3\), \(dx^3 \wedge dx^1\), \(dx^1 \wedge dx^2\)</li>
+<li><strong>3-form bases:</strong> \(dx^1 \wedge dx^2 \wedge dx^3\),</li>
+</ul>
+<p>which means the <em>number</em> of bases is 1, 3, 3, 1. In fact you may see a more general pattern here: the number of \(k\)-form bases on an \(n\)-dimensional space is given by the binomial coefficient</p>
+<p>\[ \left( \begin{array}{c} n \\ k \end{array} \right) = \frac{n!}{k!(n-k)!} \]</p>
+<p>(i.e., &#8220;\(n\) choose \(k\)&#8221;), since we want to pick \(k\) distinct 1-form bases and don&#8217;t care about the order. An important identity here is</p>
+<p>\[ \left( \begin{array}{c} n \\ k \end{array} \right) = \left( \begin{array}{c} n \\ n-k \end{array} \right), \]</p>
+<p>which, as anticipated, means that we have a one-to-one relationship between \(k\)-forms and \((n-k)\)-forms. In particular, we can identify any \(k\)-form with its complement. For example, on \(\mathbb{R}^3\) we have</p>
+<p>\[<br />
+\begin{array}{rcl}<br />
+\star\ 1 &amp;=&amp; dx^1 \wedge dx^2 \wedge dx^3 \\<br />
+\star\ dx^1 &amp;=&amp; dx^2 \wedge dx^3 \\<br />
+\star\ dx^2 &amp;=&amp; dx^3 \wedge dx^1 \\<br />
+\star\ dx^3 &amp;=&amp; dx^1 \wedge dx^2 \\<br />
+\star\ dx^1 \wedge dx^2 &amp;=&amp; dx^3 \\<br />
+\star\ dx^2 \wedge dx^3 &amp;=&amp; dx^1 \\<br />
+\star\ dx^3 \wedge dx^1 &amp;=&amp; dx^2 \\<br />
+\star\ dx^1 \wedge dx^2 \wedge dx^2 &amp;=&amp; 1<br />
+\end{array}<br />
+\]</p>
+<p>The map \(\star\) (pronounced &#8220;star&#8221;) is called the <em>Hodge star</em> and captures this idea that planes can be identified with their normals and so forth. More generally, on any <em>flat</em> space we have</p>
+<p>\[ \star\ dx^{i_1} \wedge dx^{i_2} \wedge \cdots \wedge dx^{i_k} = dx^{i_{k+1}} \wedge dx^{i_{k+2}} \wedge \cdots \wedge dx^{i_n}, \]</p>
+<p>where \((i_1, i_2, \ldots, i_n)\) is any <em>even</em> permutation of \((1, 2, \ldots, n)\).</p>
+<p><strong><span style="text-decoration: underline;">The Volume Form</span></strong></p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_volumeform1.svg"><img class="aligncenter size-full wp-image-246" title="ddg_volumeform" src="../cs177/wp-content/uploads/2011/10/ddg_volumeform1.svg" alt="" /></a></p>
+<p>So far we&#8217;ve been talking about measuring volumes in <em>flat</em> spaces like \(\mathbb{R}^n\). But how do we take measurements in a curved space? Let&#8217;s think about our usual example of a surface \(f: \mathbb{R}^2 \supset M \rightarrow \mathbb{R}^3\). If we specify a region on our surface via a pair of unit orthogonal vectors \(u, v \in \mathbb{R}^2\), it&#8217;s clear that we don&#8217;t want the area \(dx^1 \wedge dx^2(u,v)=1\) since that just gives us the area in the plane. Instead, we want to know what a unit area looks like after it&#8217;s been &#8220;stretched-out&#8221; by the map \(f\). In particular, we said that the length of a vector \(df(u)\) can be expressed in terms of the <em>metric</em> \(g\):</p>
+<p>\[ |df(u)| = \sqrt{df(u) \cdot df(u)} = \sqrt{g(u,u)}. \]</p>
+<p>So the area we&#8217;re really interested in is the product of the lengths \(|df(u)||df(v)| = \sqrt{g(u,u)g(v,v)}\). When \(u\) and \(v\) are orthonormal the quantity \(\det(g) := g(u,u)g(v,v)-2g(u,v)\) is called the <em>determinant</em> of the metric, and can be used to define a 2-form \(\sqrt{\det(g)} dx^1 \wedge dx^2\) that measures <em>any</em> area on our surface. More generally, the \(n\)-form</p>
+<p>\[ \omega := \sqrt{\det(g)} dx^1 \wedge \cdots \wedge dx^n \]</p>
+<p>is called the <em>volume form</em>, and will play a key role when we talk about integration.</p>
+<p>On curved spaces, we&#8217;d also like the Hodge star to capture the fact that volumes have been stretched out. For instance, it makes a certain amount of sense to identify the constant function \(1\) with the volume form \(\omega\), since \(\omega\) really represents <em>unit</em> volume on the curved space:</p>
+<p>\[ \star 1 = \omega \]</p>
+<p><strong><span style="text-decoration: underline;">The Inner Product on \(k\)-Forms</span></strong></p>
+<p>More generally we&#8217;ll ask that any \(n\)-form constructed from a pair of \(k\)-forms \(\alpha\) and \(\beta\) satisfies</p>
+<p>\[ \alpha \wedge \star \beta = \langle\langle \alpha, \beta \rangle\rangle \omega, \]</p>
+<p>where \(\langle\langle \alpha, \beta \rangle\rangle = \sum_i \alpha_i \beta_i\) is the inner product on \(k\)-forms. In fact, some authors use this relationship as the <em>definition</em> of the wedge product &#8212; in other words, they&#8217;ll start with something like, &#8220;the wedge product is the unique binary operation on \(k\)-forms such that \(\alpha \wedge \star \beta = \langle\langle \alpha, \beta \rangle\rangle \omega\),&#8221; and from there derive all the properties we&#8217;ve established above. This treatment is a bit abstract, and makes it far too easy to forget that the wedge product has an extraordinarily concrete geometric meaning. (It&#8217;s certainly not the way Hermann Grassmann thought about it when he invented exterior algebra!). In practice, however, this identity is quite useful. For instance, if \(u\) and \(v\) are vectors in \(\mathbb{R}^3\), then we can write</p>
+<p>\[ u \cdot v = \star\left(u^\flat \wedge \star v^\flat\right), \]</p>
+<p>i.e., on a flat space we can express the usual Euclidean inner product via the wedge product. Is it clear <em>geometrically</em> that this identity is true? Think about what it says: the Hodge star turns \(v\) into a plane with \(v\) as a normal. We then build a volume by extruding this plane along the direction \(u\). If \(u\) and \(v\) are nearly parallel the volume will be fairly large; if they&#8217;re nearly orthogonal the volume will be quite shallow. (But to be sure we really got it right, you should try verifying this identity in coordinates!) Similarly, we can express the Euclidean cross product as just</p>
+<p>\[ u \times v = \star(u^\flat \wedge v^\flat)^\sharp, \]</p>
+<p>i.e., we can create a plane with normal \(u \times v\) by wedging together the two basis vectors \(u\) and \(v\). (Again, working this fact out in coordinates may help soothe your paranoia.)</p>
+                </div>
+                <footer>
+                                         |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                <article class="post-285 post type-post status-publish format-standard hentry category-homework" id="post-285">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=285.html" rel="bookmark" title="Permanent Link to Homework 2: Normals of Discrete Surfaces">Homework 2: Normals of Discrete Surfaces</a></h2>
+                </header>
+                <div class="entry">
+                	<p><em>[Homework 2 has been released (below) and is due next Thursday by 5pm.  We suspect there will be a lot of questions about C++, <tt>libDDG</tt>, etc., so please do not hesitate to ask questions either in the comments (preferred) or via email.  Finally, some of the exercises require knowledge of exterior calculus that we haven't quite seen yet in class -- we will cover this material next time, but for those who want to get an early start I will post some additional notes that you can read through at your leisure.  Good luck!]</em></p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_discrete_normals.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_discrete_normals.svg" alt="" title="ddg_discrete_normals" class="aligncenter size-full wp-image-218" /></a></p>
+<p>For a smooth surface in \(\mathbb{R}^3\), the <em>normal</em> direction is easy to define: it is the unique direction orthogonal to all tangent vectors &#8212; in other words, it&#8217;s the direction sticking &#8220;straight out&#8221; of the surface.  For discrete surfaces the story is not so simple.  If a mesh has <em>planar</em> faces (all vertices lie in a common plane) then of course the normal is well-defined: it is simply the normal of the plane.  But if the polygon is <em>nonplanar</em>, or if we ask for the normal at a <em>vertex</em>, then it is not as clear how the normal should be defined.</p>
+<p>In practice there are a number of different possibilities, which arise from different ways of looking at the smooth geometry.  But before jumping in, let&#8217;s establish a few basic geometric facts.</p>
+<p>&nbsp;</p>
+<p><b><u>Area of a Polygon</u></b></p>
+<p>Here&#8217;s a simple question: how do you compute the area of a polygon in the plane?  Suppose our polygon has vertices \(p_1, p_2, \ldots, p_n\).  One way to compute the area is to stick another point \(q\) in the middle and sum up the areas of triangles \(q,p_i,p_{i+1}\) as done on the left:</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_polygon_area.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_polygon_area.svg" alt="" title="ddg_polygon_area" class="aligncenter size-full wp-image-219" /></a></p>
+<p>A cute fact about life is that if we place \(q\) <em>anywhere</em> and sum up the <em>signed</em> triangle areas, we still recover the polygon area!  (Signed area just means <em>negative</em> if our vertices are oriented clockwise; <em>positive</em> if they&#8217;re counter-clockwise.)  You can get an idea of why this happens just by looking at the picture: positive triangles that cover &#8220;too much&#8221; area get accounted for by negative triangles.</p>
+<p>The proof is an application of Stokes&#8217; theorem &#8212; consider a different expression for the area \(A\) of a planar polygon \(P\):</p>
+<p>\[ A = \int_P dx \wedge dy. \]</p>
+<p>Noting that \(dx \wedge dy = d(xdy) = -d(ydx)\), we can also express the area as</p>
+<p>\[ A = \frac{1}{2} \int_P d(xdy) - d(ydx) = \frac{1}{2} \int_{\partial P} xdy - ydx, \]</p>
+<p>where we&#8217;ve applied Stokes&#8217; theorem in the final step to convert our integral over the entire surface into an integral over just the boundary.  Now suppose that our polygon vertices have coordinates \(p_i = (x_i,y_i)\).  From here we can explicitly work out the boundary integral by summing up the integrals over each edge \(e_{ij}\):</p>
+<p>\[ \int_{\partial P} xdy - ydx = \sum \int_{e_{ij}} xdy - ydx. \]</p>
+<p>Since the coordinate functions \(x\) and \(y\) are <em>linear</em> along each edge (and their differentials \(dx\) and \(dy\) are therefore <em>constant</em>), we can write these integrals as</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+          \sum \int_{e_{ij}} xdy - ydx<br />
+      &#038;=&#038; \sum \frac{x_i+x_j}{2}(y_j-y_i) - \frac{y_i+y_j}{2}(x_j-x_i) \\<br />
+      &#038;=&#038; \frac{1}{2} \sum (p_i + p_j) \times (p_j - p_i) \\<br />
+      &#038;=&#038; \frac{1}{2} \sum p_i \times p_j - p_i \times p_i - p_j \times p_j - p_j \times p_i \\<br />
+      &#038;=&#038; \sum p_i \times p_j.<br />
+   \end{array}<br />
+\]</p>
+<p>In short, we&#8217;ve shown that the area of a polygon can be written as simply</p>
+<p>\[ A = \frac{1}{2} \sum_i p_i \times p_j. \]</p>
+<p><b>Exercise 2.1</b> Complete the proof by showing that for any point \(q\) the signed areas of triangles \((q,p_i,p_{i+1})\) sum to precisely the expression above.</p>
+<p>&nbsp;</p>
+<p><b><u>Vector Area</u></b></p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_vector_area.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_vector_area.svg" alt="" title="ddg_vector_area" class="aligncenter size-full wp-image-220" /></a></p>
+<p>A more general version of the situation we just looked at with polygon areas is the <em>vector area</em> of a surface patch \(f: M \rightarrow \mathbb{R}^3\), which is defined as the integral of the surface normal over the entire domain:</p>
+<p>\[ N_\mathcal{V} := \int_M N dA. \]</p>
+<p>A very nice property of the vector area is that it depends only on the shape of the boundary \(\partial M\) (as you will demonstrate in the next exercise).  As a result, two surfaces that look very different (such as the ones above) can still have the same vector area &#8212; the physical intuition here is that the vector area measures the total <em>flux</em> through the boundary curve.</p>
+<p>For a <em>flat</em> region the normal is constant over the surface and we get just the usual area times the unit normal vector.  Things get more interesting when the surface is not flat &#8212; for instance, the vector area of a circular band is <em>zero</em> since opposing normals cancel each-other out:</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_circular_band.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_circular_band.svg" alt="" title="ddg_circular_band" class="aligncenter size-full wp-image-221" /></a></p>
+<p><b>Exercise 2.2</b> Using Stokes&#8217; theorem, show that the vector area can be written as</p>
+<p>\[ N_\mathcal{V} = \frac{1}{2} \int_{\partial M} f \wedge df, \]</p>
+<p>where the product of two vectors in \(\mathbb{R}^3\) is given by the usual cross product \(\times\).</p>
+<p>&nbsp;</p>
+<p><b><u>Gradient of Triangle Area</u></b></p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_triangle_area_gradient.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_triangle_area_gradient.svg" alt="" title="ddg_triangle_area_gradient" class="aligncenter size-full wp-image-222" /></a></p>
+<p>Here&#8217;s another fairly basic question: consider a triangle sitting in \(\mathbb{R}^3\), and imagine that we&#8217;re allowed to pull on one of its vertices \(p\).  What&#8217;s the quickest way to increase its area \(A\)?  In other words, what&#8217;s the <em>gradient</em> of \(A\) with respect to \(p\)?</p>
+<p>&nbsp;</p>
+<p><b>Exercise 2.3</b> Show that the area gradient is given by</p>
+<p>\[ \nabla_p A_\sigma = \frac{1}{2} \mathbf{u}^{\perp} \]</p>
+<p>where \(\mathbf{u^\perp}\) is the edge vector across from \(p\) rotated by an angle \(\pi/2\) in the plane of the triangle (such that it points toward \(p\)).  You should require only a few <em>very simple</em> geometric arguments &#8212; there&#8217;s no need to write things out in coordinates, etc.</p>
+<p><b><u>Vertex Normals from Area Gradient</u></b></p>
+<p>Ok, with these facts out of the way let&#8217;s take a look at some different ways to define vertex normals.  There are essentially only two definitions that arise naturally from the smooth picture: the <em>area gradient</em> and the <em>volume gradient</em>; we&#8217;ll start with the former.</p>
+<p>The area gradient asks, &#8220;which direction should we `push&#8217; the surface in order to increase its total area \(A\) as quickly as possible?&#8221;  Sliding all points tangentially along the surface clearly doesn&#8217;t change anything: we just end up with the same surface.  In fact, the only thing we can do to increase surface area is move the surface in the <em>normal</em> direction.  The idea, then, is to <em>define</em> the vertex normal as the gradient of area with respect to a given vertex.</p>
+<p>Since we already know how to express the area gradient for a single triangle \(\sigma\), we can easily express the area gradient for the entire surface:</p>
+<p>\[ \nabla_p A = \sum_\sigma \nabla A_\sigma. \]</p>
+<p>Of course, a given vertex \(p\) influences only the areas of the triangles touching \(p\).  So we can just sum up the area gradients over this small collection of triangles.</p>
+<p>&nbsp;</p>
+<p><b>Exercise 2.4</b> Show that the gradient of surface area with respect to vertex \(p_i\) can be expressed as</p>
+<p>\[ \nabla_p A = \frac{1}{2}\sum_j (\cot\alpha_j + \cot\beta_j)( p_j - p_i ) \]</p>
+<p>where \(p_j\) is the coordinate of the \(j\)th neighbor of \(p_i\) and \(\alpha_j\) and \(\beta_j\) are the angles across from edge \((p_i,p_j)\).</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_cotan_formula.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_cotan_formula.svg" alt="" title="ddg_cotan_formula" class="aligncenter size-full wp-image-223" /></a></p>
+<p>&nbsp;</p>
+<p><b><u>Mean Curvature Vector</u></b></p>
+<p>The expression for the area gradient derived in the last exercise shows up all over discrete differential geometry, and is often referred to as the <em>cotan formula</em>.  Interestingly enough this same expression appears when taking a completely different approach to defining vertex normals, by way of the <em>mean curvature vector</em> \(HN\).  In particular, for a smooth surface \(f: M \rightarrow \mathbb{R}^3\) we have</p>
+<p>\[ \Delta f = 2HN \]</p>
+<p>where \(H\) is the mean curvature, \(N\) is the unit surface normal (which we&#8217;d like to compute), and \(\Delta\) is the Laplace-Beltrami operator (see below).  Therefore, another way to define vertex normals for a discrete surface is to simply apply a discrete Laplace operator to the vertex positions and normalize the resulting vector.</p>
+<p>The question now becomes, &#8220;how do you discretize the Laplacian?&#8221;  We&#8217;ll take a closer look at this question in the future, but the remarkable fact is that the most straightforward discretization of \(\Delta\) leads us right back to the cotan formula!  In other words, the vertex normals we get from the mean curvature vector are precisely the same as the ones we get from the area gradient.</p>
+<p>This whole story also helps us get better intuition for the Laplace-Beltrami operator \(\Delta\) itself.  Unfortunately, there&#8217;s no really nice way to write \(\Delta\) &#8212; the standard coordinate formula you&#8217;ll find in a textbook on differential geometry is \(\Delta \phi = \frac{1}{\sqrt{|g|}} \frac{\partial}{\partial x^i}(\sqrt{|g|} g^{ij} \frac{\partial}{\partial x^j}\phi)\), where \(g\) is the metric.  However, this obfuscated expression provides little intuition about what \(\Delta\) really does, and is damn-near useless when it comes to discretization since for a triangle mesh we <em>never</em> have a coordinate representation of \(g\)!  Later, using exterior calculus, we&#8217;ll see that the (0-form) Laplacian can be expressed as \(\Delta = \star d \star d\), which leads to a fairly straightforward discretization.  But for now, we&#8217;ll make use of a nice tool we learned about earlier: <em>conformal parameterization</em>.  Remember that if \(f\) is a conformal map, then lengths on \(M\) and lengths on \(f(M)\) are related by a positive scaling \(e^{u}\).  In other words, \(|df(X)| = e^{u}|X|\) for some real-valued function \(u\) on \(M\).  Moreover, a conformal parameterization always exists &#8212; in other words, we don&#8217;t have to make any special assumptions about our geometry in order to use conformal coordinates in proofs or other calculations.  The reason conformal coordinates are useful when talking about Laplace-Beltrami is that we can write \(\Delta\) as simply a rescaling of the standard Laplacian in the plane, i.e., as the sum of second partial derivatives divided by the metric scaling factor \(e^{2u}\):</p>
+<p>\[ \Delta \phi = \frac{d(d\phi(X))(X) + d(d\phi(Y))(Y)}{e^{2u}}, \]</p>
+<p>where \(X\) and \(Y\) are any pair of unit, orthogonal directions.</p>
+<p>What&#8217;s the geometric meaning here?  Remember that for a good old-fashioned function \(\phi: \mathbb{R} \rightarrow \mathbb{R}\) in 1D, second derivatives basically tell us about the <em>curvature</em> of a function, e.g., is it concave or convex?</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_1d_curvature.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_1d_curvature.svg" alt="" title="ddg_1d_curvature" class="aligncenter size-full wp-image-224" /></a></p>
+<p>Well, since \(\Delta\) is a <em>sum</em> of second derivatives, it&#8217;s no surprise that it tells us something about the <em>mean</em> curvature!</p>
+<p>&nbsp;</p>
+<p><b>Exercise 2.5</b> Show that the relationship \(\Delta f = 2HN\) holds.</p>
+<p>&nbsp;</p>
+<p><b><u>Vertex Normals from Volume Gradient</u></b></p>
+<p>An alternative way to come up with normals is to look at the <em>volume gradient</em>.  Suppose that our surface encloses some region of space with total volume \(\mathcal{V}\).  As before, we know that sliding the surface along itself tangentially doesn&#8217;t really change anything: we end up with the same surface, which encloses the same region of space.  Therefore, the quickest way to increase \(\mathcal{V}\) is to again move the surface in the normal direction.  A somewhat surprising fact is that, in the discrete case, the volume gradient actually yields a <em>different</em> definition for vertex normals than the one we got from the area gradient.  To express this gradient, we&#8217;ll use three-dimensional versions of of our &#8220;basic facts&#8221; from above.</p>
+<p>First, much like we broke the area of a polygon into triangles, we&#8217;re going to decompose the volume enclosed by our surface into a collection of tetrahedra.  Each tetrahedron includes exactly one face of our discrete surface, along with a new point \(q\).  For instance, here&#8217;s what the volume might look like in the vicinity of a vertex \(p\):</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_volume_tetrahedralization.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_volume_tetrahedralization.svg" alt="" title="ddg_volume_tetrahedralization" class="aligncenter size-full wp-image-225" /></a></p>
+<p>Just as in the polygon case the location of \(q\) makes no difference, as long as we work with the <em>signed</em> volume of the tetrahedra.  (Can you prove it?)</p>
+<p>Next, what&#8217;s the volume gradient for a single tetrahedron?  One way to write the volume of a tet is as</p>
+<p>\[ \mathcal{V} = \frac{1}{3} A h, \]</p>
+<p>where \(A\) is the area of the base triangle and \(h\) is the height.  Then using the same kind of geometric reasoning as in the triangle case, we know that</p>
+<p>\[ \nabla_p \mathcal{V} = \frac{1}{3} A N, \]</p>
+<p>where \(N\) is the unit normal to the base.</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_tetrahedron_volume_gradient.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_tetrahedron_volume_gradient.svg" alt="" title="ddg_tetrahedron_volume_gradient" class="aligncenter size-full wp-image-226" /></a></p>
+<p>To express the gradient of the enclosed volume with respect to a given vertex \(p\), we simply sum up the gradients for the tetrahedra containing \(p\):</p>
+<p>\[ \nabla_p \mathcal{V} = \sum_i \mathcal{V}_i = \frac{1}{3} \sum_i A_i N_i. \]</p>
+<p>At first glance this sum does not lead to a nice expression for \(\Delta_p \mathcal{V}\) &#8212; for instance, it uses the normals \(N_i\) of faces that have little to do with our surface geometry.  However, remember that we can place \(q\) anywhere we please and still get the same expression for volume.  In particular, if we put \(q\) directly on top of \(p\), then the \(N_i\) and \(A_i\) coincide with the normals and areas (respectively) of the faces containing \(p\) from our original surface:</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_volume_gradient_proof.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_volume_gradient_proof.svg" alt="" title="ddg_volume_gradient_proof" class="aligncenter size-full wp-image-227" /></a></p>
+<p><b>Exercise 2.6</b> Show that the volume gradient points in the same direction as the vector area \(N_\mathcal{V}\) (i.e., show that they are the same up to a constant factor).</p>
+<p>&nbsp;</p>
+<p><b><u>Other Definitions</u></b></p>
+<p>So far we&#8217;ve only looked at definitions for vertex normals that arise from some smooth definition.  This way of thinking captures the essential spirit of discrete differential geometry: relationships from the smooth setting should persist unperturbed in the discrete setting (e.g., \(\Delta f = 2HN\) should be true independent of whether \(\Delta\), \(H\), and \(N\) are smooth objects or discrete ones).  Nonetheless, there are a number of common definitions for vertex normals that do not have a known origin in the smooth world.  (Perhaps you can find one?)</p>
+<p>&nbsp;</p>
+<p><b><u>Uniform Weighting</u></b></p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_uniform_vertex_normals.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_uniform_vertex_normals.svg" alt="" title="ddg_uniform_vertex_normals" class="aligncenter size-full wp-image-228" /></a></p>
+<p>Perhaps the simplest way to get vertex normals is to just add up the neighboring face normals:</p>
+<p>\[ N_U := \sum_i N_i \]</p>
+<p>The main drawback to this approach is that two different tessellations of the same geometry can produce very different vertex normals, as illustrated above.</p>
+<p><b><u>Tip-Angle Weights</u></b></p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_vertex_normals.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_vertex_normals.svg" alt="" title="ddg_vertex_normals" class="aligncenter size-full wp-image-229" /></a></p>
+<p>A simple way to reduce dependence on the tessellation is to weigh face normals by their corresponding <em>tip angles</em> \(\theta\), i.e., the interior angles incident on the vertex of interest:</p>
+<p>\[ N_\theta := \sum_i \theta_i N_i \]</p>
+<p>&nbsp;</p>
+<p><b><u>Sphere-Inscribed Polytope</u></b></p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_spherical_polytope.svg"><img src="../cs177/wp-content/uploads/2011/10/ddg_spherical_polytope.svg" alt="" title="ddg_spherical_polytope" class="aligncenter size-full wp-image-230" /></a></p>
+<p>Here&#8217;s another interesting approach to vertex normals: consider the sphere \(S^2\) consisting of all points unit distance from the origin in \(\mathbb{R}^3\).  A nice fact about the sphere is that the unit normal \(N\) at a point \(x \in S^2\) is simply the point itself!  I.e., \(N(x) = x\).  So if we start out with a polytope whose vertices all sit on the sphere, one reasonable way to define vertex normals is to simply use the vertex positions.</p>
+<p>In fact, it&#8217;s not too hard to show that the direction of the normal at a vertex \(p_i\) can be expressed purely in terms of the edge vectors \(e_j = p_j &#8211; p_i\), where \(p_j\) are the immediate neighbors of \(p_i\).  In particular, we have</p>
+<p>\[ N_S = \frac{1}{c} \sum_{j=0}^{n-1} \frac{e_j \times e_{j+1}}{|e_j|^2 |e_{j+1}|^2} \]</p>
+<p>where the constant \(c \in \mathbb{R}\) can be ignored since we&#8217;re only interested in the <em>direction</em> of the normal.  (For a detailed derivation of this expression, see Max, <em>&#8220;Weights for Computing Vertex Normals from Facet Normals.&#8221;</em>)  Of course, since this expression depends only on the edge vectors it can be evaluated on any mesh (not just those inscribed in a sphere).</p>
+<p>&nbsp;</p>
+<p><b><u>Coding Assignment</u></b></p>
+<p>Implement the following methods in <tt>libDDG</tt>:</p>
+<ul>
+<li> <tt>Vertex::normalEquallyWeighted()</tt> <br />
+<b>Purpose:</b> returns unit vertex normal using uniform weights \(N_U\)</li>
+<li> <tt>Vertex::normalAreaWeighted()</tt> <br />
+<b>Purpose:</b> returns unit vertex normal using face area weights \(N_\mathcal{V}\)</li>
+<li> <tt>Vertex::normalAngleWeighted()</tt> <br />
+<b>Purpose:</b> returns unit vertex normal using tip angle weights \(N_\theta\)</li>
+<li> <tt>Vertex::normalMeanCurvature()</tt> <br />
+<b>Purpose:</b> returns unit mean curvature normal \(\Delta f\)</li>
+<li> <tt>Vertex::normalSphereInscribed()</tt> <br />
+<b>Purpose:</b> returns unit sphere-inscribed normal \(N_S\)</li>
+</ul>
+<p>(The definitions for these methods can be found in <tt>libddg/src/Vertex.cpp</tt>.)</p>
+<p>Once you&#8217;ve successfully implemented these methods, test them out on the provided meshes.  For convenience you can flip through the different methods using the keys <tt>[1]</tt>-<tt>[5]</tt>.  You can also see what the mesh looks like by viewing it in &#8220;wireframe&#8221; mode.  Do you notice that some definitions work better than others?  When?  Why?  The only thing you need to submit for the coding assignment (via email) is your modified version of <tt>Vertex.cpp</tt>.  (Of course, if you modify other files you should submit these too!  For instance, you might find it convenient to add a method <tt>HalfEdge::cotan()</tt> that computes the cotangent of the angle across from a given half edge.)</p>
+<p>&nbsp;</p>
+<p>Example meshes can be found here: <a href='http://brickisland.net/cs177/wp-content/uploads/2011/10/ddg_hw2_meshes.zip'>ddg_hw2_meshes.zip</a></p>
+                </div>
+                <footer>
+                                        October 30, 2012 |                                                                 Posted in: <a href="index.html@cat=3.html" title="View all posts in Homework" rel="category">Homework</a> |                                                             <a href="index.html@p=285.html#comments" class="comments-link"  title="Comment on Homework 2: Normals of Discrete Surfaces">1 Comment &#187;</a>                </footer>
+            </article>
+                                    <nav class="navigation">
+            <div class="alignleft"><a href="index.html@m=201210&amp;paged=2.html" ><span>&laquo;</span> Older Entries</a></div>
+        <div class="alignright"></div>
+    </nav>        </div>
+    <aside id="sidebar">
+	<ul>
+	    <li id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" action="index.html" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li><li id="meta-3" class="widget widget_meta"><h3 class="widgettitle">Meta</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html@feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html@feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li><li id="pages-2" class="widget widget_pages"><h3 class="widgettitle">Pages</h3>		<ul>
+			<li class="page_item page-item-4"><a href="index.html@page_id=4.html">Course Information</a></li>
+<li class="page_item page-item-11"><a href="index.html@page_id=11.html">Homework Assignments</a></li>
+<li class="page_item page-item-9"><a href="index.html@page_id=9.html">Lecture Slides</a></li>
+<li class="page_item page-item-13"><a href="index.html@page_id=13.html">Subscriptions</a></li>
+		</ul>
+		</li><li id="categories-3" class="widget widget_categories"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html@cat=4.html" title="View all posts filed under Administration">Administration</a> (2)
+</li>
+	<li class="cat-item cat-item-3"><a href="index.html@cat=3.html" title="View all posts filed under Homework">Homework</a> (6)
+</li>
+	<li class="cat-item cat-item-5"><a href="index.html@cat=5.html" title="View all posts filed under Notes">Notes</a> (12)
+</li>
+		</ul>
+</li><li id="categoryposts-3" class="widget widget_categoryposts"><h3 class="widgettitle">Course Notes</h3><ul>
+		<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=104.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Surfaces">A Quick and Dirty Introduction to the Geometry of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=139.html" rel="bookmark" title="Permanent link to Derivatives and Tangent Vectors">Derivatives and Tangent Vectors</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=162.html" rel="bookmark" title="Permanent link to The Fundamental Polygon">The Fundamental Polygon</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=187.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Curves">A Quick and Dirty Introduction to the Geometry of Curves</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=214.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=235.html" rel="bookmark" title="Permanent link to Geometry in Coordinates">Geometry in Coordinates</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=262.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=272.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=294.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=296.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=298.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=307.html" rel="bookmark" title="Permanent link to Discrete Exterior Calculus">Discrete Exterior Calculus</a>
+			
+			
+						
+						
+					</li>
+	</ul>
+</li>	</ul>
+</aside></div><!-- id='content' -->
+    </div><!-- id='wrapcontent' -->
+    <div id="wrapfooter" class="wrapper">
+    	<footer id="footer">
+    		        	<p class="clear copy">
+            	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Introduction to Discrete Differential Geometry</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.        	</p>
+    	</footer>
+	</div>
+</div>
+</body>
+</html>

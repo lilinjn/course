@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms &raquo;  CS 177: Discrete Differential Geometry</title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://brickisland.net/cs177fa12/wp-content/themes/constructor/js/html5.js"></script>
+    <![endif]-->
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="stylesheet" type="text/css" media="screen" href="wp-content/themes/constructor/style.css"/>
+    <link rel="stylesheet" type="text/css" media="print" href="wp-content/themes/constructor/print.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="wp-content/themes/constructor/style-480.css" />
+    <link rel="pingback" href="xmlrpc.php" />
+    	<link rel='archives' title='December 2012' href='index.html@m=201212.html' />
+	<link rel='archives' title='November 2012' href='index.html@m=201211.html' />
+	<link rel='archives' title='October 2012' href='index.html@m=201210.html' />
+    
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Feed" href="index.html@feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Comments Feed" href="index.html@feed=comments-rss2" />
+<link rel='stylesheet' id='constructor-style-css'  href='wp-content/uploads/constructor/cache/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='constructor-theme-css'  href='wp-content/uploads/constructor/themes/current/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='wp-includes/js/comment-reply.js@ver=3.4.2'></script>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#038;ver=3.4.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js@ver=1.7.2'></script>
+<script type='text/javascript' src='wp-content/themes/constructor/js/ready.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php@rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Geometry in Coordinates' href='index.html@p=235.html' />
+<link rel='next' title='A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product' href='index.html@p=272.html' />
+<meta name="generator" content="WordPress 3.4.2" />
+<link rel='canonical' href='index.html@p=262.html' />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+<body class="single single-post postid-262 single-format-standard">
+	
+<div id="body">
+   <div id="wrapheader" class="wrapper">
+       <header id="header">
+                        <div id="title">
+					
+					<div id="name"><a href="index.html" title="CS 177: Discrete Differential Geometry &raquo; Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB">CS 177: Discrete Differential Geometry</a></div>
+				                <div id="description">Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB</div>
+            </div>
+       </header>
+   </div>
+   
+   <div id="wrapcontent" class="wrapper">
+       <div id="content" class="box shadow opacity layout-right">
+    <div id="container" >
+    
+                        <article class="post-262 post type-post status-publish format-standard hentry category-notes" id="post-262">
+                <header class="opacity box">
+                    <h1><a href="index.html@p=262.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a></h1>
+                </header>
+                <div class="entry">
+                    <p>Many important concepts in differential geometry can be nicely expressed in the language of <em>exterior calculus</em>.  Initially these concepts will look exactly like objects you know and love from <em>vector calculus</em>, and you may question the value of giving them funky new names.  For instance, scalar fields are no longer called scalar fields, but are now called <em>0-forms!</em>  In many ways vector and exterior calculus are indeed &#8220;<em>dual</em>&#8221; to each-other, but it is precisely this duality that makes the language so expressive.  In the long run we&#8217;ll see that exterior calculus also makes it easy to generalize certain ideas from vector calculus &#8212; the primary example being <em>Stokes&#8217; theorem</em>.  Actually, we already started using this language in our <a href="index.html@p=104.html">introduction to the geometry of surfaces</a>, but here&#8217;s the full story.</p>
+<p>Once upon a time there was a vector named \(v\):</p>
+<p><a href="wp-content/uploads/2012/10/ddg_vector.svg"><img src="wp-content/uploads/2012/10/ddg_vector.svg" alt="" title="ddg_vector" class="aligncenter size-full wp-image-263" /></a></p>
+<p>What information does \(v\) encode?  One way to inspect a vector is to determine its extent or <em>length</em> along a given direction.  For instance, we can pick some arbitrary direction \(\alpha\) and record the length of the shadow cast by \(v\) along \(\alpha\):</p>
+<p><a href="wp-content/uploads/2012/10/ddg_one_form.svg"><img src="wp-content/uploads/2012/10/ddg_one_form.svg" alt="" title="ddg_one_form" class="aligncenter size-full wp-image-264" /></a></p>
+<p>The result is simply a number, which we can denote \(\alpha(v)\).  The notation here is meant to emphasize the idea that \(\alpha\) is a function: in particular, it&#8217;s a <em>linear</em> function that eats a vector and produces a scalar.  Any such function is called a <em>1-form</em> (a.k.a. a <em>covector</em> or a <em>cotangent</em>).</p>
+<p>Of course, it&#8217;s clear from the picture that the space of all 1-forms looks a lot like the space of all vectors: we just had to pick some direction to measure along.  But often there is good reason to distinguish between vectors and 1-forms &#8212; the distinction is not unlike the one made between <em>row vectors</em> and <em>column vectors</em> in linear algebra.  For instance, even though rows and column both represent &#8220;vectors,&#8221; we only permit ourselves to multiply rows with columns:</p>
+<p>\[ \left[ \begin{array}{ccc} \alpha_1 &#038; \cdots &#038; \alpha_n \end{array} \right] \left[ \begin{array}{c} v_1 \\ \vdots \\ v_n \end{array} \right]. \]</p>
+<p>If we wanted to multiply, say, two columns, we would first have to take the <em>transpose</em> of one of them to convert it into a row:</p>
+<p>\[ v^T v = \left[ \begin{array}{ccc} v_1 &#038; \cdots &#038; v_n \end{array} \right] \left[ \begin{array}{c} v_1 \\ \vdots \\ v_n \end{array} \right]. \]</p>
+<p>Same deal with vectors and 1-forms, except that now we have two different operations: <em>sharp</em> (\(\sharp\)), which converts a 1-form into a vector, and <em>flat</em> (\(\flat\)) which converts a vector into a 1-form.  For instance, it&#8217;s perfectly valid to write \(v^\flat(v)\) or \(\alpha(\alpha^\sharp)\), since in either case we&#8217;re feeding a vector to a 1-form.  The operations \(\sharp\) and \(\flat\) are called the <em>musical isomorphisms</em>.</p>
+<p>All this fuss over 1-forms versus vectors (or even row versus column vectors) may seem like much ado about nothing.  And indeed, in a <em>flat</em> space like the plane, the difference between the two is pretty superficial.  In <em>curved</em> spaces, however, there&#8217;s an important distinction between vectors and 1-forms &#8212; in particular, we want to make sure that we&#8217;re taking &#8220;measurements&#8221; in the right space.  For instance, suppose we want to measure the length of a vector \(v\) along the direction of another vector \(u\).  It&#8217;s important to remember that tangent vectors get stretched out by the map \(f: \mathbb{R}^2 \supset M \rightarrow \mathbb{R}^3\) that takes us from the plane to some surface in \(\mathbb{R}^3\).  Therefore, the operations \(\sharp\) and \(\flat\) should satisfy relationships like</p>
+<p>\[ u^\flat(v) = g(u,v) \]</p>
+<p>where \(g\) is the metric induced by \(f\).  This way we&#8217;re really measuring how things behave in the &#8220;stretched out&#8221; space rather than the initial domain \(M\).</p>
+<p>&nbsp;</p>
+<p><u><b>Coordinates</b></u></p>
+<p>Until now we&#8217;ve intentionally avoided the use of <em>coordinates</em> &#8212; in other words, we&#8217;ve tried to express geometric relationships without reference to any particular <em>coordinate system</em> \(x_1, \ldots, x_n\).  Why avoid coordinates?  Several reasons are often cited (people will mumble something about &#8220;invariance&#8221;), but the real reason is quite simply that coordinate-free expressions tend to be shorter, sweeter, and easier to extract meaning from.  This approach is also particularly valuable in geometry processing, because many coordinate-free expressions translate naturally to basic operations on meshes.</p>
+<p>Yet coordinates are still quite valuable in a number of situations.  Sometimes there&#8217;s a special coordinate basis that greatly simplifies analysis &#8212; recall our <a href="index.html@p=214.html">discussion of principal curvature directions</a>, for instance.  At other times there&#8217;s simply no obvious way to prove something <em>without</em> coordinates.  For now we&#8217;re going to grind out a few basic facts about exterior calculus in coordinates; at the end of the day we&#8217;ll keep whatever nice coordinate-free expressions we find and politely forget that coordinates ever existed!</p>
+<p><a href="wp-content/uploads/2012/10/ddg_coordinates.svg"><img src="wp-content/uploads/2012/10/ddg_coordinates.svg" alt="" title="ddg_coordinates" class="aligncenter size-full wp-image-265" /></a></p>
+<p>Let&#8217;s setup our coordinate system.  For reasons that will become clear later, we&#8217;re going to use the symbols \(\frac{\partial}{\partial x^1}, \ldots, \frac{\partial}{\partial x^n}\) to represent an orthonormal basis for vectors in \(\mathbb{R}^n\), and use \(dx^i, \ldots, dx^n\) to denote the corresponding 1-form basis.  In other words, any vector \(v\) can be written as a linear combination</p>
+<p>\[ v = v^1 \frac{\partial}{\partial x^1} + \cdots + v^n \frac{\partial}{\partial x^n}, \]</p>
+<p>and any 1-form can be written as a linear combination</p>
+<p>\[ \alpha = \alpha_1 dx^1 + \cdots + \alpha_n dx^n. \]</p>
+<p>To keep yourself sane at this point, you should <em>completely ignore the fact</em> that the symbols \(\frac{\partial}{\partial x^i}\) and \(dx^i\) look like derivatives &#8212; they&#8217;re simply collections of unit-length orthogonal bases, as depicted above.  The two bases \(dx^i\) and \(\frac{\partial}{\partial x^i}\) are often referred to as <em>dual bases</em>, meaning they satisfy the relationship</p>
+<p>\[ dx^i\left(\frac{\partial}{\partial x^j}\right) = \delta^i_j = \begin{cases} 1, &#038; i = j \\ 0, &#038; \mbox{otherwise.} \end{cases} \]</p>
+<p>This relationship captures precisely the behavior we&#8217;re looking for: a vector \(\frac{\partial}{\partial x^i}\) &#8220;casts a shadow&#8221; on the 1-form \(dx^j\) only if the two bases point in the same direction.  Using this relationship, we can work out that</p>
+<p>\[ \alpha(v) = \sum_i \alpha_i dx^i\left( \sum_j v^j \frac{\partial}{\partial x^j} \right) = \sum_i \alpha_i v_i \]</p>
+<p>i.e., the <em>pairing</em> of a vector and a 1-form looks just like the standard Euclidean inner product.</p>
+<p>&nbsp;</p>
+<p><b><u>Notation</u></b></p>
+<p>It&#8217;s worth saying a few words about notation.  First, vectors and vector fields tend to be represented by letters from the end of the Roman alphabet (\(u\), \(v\), \(w\) or \(X\), \(Y\), \(Z\), repectively), whereas 1-forms are given lowercase letters from the beginning of the Greek alphabet (\(\alpha\), \(\beta\), \(\gamma\), etc.).  Although one often makes a linguistic distinction between a &#8220;vector&#8221; (meaning a single arrow) and a &#8220;vector field&#8221; (meaning an arrow glued to every point of a space), there&#8217;s an unfortunate precedent to use the term &#8220;1-form&#8221; to refer to both ideas &#8212; sadly, nobody ever says &#8220;1-form field!&#8221;  Scalar fields or <em>0-forms</em> are often given letters from the middle of the Roman alphabet (\(f\), \(g\), \(h\)) or maybe lowercase Greek letters from somewhere in the middle (\(\phi\), \(\psi\), etc.).</p>
+<p>You may also notice that we&#8217;ve been very particular about the placement of indices: coefficients \(v^i\) of vectors have indices <em>up</em>, coefficients \(\alpha_i\) of 1-forms have indices <em>down</em>.  Similarly, vector bases \(\frac{\partial}{\partial x^i}\) have indices down (they&#8217;re in the denominator), and 1-form bases \(dx^i\) have indices up.  The reason for being so neurotic is to take advantage of <em>Einstein summation notation</em>: any time a pair of variables is indexed by the same letter \(i\) in both the &#8220;up&#8221; and &#8220;down&#8221; position, we interpret this as a sum over all possible values of \(i\):</p>
+<p>\[ \alpha_i v^i = \sum_i \alpha_i v^i. \]</p>
+<p>The placement of indices also provides a cute mnemonic for the musical isomorphisms \(\sharp\) and \(\flat\).  In musical notation \(\sharp\) indicates a half-step increase in pitch, corresponding to an upward movement on the staff.  For instance, both notes below correspond to a &#8220;C&#8221; with the same pitch:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_sharp.svg"><img src="wp-content/uploads/2012/10/ddg_sharp.svg" alt="" title="ddg_sharp" class="aligncenter size-full wp-image-266" /></a></p>
+<p>Therefore, to go from a 1-form to a vector we <em>raise</em> the indices.  For instance, in a <em>flat</em> space we don&#8217;t have to worry about the metric and so a 1-form</p>
+<p>\[ \alpha = \alpha_1 dx^1 + \cdots + \alpha_n dx^n \]</p>
+<p>becomes a vector</p>
+<p>\[ \alpha^\sharp = \alpha^1 \frac{\partial}{\partial x^1} + \cdots + \alpha^n \frac{\partial}{\partial x^n}. \]</p>
+<p>Similarly, \(\flat\) indicates a decrease in pitch and a downward motion on the staff:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_flat.svg"><img src="wp-content/uploads/2012/10/ddg_flat.svg" alt="" title="ddg_flat" class="aligncenter size-full wp-image-267" /></a></p>
+<p>and so \(\flat\) <em>lowers</em> the indices of a vector to give us a 1-form &#8212; e.g.,</p>
+<p>\[ v = v^1 \frac{\partial}{\partial x^1} + \cdots + v^n \frac{\partial}{\partial x^n}. \]</p>
+<p>becomes</p>
+<p>\[ v^\flat = v_1 dx^1 + \cdots + v_n dx^n. \]</p>
+				                    </div>
+                                <footer>
+                                                October 23, 2012 |                                                                             Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                                         <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                
+
+
+<section id="comments">
+            <p class="nocomments">Comments are closed.</p>
+        								</section>        <nav class="navigation">
+            <div class="alignleft"><a href="index.html@p=272.html" rel="next"><span>&laquo;</span> A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a></div>
+        <div class="alignright"><a href="index.html@p=235.html" rel="prev">Geometry in Coordinates <span>&raquo;</span></a></div>
+    </nav>        </div><!-- id='container' -->
+    <aside id="sidebar">
+	<ul>
+	    <li id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" action="index.html" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li><li id="meta-3" class="widget widget_meta"><h3 class="widgettitle">Meta</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html@feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html@feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li><li id="pages-2" class="widget widget_pages"><h3 class="widgettitle">Pages</h3>		<ul>
+			<li class="page_item page-item-4"><a href="index.html@page_id=4.html">Course Information</a></li>
+<li class="page_item page-item-11"><a href="index.html@page_id=11.html">Homework Assignments</a></li>
+<li class="page_item page-item-9"><a href="index.html@page_id=9.html">Lecture Slides</a></li>
+<li class="page_item page-item-13"><a href="index.html@page_id=13.html">Subscriptions</a></li>
+		</ul>
+		</li><li id="categories-3" class="widget widget_categories"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html@cat=4.html" title="View all posts filed under Administration">Administration</a> (2)
+</li>
+	<li class="cat-item cat-item-3"><a href="index.html@cat=3.html" title="View all posts filed under Homework">Homework</a> (6)
+</li>
+	<li class="cat-item cat-item-5"><a href="index.html@cat=5.html" title="View all posts filed under Notes">Notes</a> (12)
+</li>
+		</ul>
+</li><li id="categoryposts-3" class="widget widget_categoryposts"><h3 class="widgettitle">Course Notes</h3><ul>
+		<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=104.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Surfaces">A Quick and Dirty Introduction to the Geometry of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=139.html" rel="bookmark" title="Permanent link to Derivatives and Tangent Vectors">Derivatives and Tangent Vectors</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=162.html" rel="bookmark" title="Permanent link to The Fundamental Polygon">The Fundamental Polygon</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=187.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Curves">A Quick and Dirty Introduction to the Geometry of Curves</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=214.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=235.html" rel="bookmark" title="Permanent link to Geometry in Coordinates">Geometry in Coordinates</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=262.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=272.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=294.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=296.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=298.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=307.html" rel="bookmark" title="Permanent link to Discrete Exterior Calculus">Discrete Exterior Calculus</a>
+			
+			
+						
+						
+					</li>
+	</ul>
+</li>	</ul>
+</aside></div><!-- id='content' -->    </div><!-- id='wrapcontent' -->
+    <div id="wrapfooter" class="wrapper">
+    	<footer id="footer">
+    		        	<p class="clear copy">
+            	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Introduction to Discrete Differential Geometry</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.        	</p>
+    	</footer>
+	</div>
+</div>
+</body>
+</html>

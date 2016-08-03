@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators &raquo;  CS 177: Discrete Differential Geometry</title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://brickisland.net/cs177fa12/wp-content/themes/constructor/js/html5.js"></script>
+    <![endif]-->
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="stylesheet" type="text/css" media="screen" href="wp-content/themes/constructor/style.css"/>
+    <link rel="stylesheet" type="text/css" media="print" href="wp-content/themes/constructor/print.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="wp-content/themes/constructor/style-480.css" />
+    <link rel="pingback" href="xmlrpc.php" />
+    	<link rel='archives' title='December 2012' href='index.html@m=201212.html' />
+	<link rel='archives' title='November 2012' href='index.html@m=201211.html' />
+	<link rel='archives' title='October 2012' href='index.html@m=201210.html' />
+    
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Feed" href="index.html@feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Comments Feed" href="index.html@feed=comments-rss2" />
+<link rel='stylesheet' id='constructor-style-css'  href='wp-content/uploads/constructor/cache/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='constructor-theme-css'  href='wp-content/uploads/constructor/themes/current/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='wp-includes/js/comment-reply.js@ver=3.4.2'></script>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#038;ver=3.4.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js@ver=1.7.2'></script>
+<script type='text/javascript' src='wp-content/themes/constructor/js/ready.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php@rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality' href='index.html@p=294.html' />
+<link rel='next' title='A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem' href='index.html@p=298.html' />
+<meta name="generator" content="WordPress 3.4.2" />
+<link rel='canonical' href='index.html@p=296.html' />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+<body class="single single-post postid-296 single-format-standard">
+	
+<div id="body">
+   <div id="wrapheader" class="wrapper">
+       <header id="header">
+                        <div id="title">
+					
+					<div id="name"><a href="index.html" title="CS 177: Discrete Differential Geometry &raquo; Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB">CS 177: Discrete Differential Geometry</a></div>
+				                <div id="description">Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB</div>
+            </div>
+       </header>
+   </div>
+   
+   <div id="wrapcontent" class="wrapper">
+       <div id="content" class="box shadow opacity layout-right">
+    <div id="container" >
+    
+                        <article class="post-296 post type-post status-publish format-standard hentry category-notes" id="post-296">
+                <header class="opacity box">
+                    <h1><a href="index.html@p=296.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a></h1>
+                </header>
+                <div class="entry">
+                    <p>Originally we set out to develop <em>exterior calculus</em>.  The objects we&#8217;ve looked at so far &#8212; \(k\)-forms, the wedge product \(\wedge\) and the Hodge star \(\star\) &#8212; actually describe a more general structure called an <em>exterior algebra</em>.  To turn our algebra into a <em>calculus</em>, we also need to know how quantities <em>change</em>, as well as how to <em>measure</em> quantities.  In other words, we need some tools for <em>differentiation</em> and <em>integration</em>.  Let&#8217;s start with differentiation.</p>
+<p>In our discussion of surfaces we briefly looked at the <em>differential</em> \(df\) of a surface \(f: M \rightarrow \mathbb{R}^3\), which tells us something about the way tangent vectors get &#8220;stretched out&#8221; as we move from the domain \(M\) to a curved surface sitting in \(\mathbb{R}^3\).  More generally \(d\) is called the <em>exterior derivative</em> and is responsible for building up many of the differential operators in exterior calculus.  The basic idea is that \(d\) tells us how quickly a \(k\)-form changes along <em>every possible direction</em>.  But how exactly is it defined?  So far we&#8217;ve seen only a high-level geometric description.</p>
+<p><u><b>Div, Grad, and Curl</b></u></p>
+<p>Before jumping into the exterior derivative, it&#8217;s worth reviewing what the basic vector derivatives \(\mathrm{div}\), \(\mathrm{grad}\), and \(\mathrm{curl}\) do, and more importantly, what they <em>look like</em>.  The key player here is the operator \(\nabla\) (pronounced &#8220;nabla&#8221;) which can be expressed in coordinates as the vector of all partial derivatives:</p>
+<p>\[ \nabla := \left( \frac{\partial}{\partial x^1}, \ldots, \frac{\partial}{\partial x^n} \right). \]</p>
+<p>For instance, applying \(\nabla\) to a scalar function \(\phi: \mathbb{R}^n \rightarrow \mathbb{R}\) yields the <em>gradient</em></p>
+<p>\[ \nabla\phi = \left( \frac{\partial f}{\partial x^1}, \ldots, \frac{\partial f}{\partial x^n} \right), \]</p>
+<p>which can be visualized as the direction of steepest ascent on some terrain:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_gradient.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_gradient.svg" alt="" title="ddg_gradient" class="aligncenter size-full wp-image-249" /></a></p>
+<p>We can also apply \(\nabla\) to a vector field \(X\) in two different ways.  The dot product gives us the <em>divergence</em></p>
+<p>\[ \nabla \cdot X = \frac{\partial X^1}{\partial x^1} + \cdots + \frac{\partial X^n}{\partial x^n} \]</p>
+<p>which measures how quickly the vector field is &#8220;spreading out&#8221;, and on \(\mathbb{R}^3\) the cross product gives us the <em>curl</em></p>
+<p>\[ \nabla \times X = \left( \frac{\partial X_3}{\partial x^2} - \frac{\partial X_2}{\partial x^3}, \frac{\partial X_1}{\partial x^3} - \frac{\partial X_3}{\partial x^1}, \frac{\partial X_2}{\partial x^1} - \frac{\partial X_1}{\partial x^2} \right), \]</p>
+<p>which indicates how much a vector field is &#8220;spinning around.&#8221;  For instance, here&#8217;s a pair of vector fields with a lot of divergence and a lot of curl, respectively:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_div_curl.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_div_curl.svg" alt="" title="ddg_div_curl" class="aligncenter size-full wp-image-250" /></a></p>
+<p>(Note that in this case one field is just a 90-degree rotation of the other!)  On a typical day it&#8217;s a lot more useful to think of \(\mathrm{div}\), \(\mathrm{grad}\) and \(\mathrm{curl}\) in terms of these kinds of pictures rather than the ugly expressions above.</p>
+<p><u><b>Think Differential</b></u></p>
+<p>Not surprisingly, we can express similar notions using exterior calculus.  However, these notions will be a bit easier to generalize (for instance, what does &#8220;curl&#8221; mean for a vector field in \(\mathbb{R}^4\), where no cross product is defined?).  Let&#8217;s first take a look at the exterior derivative of 0-forms (i.e., functions), which is often just called the <em>differential</em>.  To keep things simple, we&#8217;ll start with <em>real</em>-valued functions \(\phi: \mathbb{R}^n \rightarrow \mathbb{R}\).  In coordinates, the differential is defined as</p>
+<p>\[ d\phi := \frac{\partial \phi}{\partial x^1} dx^1 + \cdots + \frac{\partial \phi}{\partial x^n} dx^n. \]</p>
+<p>It&#8217;s important to note that the terms \(\frac{\partial \phi}{\partial x^i}\) actually correspond to partial derivatives of our function \(\phi\), whereas the terms \(dx^i\) simply denote an orthonormal basis for \(\mathbb{R}^n\).  In other words, you can think of \(d\phi\) as just a list of all the partial derivatives of \(\phi\).  Of course, this object looks a lot like the <em>gradient</em> \(\nabla \phi\) we saw just a moment ago.  And indeed the two are closely related, except for the fact that \(\nabla \phi\) is a vector field and \(d\phi\) is a 1-form.  More precisely,</p>
+<p>\[ \nabla \phi = (d\phi)^\sharp. \]</p>
+<p><u><b>Directional Derivatives</b></u></p>
+<p>Another way to investigate the behavior of the exterior derivative is to see what happens when we stick a vector \(u\) into the 1-form \(df\).  In coordinates we get something that looks like a dot product between the gradient of \(f\) and the vector \(u\):</p>
+<p>\[ df(u) = \frac{\partial f}{\partial x^1} u^1 + \cdots + \frac{\partial f}{\partial x^n} u^n. \]</p>
+<p>For instance, in \(\mathbb{R}^2\) we could stick in the unit vector \(u = (1,0)\) to get the partial derivative \(\frac{\partial f}{\partial x^1}\) along the first coordinate axis:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_directional_derivative.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_directional_derivative.svg" alt="" title="ddg_directional_derivative" class="aligncenter size-full wp-image-251" /></a></p>
+<p>(Compare this picture to the picture of the gradient we saw above.) In general, \(df(u)\) represents the <em>directional derivative</em> of \(f\) along the direction \(u\).  In other words, it tells us how quickly \(f\) changes if we take a short walk in the direction \(u\).  Returning again to vector calculus notation, we have</p>
+<p>\[ df(u) = u \cdot \nabla f. \]</p>
+<p><u><b>Properties of the Exterior Derivative</b></u></p>
+<p>How do derivatives of arbitrary \(k\)-forms behave?  For one thing, we expect \(d\) to be <em>linear</em> &#8212; after all, a derivative is just the limit of a <em>difference</em>, and differences are certainly linear!  What about the derivative of a wedge of two forms?  Harkening back to good old-fashioned calculus, here&#8217;s a picture that explains the typical product rule \(\frac{\partial}{\partial x}(f(x)g(x)) = f&#8217;(x)g(x) + f(x)g&#8217;(x) \):</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_product_rule.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_product_rule.svg" alt="" title="ddg_product_rule" class="aligncenter size-full wp-image-252" /></a></p>
+<p>The dark region represents the value of \(fg\) at \(x\); the light blue region represents the <em>change</em> in this value as we move \(x\) some small distance \(h\).  As \(h\) gets smaller and smaller, the contribution of the upper-right quadrant becomes negligible and we can write the derivative as the change in \(f\) times \(g\) plus the change in \(g\) times \(f\).  (Can you make this argument more rigorous?)  Since a \(k\)-form also measures a (signed) volume, this intuition also carries over to the exterior derivative of a wedge product.  In particular, if \(\alpha\) is a \(k\)-form then \(d\) obeys the rule</p>
+<p>\[ d(\alpha \wedge \beta) = d\alpha \wedge \beta + (-1)^{k}\alpha \wedge d\beta.  \]</p>
+<p>which says that the rate of change of the overall volume can be expressed in terms of changes in the constituent volumes, exactly as in the picture above.</p>
+<p><u><b>Exterior Derivative of 1-Forms</b></u></p>
+<p>To be a little more concrete, let&#8217;s see what happens when we differentiate a 1-form on \(\mathbb{R}^3\).  Working things out in coordinates turns out to be a total mess, but in the end you may be pleasantly surprised with the simplicity of the outcome!  (Later on we&#8217;ll see that these ideas can also be expressed quite nicely <em>without</em> coordinates using <em>Stokes&#8217; theorem</em>, which paves the way to differentiation in the discrete setting.) Applying the linearity of \(d\), we have</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      d\alpha<br />
+      &#038;=&#038; d(\alpha_1 dx^1 + \alpha_2 dx^2 + \alpha_3 dx^3) \\<br />
+      &#038;=&#038; d(\alpha_1 dx^1) + d(\alpha_2 dx^2) + d(\alpha_3 dx^3).<br />
+   \end{array}<br />
+\]</p>
+<p>Each term \(\alpha_j dx^j\) can really be thought of a wedge product \(\alpha_j \wedge dx^j\) between a 0-form \(\alpha_j\) and the corresponding basis 1-form \(dx^j\).  Applying the exterior derivative to one of these terms we get</p>
+<p>\[ d(\alpha_j \wedge dx^j) = (d\alpha_j) \wedge dx^j + \alpha_j \wedge \underbrace{(ddx^j)}_{=0} = \frac{\partial \alpha_j}{\partial x^i} dx^i \wedge dx^j. \]</p>
+<p>To keep things short we used the Einstein summation convention here, but let&#8217;s really write out all the terms:</p>
+<p>\[<br />
+   \begin{array}{rcccccc}<br />
+      d\alpha &#038;=&#038; \frac{\partial \alpha_1}{\partial x^1} dx^1 \wedge dx^1 &#038;+&#038; \frac{\partial \alpha_1}{\partial x^2} dx^2 \wedge dx^1 &#038;+&#038; \frac{\partial \alpha_1}{\partial x^3} dx^3 \wedge dx^1 \\<br />
+               &#038;&#038; \frac{\partial \alpha_2}{\partial x^1} dx^1 \wedge dx^2 &#038;+&#038; \frac{\partial \alpha_2}{\partial x^2} dx^2 \wedge dx^2 &#038;+&#038; \frac{\partial \alpha_2}{\partial x^3} dx^3 \wedge dx^2 \\<br />
+               &#038;&#038; \frac{\partial \alpha_3}{\partial x^1} dx^1 \wedge dx^3 &#038;+&#038; \frac{\partial \alpha_3}{\partial x^2} dx^2 \wedge dx^3 &#038;+&#038; \frac{\partial \alpha_3}{\partial x^3} dx^3 \wedge dx^3. \\<br />
+   \end{array}<br />
+\]</p>
+<p>Using the fact that \(\alpha \wedge \beta = -\beta \wedge \alpha\), we get a much simpler expression</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      d\alpha &#038;=&#038; ( \frac{\partial \alpha_3}{\partial x^2} - \frac{\partial \alpha_2}{\partial x^3} ) dx^2 \wedge dx^3 \\<br />
+               &#038;&#038; ( \frac{\partial \alpha_1}{\partial x^3} - \frac{\partial \alpha_3}{\partial x^1} ) dx^3 \wedge dx^1 \\<br />
+               &#038;&#038; ( \frac{\partial \alpha_2}{\partial x^1} - \frac{\partial \alpha_1}{\partial x^2} ) dx^1 \wedge dx^2. \\<br />
+   \end{array}<br />
+\]</p>
+<p>Does this expression look familiar?  If you look again at our review of vector derivatives, you&#8217;ll recognize that \(d\alpha\) basically looks like the <em>curl</em> of \(\alpha^\sharp\), except that it&#8217;s expressed as a 2-form instead of a vector field.  Also remember (from our discussion of Hodge duality) that a 2-form and a 1-form are not so different here &#8212; geometrically they both specify some direction in \(\mathbb{R}^3\).  Therefore, we can express the curl of any vector field \(X\) as</p>
+<p>\[ \nabla \times X = \left( \star d X^\flat \right)^\sharp. \]</p>
+<p>It&#8217;s worth stepping through the sequence of operations here to check that everything makes sense: \(\flat\) converts the vector field \(X\) into a 1-form \(X^\flat\); \(d\) computes something that looks like the curl, but expressed as a 2-form \(dX^\flat\); \(\star\) turns this 2-form into a 1-form \(\star d X^\flat\); and finally \(\sharp\) converts this 1-form back into the vector field \(\left( \star d X^\flat \right)^\sharp\).  The take-home message here, though, is that <em>the exterior derivative of a 1-form looks like the curl of a vector field</em>.</p>
+<p>So far we know how to express the gradient and the curl using \(d\).  What about our other favorite vector derivative, the divergence?  Instead of grinding through another tedious derivation, let&#8217;s make a simple geometric observation: in \(\mathbb{R}^2\) at least, we can determine the divergence of a vector field by rotating it by 90 degrees and computing its curl (consider the example we saw earlier).  Moreover, in \(\mathbb{R}^2\) the Hodge star \(\star\) represents a rotation by 90 degrees, since it identifies any <em>line</em> with the direction orthogonal to that line:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_hodge_star_2d.svg"><img src="../cs177/wp-content/uploads/2011/11/ddg_hodge_star_2d.svg" alt="" title="ddg_hodge_star_2d" class="aligncenter size-full wp-image-253" /></a></p>
+<p>Therefore, we might suspect that divergence can be computed by first applying the Hodge star, then applying the exterior derivative:</p>
+<p>\[ \nabla \cdot X = \star d \star X^\flat. \]</p>
+<p>The leftmost Hodge star accounts for the fact that \(d \star X^\flat\) is an \(n\)-form instead of a 0-form &#8212; in vector calculus divergence is viewed as a scalar quantity.  Does this definition really work?  Let&#8217;s give it a try in coordinates on \(\mathbb{R}^3\).  First, we have</p>
+<p>\[<br />
+   \begin{array}{rcl} \star X^\flat &#038;=&#038; \star( X_1 dx^1 + X_2 dx^2 + X_3 dx^3 ) \\<br />
+                                    &#038;=&#038; X_1 dx^2 \wedge dx^3 + X_2 dx^3 \wedge dx^1 + X_3 dx^1 \wedge dx^2.<br />
+   \end{array}<br />
+\]</p>
+<p>Differentiating we get</p>
+<p>\[<br />
+   \begin{array}{rcl} d \star X^\flat &#038;=&#038; \frac{\partial X_1}{\partial x^1} dx^1 \wedge dx^2 \wedge dx^3 + \\<br />
+                                       &#038;&#038; \frac{\partial X_2}{\partial x^2} dx^2 \wedge dx^3 \wedge dx^1 + \\<br />
+                                       &#038;&#038; \frac{\partial X_3}{\partial x^3} dx^3 \wedge dx^1 \wedge dx^2, \\<br />
+   \end{array}<br />
+\]</p>
+<p>but of course we can rearrange these wedge products to simply</p>
+<p>\[ d \star X^\flat = \left( \frac{\partial X_1}{\partial x^1} + \frac{\partial X_2}{\partial x^2} + \frac{\partial X_3}{\partial x^3} \right) dx^1 \wedge dx^2 \wedge dx^3. \]</p>
+<p>A final application of the Hodge star gives us the divergence</p>
+<p>\[ \star d \star X^\flat = \frac{\partial X_1}{\partial x^1} + \frac{\partial X_2}{\partial x^2} + \frac{\partial X_3}{\partial x^3} \]</p>
+<p>as desired.</p>
+<p>In summary, for any scalar field \(\phi\) and vector field \(X\) we have</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      \nabla \phi &#038;=&#038; (d\phi)^\sharp \\<br />
+      \nabla \times X &#038;=&#038; \left( \star d X^\flat \right)^\sharp \\<br />
+      \nabla \cdot X &#038;=&#038; \star d \star X^\flat<br />
+   \end{array}<br />
+\]</p>
+<p>One cute thing to notice here is that (in \(\mathbb{R}^3\)) \(\mathrm{grad}\), \(\mathrm{curl}\), and \(\mathrm{div}\) are more or less just \(d\) applied to a \(0-\), \(1-\) and \(2-\) form, respectively.</p>
+<p><u><b>The Laplacian</b></u></p>
+<p>Another key differential operator from vector calculus is the scalar <em>Laplacian</em> which (confusingly!) is often denoted by \(\Delta\) or \(\nabla^2\), and is defined as</p>
+<p>\[ \Delta := \nabla \cdot \nabla, \]</p>
+<p>i.e., the divergence of the gradient.  Although the Laplacian may seem like just yet another in a long list of derivatives, it deserves your utmost respect: the Laplacian is central to the most fundamental of physical laws (any diffusion process and all forms of wave propagation, including the Schrödinger equation); its eigenvalues capture <em>almost</em> everything there is to know about a given piece of geometry (can you hear the shape of a drum?).  Heavy tomes and entire lives have been devoted to the Laplacian, and in the discrete setting we&#8217;ll see that this one simple operator can be applied to a diverse array of tasks (surface parameterization, surface smoothing, vector field design and decomposition, distance computation, fluid simulation&#8230; you name it, we got it!).</p>
+<p>Fortunately, now that we know how to write \(\mathrm{div}\), \(\mathrm{grad}\) and \(\mathrm{curl}\) using exterior calculus, expressing the scalar Laplacian is straightforward: \(\Delta = \star d \star d\).  More generally, the <em>\(k\)-form Laplacian</em> is given by</p>
+<p>\[ \Delta := \star d \star d + d \star d \star. \]</p>
+<p>The name &#8220;Laplace-<em>Beltrami</em>&#8221; is used merely to indicate that the domain may have some amount of curvature (encapsulated by the Hodge star).  Some people like to define the operator \(\delta := \star d \star\), called the <em>codifferential</em>, and write the Laplacian as \(\Delta = \delta d + d \delta\).</p>
+<p>One question you might ask is: why is the Laplacian for 0-forms different from the general \(k\)-form Laplacian?  Actually, it&#8217;s not &#8212; consider what happens when we apply the term \(d \star d \star\) to a 0-form \(\phi\): \(\star \phi\) is an \(n\)-form, and so \(d \star \phi\) must be an \((n+1)\)-form.  But there are no \((n+1)\)-forms on an \(n\)-dimensional space!  So this term is often omitted when writing the scalar Laplacian.</p>
+				                    </div>
+                                <footer>
+                                                October 31, 2012 |                                                                             Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                                         <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                
+
+
+<section id="comments">
+            <p class="nocomments">Comments are closed.</p>
+        								</section>        <nav class="navigation">
+            <div class="alignleft"><a href="index.html@p=298.html" rel="next"><span>&laquo;</span> A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a></div>
+        <div class="alignright"><a href="index.html@p=294.html" rel="prev">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality <span>&raquo;</span></a></div>
+    </nav>        </div><!-- id='container' -->
+    <aside id="sidebar">
+	<ul>
+	    <li id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" action="index.html" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li><li id="meta-3" class="widget widget_meta"><h3 class="widgettitle">Meta</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html@feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html@feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li><li id="pages-2" class="widget widget_pages"><h3 class="widgettitle">Pages</h3>		<ul>
+			<li class="page_item page-item-4"><a href="index.html@page_id=4.html">Course Information</a></li>
+<li class="page_item page-item-11"><a href="index.html@page_id=11.html">Homework Assignments</a></li>
+<li class="page_item page-item-9"><a href="index.html@page_id=9.html">Lecture Slides</a></li>
+<li class="page_item page-item-13"><a href="index.html@page_id=13.html">Subscriptions</a></li>
+		</ul>
+		</li><li id="categories-3" class="widget widget_categories"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html@cat=4.html" title="View all posts filed under Administration">Administration</a> (2)
+</li>
+	<li class="cat-item cat-item-3"><a href="index.html@cat=3.html" title="View all posts filed under Homework">Homework</a> (6)
+</li>
+	<li class="cat-item cat-item-5"><a href="index.html@cat=5.html" title="View all posts filed under Notes">Notes</a> (12)
+</li>
+		</ul>
+</li><li id="categoryposts-3" class="widget widget_categoryposts"><h3 class="widgettitle">Course Notes</h3><ul>
+		<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=104.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Surfaces">A Quick and Dirty Introduction to the Geometry of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=139.html" rel="bookmark" title="Permanent link to Derivatives and Tangent Vectors">Derivatives and Tangent Vectors</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=162.html" rel="bookmark" title="Permanent link to The Fundamental Polygon">The Fundamental Polygon</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=187.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Curves">A Quick and Dirty Introduction to the Geometry of Curves</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=214.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=235.html" rel="bookmark" title="Permanent link to Geometry in Coordinates">Geometry in Coordinates</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=262.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=272.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=294.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=296.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=298.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=307.html" rel="bookmark" title="Permanent link to Discrete Exterior Calculus">Discrete Exterior Calculus</a>
+			
+			
+						
+						
+					</li>
+	</ul>
+</li>	</ul>
+</aside></div><!-- id='content' -->    </div><!-- id='wrapcontent' -->
+    <div id="wrapfooter" class="wrapper">
+    	<footer id="footer">
+    		        	<p class="clear copy">
+            	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Introduction to Discrete Differential Geometry</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.        	</p>
+    	</footer>
+	</div>
+</div>
+</body>
+</html>

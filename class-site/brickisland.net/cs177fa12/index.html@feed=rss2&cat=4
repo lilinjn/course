@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CS 177: Discrete Differential Geometry &#187; Administration</title>
+	<atom:link href="http://brickisland.net/cs177fa12/?feed=rss2&#038;cat=4" rel="self" type="application/rss+xml" />
+	<link>http://brickisland.net/cs177fa12</link>
+	<description>Caltech &#124; Fall 2012 &#124; Tue/Thu 10:30-11:55 &#124; 314 ANB</description>
+	<lastBuildDate>Wed, 24 Apr 2013 00:32:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.2</generator>
+		<item>
+		<title>Bonus Points for Finding Errors in Notes</title>
+		<link>http://brickisland.net/cs177fa12/?p=185</link>
+		<comments>http://brickisland.net/cs177fa12/?p=185#comments</comments>
+		<pubDate>Sat, 20 Oct 2012 17:25:58 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Administration]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=185</guid>
+		<description><![CDATA[The notes in this blog are continually under development, and likely have a number of errors in them. To make life better for everyone, I&#8217;m offering a (small) number of bonus points to anybody who identifies an error &#8212; a point for a typo in a mathematical formula, a half-point for a spelling/grammar mistake, and [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=185</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Welcome to CS 177!</title>
+		<link>http://brickisland.net/cs177fa12/?p=16</link>
+		<comments>http://brickisland.net/cs177fa12/?p=16#comments</comments>
+		<pubDate>Tue, 09 Oct 2012 06:14:07 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Administration]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=16</guid>
+		<description><![CDATA[Welcome to the blog for CS 177.  Here you&#8217;ll find course notes, lecture slides, and homework (see links on the right). &#160; If you are a student in the class, register now by clicking here! &#160; We strongly prefer that you register using your Caltech email, but in any case you must not register with [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=16</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

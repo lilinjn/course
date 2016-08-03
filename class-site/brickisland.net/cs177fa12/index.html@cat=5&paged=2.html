@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <title>Notes &raquo;  CS 177: Discrete Differential Geometry</title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://brickisland.net/cs177fa12/wp-content/themes/constructor/js/html5.js"></script>
+    <![endif]-->
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="stylesheet" type="text/css" media="screen" href="wp-content/themes/constructor/style.css"/>
+    <link rel="stylesheet" type="text/css" media="print" href="wp-content/themes/constructor/print.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="wp-content/themes/constructor/style-480.css" />
+    <link rel="pingback" href="xmlrpc.php" />
+    	<link rel='archives' title='December 2012' href='index.html@m=201212.html' />
+	<link rel='archives' title='November 2012' href='index.html@m=201211.html' />
+	<link rel='archives' title='October 2012' href='index.html@m=201210.html' />
+    
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Feed" href="index.html@feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Comments Feed" href="index.html@feed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Notes Category Feed" href="index.html@feed=rss2&amp;cat=5" />
+<link rel='stylesheet' id='constructor-style-css'  href='wp-content/uploads/constructor/cache/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='constructor-theme-css'  href='wp-content/uploads/constructor/themes/current/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#038;ver=3.4.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js@ver=1.7.2'></script>
+<script type='text/javascript' src='wp-content/themes/constructor/js/ready.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php@rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.4.2" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+<body class="archive paged category category-notes category-5 paged-2 category-paged-2">
+	
+<div id="body">
+   <div id="wrapheader" class="wrapper">
+       <header id="header">
+                        <div id="title">
+					
+					<div id="name"><a href="index.html" title="CS 177: Discrete Differential Geometry &raquo; Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB">CS 177: Discrete Differential Geometry</a></div>
+				                <div id="description">Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB</div>
+            </div>
+       </header>
+   </div>
+   
+   <div id="wrapcontent" class="wrapper">
+       <div id="content" class="box shadow opacity layout-right">
+    <div id="container" >
+                            <article class="post-272 post type-post status-publish format-standard hentry category-notes" id="post-272">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=272.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a></h2>
+                </header>
+                <div class="entry">
+                	<p>In <a title="A Quick and Dirty Introduction to Exterior Calculus — Part I: Vectors and 1-Forms" href="http://brickisland.net/cs177/?p=174">our last set of notes</a> we measured the length of a vector by projecting it onto different coordinate axes; this measurement process effectively defined what we call a <em>1-form</em>. But what happens if we have a collection of vectors? For instance, consider a pair of vectors \(u, v\) sitting in \(\mathbb{R}^3\):</p>
+<p><a href="wp-content/uploads/2012/10/ddg_vector_pair.svg"><img class="aligncenter size-full wp-image-273" title="ddg_vector_pair" src="wp-content/uploads/2012/10/ddg_vector_pair.svg" alt="" /></a></p>
+<p>We can think of these vectors as defining a <em>parallelogram</em>, and much like we did with a single vector we can measure this parallelogram by measuring the size of the &#8220;shadow&#8221; it casts on some plane:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_twoform.svg"><img class="aligncenter size-full wp-image-275" title="ddg_twoform" src="wp-content/uploads/2012/10/ddg_twoform.svg" alt="" /></a></p>
+<p>For instance, suppose we represent this plane via a pair of unit orthogonal 1-forms \(\alpha\) and \(\beta\). Then the projected vectors have components</p>
+<p>\[ \begin{array}{rcl}<br />
+u^\prime &amp;=&amp; (\alpha(u),\beta(u)), \\<br />
+v^\prime &amp;=&amp; (\alpha(v),\beta(v)),<br />
+\end{array} \]</p>
+<p>hence the (signed) projected area is given by the cross product</p>
+<p>\[ u^\prime \times v^\prime = \alpha(u)\beta(v) - \alpha(v)\beta(u). \]</p>
+<p>Since we want to measure a lot of projected volumes in the future, we&#8217;ll give this operation the special name &#8220;\(\alpha \wedge \beta\)&#8221;:</p>
+<p>\[ \alpha \wedge \beta(u,v) := \alpha(u)\beta(v) - \alpha(v)\beta(u). \]</p>
+<p>As you may have already guessed, \(\alpha \wedge \beta\) is what we call a <em>2-form</em>. Ultimately we&#8217;ll interpret the symbol \(\wedge\) (pronounced &#8220;wedge&#8221;) as a binary operation on differential forms called the <em>wedge product</em>. Algebraic properties of the wedge product follow <em>directly</em> from the way signed volumes behave. For instance, notice that if we reverse the order of our axes \(\alpha, \beta\) the sign of the area changes. In other words, the wedge product is <em>antisymmetric</em>:</p>
+<p>\[ \alpha \wedge \beta = -\beta \wedge \alpha. \]</p>
+<p>An important consequence of antisymmetry is that the wedge of any 1-form with itself is zero:</p>
+<p>\[ \begin{array}{c}<br />
+\alpha \wedge \alpha = -\alpha \wedge \alpha \\<br />
+\Rightarrow \alpha \wedge \alpha = 0.<br />
+\end{array} \]</p>
+<p>But don&#8217;t let this statement become a purely algebraic fact! Geometrically, why should the wedge of two 1-forms be zero? Quite simply because it represents projection onto a plane of zero area! (I.e., the plane spanned by \(\alpha\) and \(\alpha\).)</p>
+<p>Next, consider the projection onto two different planes spanned by \(\alpha, \beta\) and \(\alpha, \gamma\). The sum of the projected areas can be written as</p>
+<p>\[<br />
+\begin{array}{rcl}<br />
+\alpha \wedge \beta(u,v) + \alpha \wedge \gamma(u,v)<br />
+&amp;=&amp; \alpha(u)\beta(v) - \alpha(v)\beta(u) + \alpha(u)\gamma(v) - \alpha(v)\gamma(u) \\<br />
+&amp;=&amp; \alpha(u)(\beta(v) + \gamma(v)) - \alpha(v)(\beta(u) + \gamma(u)) \\<br />
+&amp;=:&amp; (\alpha \wedge (\beta + \gamma))(u,v),<br />
+\end{array}<br />
+\]</p>
+<p>or in other words \(\wedge\) distributes over \(+\):</p>
+<p>\[ \alpha \wedge (\beta + \gamma) = \alpha \wedge \beta + \alpha \wedge \gamma. \]</p>
+<p>Finally, consider three vectors \(u, v, w\) that span a volume in \(\mathbb{R}^3\):</p>
+<p><a href="wp-content/uploads/2012/10/ddg_vector_triple.svg"><img class="aligncenter size-full wp-image-274" title="ddg_vector_triple" src="wp-content/uploads/2012/10/ddg_vector_triple.svg" alt="" /></a></p>
+<p>We&#8217;d like to consider the projection of this volume onto the volume spanned by three 1-forms \(\alpha\), \(\beta\), and \(\gamma\), but the projection of one volume onto another is a bit difficult to visualize! For now you can just cheat and imagine that \(\alpha = dx^1\), \(\beta = dx^2\), and \(\gamma = dx^3\) so that the mental picture for the projected volume looks just like the volume depicted above. One way to write the projected volume is as the determinant of the projected vectors \(u^\prime\), \(v^\prime\), and \(w^\prime\):</p>
+<p>\[ \alpha \wedge \beta \wedge \gamma( u, v, w ) := \mathrm{det}\left(\left[ \begin{array}{ccc} u^\prime &amp; v^\prime &amp; w^\prime \end{array} \right]\right) = \mathrm{det}\left( \left[ \begin{array}{ccc} \alpha(u) &amp; \alpha(v) &amp; \alpha(w) \\ \beta(u) &amp; \beta(v) &amp; \beta(w) \\ \gamma(u) &amp; \gamma(v) &amp; \gamma(w) \end{array} \right] \right). \]</p>
+<p>(Did you notice that the determinant of the upper-left 2&#215;2 submatrix also gives us the wedge product of two 1-forms?) Alternatively, we could express the volume as the area of one of the faces times the length of the remaining edge:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_wedge_associativity.svg"><img class="aligncenter size-full wp-image-276" title="ddg_wedge_associativity" src="wp-content/uploads/2012/10/ddg_wedge_associativity.svg" alt="" /></a></p>
+<p>Thinking about things this way, we might come up with an alternative definition of the wedge product in terms of the <em>triple product</em>:</p>
+<p>\[<br />
+\begin{array}{rcl}<br />
+\alpha \wedge \beta \wedge \gamma( u, v, w ) &amp;=&amp; (u^\prime \times v^\prime) \cdot w^\prime \\<br />
+&amp;=&amp; (v^\prime \times w^\prime) \cdot u^\prime \\<br />
+&amp;=&amp; (w^\prime \times u^\prime) \cdot v^\prime \\<br />
+\end{array}<br />
+\]</p>
+<p>The important thing to notice here is that <em>order</em> is not important &#8212; we always get the same volume, regardless of which face we pick (though we still have to be a bit careful about <em>sign</em>). A more algebraic way of saying this is that the wedge product is <em>associative</em>:</p>
+<p>\[ (\alpha \wedge \beta) \wedge \gamma = \alpha \wedge (\beta \wedge \gamma). \]</p>
+<p>In summary, the wedge product of \(k\) 1-forms gives us a \(k\)-form, which measures the projected volume of a collection of \(k\) vectors. As a result, the wedge product has the following properties for any \(k\)-form \(\alpha\), \(l\)-form \(\beta\), and \(m\)-form \(\gamma\):</p>
+<ul>
+<li><strong>Antisymmetry</strong>: \(\alpha \wedge \beta = (-1)^{kl}\beta \wedge \alpha\)</li>
+<li><strong>Associativity</strong>: \(\alpha \wedge (\beta \wedge \gamma) = (\alpha \wedge \beta) \wedge \gamma\)</li>
+</ul>
+<div>and in the case where \(l=m\) we have</div>
+<div>
+<ul>
+<li><strong>Distributivity</strong>: \(\alpha \wedge (\beta + \gamma) = \alpha \wedge \beta + \alpha \wedge \gamma\)</li>
+</ul>
+</div>
+<p>A separate fact is that a \(k\)-form is <em>antisymmetric</em> in its arguments &#8212; in other words, swapping the relative order of two &#8220;input&#8221; vectors changes only the <em>sign</em> of the volume. For instance, if \(\alpha\) is a 2-form then \(\alpha(u,v) = -\alpha(v,u)\). In general, an <em>even</em> number of swaps will preserve the sign; an <em>odd</em> number of swaps will negate it. (One way to convince yourself is to consider what happens to the determinant of a matrix when you exchange two of its columns.) Finally, you&#8217;ll often hear people say that \(k\)-forms are &#8220;multilinear&#8221; &#8212; all this means is that if you keep all but one of the vectors fixed, then a \(k\)-form looks like a linear map. Geometrically this makes sense: \(k\)-forms are built up from \(k\) <em>linear</em> measurements of length (essentially just \(k\) different dot products).</p>
+<p>&nbsp;</p>
+<p><strong><span style="text-decoration: underline;">Vector-Valued Forms</span></strong></p>
+<p>Up to this point we&#8217;ve considered only <em>real-valued</em> \(k\)-forms &#8212; for instance, \(\alpha(u)\) represents the length of the vector \(u\) along the direction \(\alpha\), which can be expressed as a single real number. In general, however, a \(k\)-form can &#8220;spit out&#8221; all kinds of different values. For instance, we might want to deal with quantities that are described by complex numbers (\(\mathbb{C}\)) or vectors in some larger vector space (e.g., \(\mathbb{R}^n\)).</p>
+<p>A good example of a vector-valued \(k\)-form is our map \(f: M \rightarrow \mathbb{R}^3\) which represents the geometry of a surface. In the language of exterior calculus, \(f\) is an <em>\(\mathbb{R}^3\)-valued 0-form</em>: at each point \(p\) of \(M\), it takes <em>zero</em> vectors as input and produces a point \(f(p)\) in \(\mathbb{R}^3\) as output. Similarly, the differential \(df\) is an \(\mathbb{R}^3\)-valued 1-form: it takes <em>one</em> vector (some direction \(u\) in the plane) and maps it to a value \(df(u)\) in \(\mathbb{R}^3\) (representing the &#8220;stretched out&#8221; version of \(u\)).</p>
+<p>More generally, if \(E\) is a vector space then an <em>\(E\)-valued \(k\)-form</em> takes \(k\) vectors to a single value in \(E\). However, we have to be a bit careful here. For instance, think about our definition of a 2-form:</p>
+<p>\[ \alpha \wedge \beta(u,v) := \alpha(u)\beta(v) - \alpha(v)\beta(u). \]</p>
+<p>If \(\alpha\) and \(\beta\) are both \(E\)-valued 1-forms, then \(\alpha(u)\) and \(\beta(v)\) are both <em>vectors</em> in \(E\). But how do you multiply two vectors? In general there may be no good answer: not every vector space comes with a natural notion of multiplication.</p>
+<p>However, there are plenty of spaces that <em>do</em> come with a well-defined product &#8212; for instance, the product of two complex numbers \(a + bi\) and \(c+di\) is given by \((ac-bd)+(ad+bc)i\), so we have no trouble explicitly evaluating the expression above. In other cases we simply have to say which product we want to use &#8212; in \(\mathbb{R}^3\) for instance we could use the cross product \(\times\), in which case an \(\mathbb{R}^3\)-valued 2-form looks like this:</p>
+<p>\[ \alpha \wedge \beta(u,v) := \alpha(u) \times \beta(v) - \alpha(v) \times \beta(u). \]</p>
+                </div>
+                <footer>
+                                        October 24, 2012 |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <a href="index.html@p=272.html#comments" class="comments-link"  title="Comment on A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">4 Comments &#187;</a>                </footer>
+            </article>
+                                <article class="post-262 post type-post status-publish format-standard hentry category-notes" id="post-262">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=262.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a></h2>
+                </header>
+                <div class="entry">
+                	<p>Many important concepts in differential geometry can be nicely expressed in the language of <em>exterior calculus</em>.  Initially these concepts will look exactly like objects you know and love from <em>vector calculus</em>, and you may question the value of giving them funky new names.  For instance, scalar fields are no longer called scalar fields, but are now called <em>0-forms!</em>  In many ways vector and exterior calculus are indeed &#8220;<em>dual</em>&#8221; to each-other, but it is precisely this duality that makes the language so expressive.  In the long run we&#8217;ll see that exterior calculus also makes it easy to generalize certain ideas from vector calculus &#8212; the primary example being <em>Stokes&#8217; theorem</em>.  Actually, we already started using this language in our <a href="index.html@p=104.html">introduction to the geometry of surfaces</a>, but here&#8217;s the full story.</p>
+<p>Once upon a time there was a vector named \(v\):</p>
+<p><a href="wp-content/uploads/2012/10/ddg_vector.svg"><img src="wp-content/uploads/2012/10/ddg_vector.svg" alt="" title="ddg_vector" class="aligncenter size-full wp-image-263" /></a></p>
+<p>What information does \(v\) encode?  One way to inspect a vector is to determine its extent or <em>length</em> along a given direction.  For instance, we can pick some arbitrary direction \(\alpha\) and record the length of the shadow cast by \(v\) along \(\alpha\):</p>
+<p><a href="wp-content/uploads/2012/10/ddg_one_form.svg"><img src="wp-content/uploads/2012/10/ddg_one_form.svg" alt="" title="ddg_one_form" class="aligncenter size-full wp-image-264" /></a></p>
+<p>The result is simply a number, which we can denote \(\alpha(v)\).  The notation here is meant to emphasize the idea that \(\alpha\) is a function: in particular, it&#8217;s a <em>linear</em> function that eats a vector and produces a scalar.  Any such function is called a <em>1-form</em> (a.k.a. a <em>covector</em> or a <em>cotangent</em>).</p>
+<p>Of course, it&#8217;s clear from the picture that the space of all 1-forms looks a lot like the space of all vectors: we just had to pick some direction to measure along.  But often there is good reason to distinguish between vectors and 1-forms &#8212; the distinction is not unlike the one made between <em>row vectors</em> and <em>column vectors</em> in linear algebra.  For instance, even though rows and column both represent &#8220;vectors,&#8221; we only permit ourselves to multiply rows with columns:</p>
+<p>\[ \left[ \begin{array}{ccc} \alpha_1 &#038; \cdots &#038; \alpha_n \end{array} \right] \left[ \begin{array}{c} v_1 \\ \vdots \\ v_n \end{array} \right]. \]</p>
+<p>If we wanted to multiply, say, two columns, we would first have to take the <em>transpose</em> of one of them to convert it into a row:</p>
+<p>\[ v^T v = \left[ \begin{array}{ccc} v_1 &#038; \cdots &#038; v_n \end{array} \right] \left[ \begin{array}{c} v_1 \\ \vdots \\ v_n \end{array} \right]. \]</p>
+<p>Same deal with vectors and 1-forms, except that now we have two different operations: <em>sharp</em> (\(\sharp\)), which converts a 1-form into a vector, and <em>flat</em> (\(\flat\)) which converts a vector into a 1-form.  For instance, it&#8217;s perfectly valid to write \(v^\flat(v)\) or \(\alpha(\alpha^\sharp)\), since in either case we&#8217;re feeding a vector to a 1-form.  The operations \(\sharp\) and \(\flat\) are called the <em>musical isomorphisms</em>.</p>
+<p>All this fuss over 1-forms versus vectors (or even row versus column vectors) may seem like much ado about nothing.  And indeed, in a <em>flat</em> space like the plane, the difference between the two is pretty superficial.  In <em>curved</em> spaces, however, there&#8217;s an important distinction between vectors and 1-forms &#8212; in particular, we want to make sure that we&#8217;re taking &#8220;measurements&#8221; in the right space.  For instance, suppose we want to measure the length of a vector \(v\) along the direction of another vector \(u\).  It&#8217;s important to remember that tangent vectors get stretched out by the map \(f: \mathbb{R}^2 \supset M \rightarrow \mathbb{R}^3\) that takes us from the plane to some surface in \(\mathbb{R}^3\).  Therefore, the operations \(\sharp\) and \(\flat\) should satisfy relationships like</p>
+<p>\[ u^\flat(v) = g(u,v) \]</p>
+<p>where \(g\) is the metric induced by \(f\).  This way we&#8217;re really measuring how things behave in the &#8220;stretched out&#8221; space rather than the initial domain \(M\).</p>
+<p>&nbsp;</p>
+<p><u><b>Coordinates</b></u></p>
+<p>Until now we&#8217;ve intentionally avoided the use of <em>coordinates</em> &#8212; in other words, we&#8217;ve tried to express geometric relationships without reference to any particular <em>coordinate system</em> \(x_1, \ldots, x_n\).  Why avoid coordinates?  Several reasons are often cited (people will mumble something about &#8220;invariance&#8221;), but the real reason is quite simply that coordinate-free expressions tend to be shorter, sweeter, and easier to extract meaning from.  This approach is also particularly valuable in geometry processing, because many coordinate-free expressions translate naturally to basic operations on meshes.</p>
+<p>Yet coordinates are still quite valuable in a number of situations.  Sometimes there&#8217;s a special coordinate basis that greatly simplifies analysis &#8212; recall our <a href="index.html@p=214.html">discussion of principal curvature directions</a>, for instance.  At other times there&#8217;s simply no obvious way to prove something <em>without</em> coordinates.  For now we&#8217;re going to grind out a few basic facts about exterior calculus in coordinates; at the end of the day we&#8217;ll keep whatever nice coordinate-free expressions we find and politely forget that coordinates ever existed!</p>
+<p><a href="wp-content/uploads/2012/10/ddg_coordinates.svg"><img src="wp-content/uploads/2012/10/ddg_coordinates.svg" alt="" title="ddg_coordinates" class="aligncenter size-full wp-image-265" /></a></p>
+<p>Let&#8217;s setup our coordinate system.  For reasons that will become clear later, we&#8217;re going to use the symbols \(\frac{\partial}{\partial x^1}, \ldots, \frac{\partial}{\partial x^n}\) to represent an orthonormal basis for vectors in \(\mathbb{R}^n\), and use \(dx^i, \ldots, dx^n\) to denote the corresponding 1-form basis.  In other words, any vector \(v\) can be written as a linear combination</p>
+<p>\[ v = v^1 \frac{\partial}{\partial x^1} + \cdots + v^n \frac{\partial}{\partial x^n}, \]</p>
+<p>and any 1-form can be written as a linear combination</p>
+<p>\[ \alpha = \alpha_1 dx^1 + \cdots + \alpha_n dx^n. \]</p>
+<p>To keep yourself sane at this point, you should <em>completely ignore the fact</em> that the symbols \(\frac{\partial}{\partial x^i}\) and \(dx^i\) look like derivatives &#8212; they&#8217;re simply collections of unit-length orthogonal bases, as depicted above.  The two bases \(dx^i\) and \(\frac{\partial}{\partial x^i}\) are often referred to as <em>dual bases</em>, meaning they satisfy the relationship</p>
+<p>\[ dx^i\left(\frac{\partial}{\partial x^j}\right) = \delta^i_j = \begin{cases} 1, &#038; i = j \\ 0, &#038; \mbox{otherwise.} \end{cases} \]</p>
+<p>This relationship captures precisely the behavior we&#8217;re looking for: a vector \(\frac{\partial}{\partial x^i}\) &#8220;casts a shadow&#8221; on the 1-form \(dx^j\) only if the two bases point in the same direction.  Using this relationship, we can work out that</p>
+<p>\[ \alpha(v) = \sum_i \alpha_i dx^i\left( \sum_j v^j \frac{\partial}{\partial x^j} \right) = \sum_i \alpha_i v_i \]</p>
+<p>i.e., the <em>pairing</em> of a vector and a 1-form looks just like the standard Euclidean inner product.</p>
+<p>&nbsp;</p>
+<p><b><u>Notation</u></b></p>
+<p>It&#8217;s worth saying a few words about notation.  First, vectors and vector fields tend to be represented by letters from the end of the Roman alphabet (\(u\), \(v\), \(w\) or \(X\), \(Y\), \(Z\), repectively), whereas 1-forms are given lowercase letters from the beginning of the Greek alphabet (\(\alpha\), \(\beta\), \(\gamma\), etc.).  Although one often makes a linguistic distinction between a &#8220;vector&#8221; (meaning a single arrow) and a &#8220;vector field&#8221; (meaning an arrow glued to every point of a space), there&#8217;s an unfortunate precedent to use the term &#8220;1-form&#8221; to refer to both ideas &#8212; sadly, nobody ever says &#8220;1-form field!&#8221;  Scalar fields or <em>0-forms</em> are often given letters from the middle of the Roman alphabet (\(f\), \(g\), \(h\)) or maybe lowercase Greek letters from somewhere in the middle (\(\phi\), \(\psi\), etc.).</p>
+<p>You may also notice that we&#8217;ve been very particular about the placement of indices: coefficients \(v^i\) of vectors have indices <em>up</em>, coefficients \(\alpha_i\) of 1-forms have indices <em>down</em>.  Similarly, vector bases \(\frac{\partial}{\partial x^i}\) have indices down (they&#8217;re in the denominator), and 1-form bases \(dx^i\) have indices up.  The reason for being so neurotic is to take advantage of <em>Einstein summation notation</em>: any time a pair of variables is indexed by the same letter \(i\) in both the &#8220;up&#8221; and &#8220;down&#8221; position, we interpret this as a sum over all possible values of \(i\):</p>
+<p>\[ \alpha_i v^i = \sum_i \alpha_i v^i. \]</p>
+<p>The placement of indices also provides a cute mnemonic for the musical isomorphisms \(\sharp\) and \(\flat\).  In musical notation \(\sharp\) indicates a half-step increase in pitch, corresponding to an upward movement on the staff.  For instance, both notes below correspond to a &#8220;C&#8221; with the same pitch:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_sharp.svg"><img src="wp-content/uploads/2012/10/ddg_sharp.svg" alt="" title="ddg_sharp" class="aligncenter size-full wp-image-266" /></a></p>
+<p>Therefore, to go from a 1-form to a vector we <em>raise</em> the indices.  For instance, in a <em>flat</em> space we don&#8217;t have to worry about the metric and so a 1-form</p>
+<p>\[ \alpha = \alpha_1 dx^1 + \cdots + \alpha_n dx^n \]</p>
+<p>becomes a vector</p>
+<p>\[ \alpha^\sharp = \alpha^1 \frac{\partial}{\partial x^1} + \cdots + \alpha^n \frac{\partial}{\partial x^n}. \]</p>
+<p>Similarly, \(\flat\) indicates a decrease in pitch and a downward motion on the staff:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_flat.svg"><img src="wp-content/uploads/2012/10/ddg_flat.svg" alt="" title="ddg_flat" class="aligncenter size-full wp-image-267" /></a></p>
+<p>and so \(\flat\) <em>lowers</em> the indices of a vector to give us a 1-form &#8212; e.g.,</p>
+<p>\[ v = v^1 \frac{\partial}{\partial x^1} + \cdots + v^n \frac{\partial}{\partial x^n}. \]</p>
+<p>becomes</p>
+<p>\[ v^\flat = v_1 dx^1 + \cdots + v_n dx^n. \]</p>
+                </div>
+                <footer>
+                                        October 23, 2012 |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                <article class="post-235 post type-post status-publish format-standard hentry category-notes" id="post-235">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=235.html" rel="bookmark" title="Permanent Link to Geometry in Coordinates">Geometry in Coordinates</a></h2>
+                </header>
+                <div class="entry">
+                	<p><a href="wp-content/uploads/2012/10/ddg_differential.svg"><img src="wp-content/uploads/2012/10/ddg_differential.svg" alt="" title="ddg_differential" class="aligncenter size-full wp-image-236" /></a></p>
+<p>So far we&#8217;ve given fairly abstract descriptions of the geometric objects we&#8217;ve been working with.  For instance, we said that the differential \(df\) of an immersion \(f: M \rightarrow \mathbb{R}^3\) tells us how to stretch out tangent vectors as we go from the domain \(M \subset \mathbb{R}^2\) into the image \(f(M) \subset \mathbb{R}^3\).  Alluding to the picture above, we can be a bit more precise and define \(df(X)\) in terms of limits:</p>
+<p>\[ df_p(X) = \lim_{h \rightarrow 0} \frac{f(p+hX)-f(p)}{h}. \]</p>
+<p>Still, this formula remains a bit abstract &#8212; we may want something more concrete to work with in practice.  When we start working with discrete surfaces we&#8217;ll see that \(df(X)\) often has an incredibly concrete meaning &#8212; for instance, it might correspond to an edge in our mesh.  But in the smooth setting a more typical representation of \(df\) is the <em>Jacobian matrix</em></p>
+<p>\[<br />
+   \mathsf{J} = \left[<br />
+      \begin{array}{cc}<br />
+         \partial f^1/\partial x^1 &#038; f^1/\partial x^2 \\<br />
+         \partial f^2/\partial x^1 &#038; f^2/\partial x^2 \\<br />
+         \partial f^3/\partial x^1 &#038; f^3/\partial x^2 \\<br />
+      \end{array}<br />
+   \right].<br />
+\]</p>
+<p>Here we pick coordinates on \(\mathbb{R}^2\) and \(\mathbb{R}^3\), and imagine that</p>
+<p>\[ f(x^1,x^2) = (f_1(x^1,x^2),f_2(x^1,x^2),f_3(x^1,x^2)) \]</p>
+<p>for some triple of scalar functions \(f_1,f_2,f_3: M \rightarrow \mathbb{R}\).  So if you wanted to evaluate \(df(X)\), you could simply apply \(J\) to some vector \(X = [X^1\ \ X^2]^T\).</p>
+<p>&nbsp;</p>
+<p><b><u>Coordinate Representations Considered Harmful</u></b></p>
+<p>You can already see one drawback of the approach taken above: expressions get a lot longer and more complicated to write out.  But there are other good reasons to avoid explicit matrix representations.  The most profound reason is that matrices can be used to represent many different types of objects, and these objects can behave in very different ways.  For instance, can you guess what the following matrix represents?</p>
+<p>\[ \left[ \begin{array}{cc} 0 &#038; 1 \\ 1 &#038; 0 \end{array} \right] \]</p>
+<p>Give up?  It&#8217;s quite clear, actually: it&#8217;s the <a href="http://en.wikipedia.org/wiki/Adjacency_matrix">adjacency matrix</a> for the complete graph on two vertices.  No, wait a minute &#8212; it must be the <a href="http://en.wikipedia.org/wiki/Pauli_matrices">Pauli matrix</a> \(\sigma_x\), representing spin angular momentum along the \(x\)-axis.  Or is it the matrix representation for an element of the <a href="http://en.wikipedia.org/wiki/Dihedral_group">dihedral group</a> \(D_4\)?  You get the idea: when working with matrices, it&#8217;s easy to forget where they come from &#8212; which makes it very easy to forget which rules they should obey!  (Don&#8217;t you already have enough things to keep track of?)  The real philosophical point here is that <em>matrices are not objects: they are merely <b>representations</b> of objects! </em> Or to paraphrase Plato: matrices are merely shadows on the wall of the cave, which give us nothing more than a murky impression of the real objects we wish to illuminate.</p>
+<p>A more concrete example that often shows up in geometry is the distinction between linear operators and bilinear forms.  As a reminder, a <em>linear operator </em>is a map from one vector space to another, e.g.,</p>
+<p>\[ f: \mathbb{R}^2 \rightarrow \mathbb{R}^2; u \mapsto f(u), \]</p>
+<p>whereas a <em>bilinear form </em>is a map from a pair of vectors to a scalar, e.g.,</p>
+<p>\[g: \mathbb{R}^2 \times \mathbb{R}^2 \rightarrow \mathbb{R}; (u,v) \mapsto g(u,v).\]</p>
+<p>Sticking with these two examples let&#8217;s imagine that we&#8217;re working in a coordinate system \((x^1,x^2)\), where \(f\) and \(g\) are represented by matrices \(\mathsf{A}, \mathsf{B} \in \mathbb{R}^{2 \times 2}\) and their arguments are represented by vectors \(\mathsf{u},\mathsf{v} \in \mathbb{R}^2\).  In other words, we have</p>
+<p>  \[ f(u) = \mathsf{A u} \]</p>
+<p>and</p>
+<p>  \[ g(u,v) = \mathsf{u^T B v}. \]</p>
+<p><a href="wp-content/uploads/2012/10/ddg_change_of_basis.svg"><img src="wp-content/uploads/2012/10/ddg_change_of_basis.svg" alt="" title="ddg_change_of_basis" class="aligncenter size-full wp-image-237" /></a></p>
+<p>Now suppose we need to work in a different coordinate system \((\tilde{x}^1,\tilde{x}^2)\), related to the first one by a change of basis \(\mathsf{P} \in \mathbb{R}^{2 \times 2}\).  For instance, the vectors \(u\) and \(v\) get transformed via</p>
+<p>\[ \tilde{\mathsf{u}} = \mathsf{Pu}, \]</p>
+<p>\[ \tilde{\mathsf{v}} = \mathsf{Pv}. \]</p>
+<p>How do we represent the maps \(f\) and \(g\) in this new coordinate system?  We can&#8217;t simply evaluate \(\mathsf{A}\tilde{\mathsf{u}}\), for instance, since \(\mathsf{A}\) and \(\tilde{\mathsf{u}}\) are expressed in different bases.  What we need to do is evaluate</p>
+<p>\[ f(u) = \mathsf{Au} = \mathsf{A}\mathsf{P}^{-1}\tilde{\mathsf{u}} \]</p>
+<p>and similarly</p>
+<p>\[ g(u,v) = \mathsf{u}^T\mathsf{Bv} = (\mathsf{P}^{-1} \mathsf{\tilde{u}})^T \mathsf{B} (\mathsf{P}^{-1}\mathsf{\tilde{v}}) = \tilde{\mathsf{u}}^T (\mathsf{P}^{-\mathsf{T}} \mathsf{B} \mathsf{P}^{-1}) \tilde{\mathsf{v}}. \]</p>
+<p>In other words, linear operators transform like</p>
+<p>\[ \mathsf{A} \mapsto \mathsf{AP}^{-1}, \]</p>
+<p>whereas bilinear forms transform like</p>
+<p>\[ \mathsf{B} \mapsto \mathsf{P}^{-\mathsf{T}} \mathsf{B} \mathsf{P}^{-1}. \]</p>
+<p>So what we discover is that <em>not all matrices transform the same way!</em> But if we&#8217;re constantly scrawling out little grids of numbers, it&#8217;s very easy to lose track of which transformations should be applied to which objects.</p>
+<p>&nbsp;</p>
+<p><b><u>Standard Matrices in the Geometry of Surfaces</u></b></p>
+<p>Admonitions about coordinates aside, it&#8217;s useful to be aware of standard matrix representations for geometric objects because they provide an essential link to classical results.  We&#8217;ve already seen a matrix representation for one object: the differential \(df\) can be encoded as the Jacobian matrix \(\mathsf{J}\) containing first-order derivatives of the immersion \(f\).  What about the other objects we&#8217;ve encountered in our study of surfaces?  Well, the induced metric \(g\) should be pretty easy to figure out since it&#8217;s just a function of the differential &#8212; remember that</p>
+<p>\[ g(u,v) = df(u) \cdot df(v). \]</p>
+<p>Equivalently, if we use a matrix \(\mathrm{I} \in \mathbb{R}^{2 \times 2}\) to represent \(g\), then we have</p>
+<p>\[ \mathsf{u^T \mathrm{I} v = (Ju)^T (Jv)} \]</p>
+<p>which means that</p>
+<p>\[ \mathrm{I} = \mathsf{J^T J}. \]</p>
+<p>We use the letter &#8220;\(\mathrm{I}\)&#8221; to denote the matrix of the induced metric, which was historically referred to as the <em>first fundamental form </em> &#8212; fewer authors use this terminology today.  In older books on differential geometry you may also see people talking about &#8220;\(\mathsf{E}\)&#8221;, &#8220;\(\mathsf{F}\)&#8221;, and &#8220;\(\mathsf{G}\)&#8221;, which refer to particular entries of \(\mathrm{I}\):</p>
+<p>\[ \mathrm{I} = \left[ \begin{array}{cc} \mathsf{E} &#038; \mathsf{F} \\ \mathsf{F} &#038; \mathsf{G} \end{array} \right]. \]</p>
+<p>(Is it clear why &#8220;\(\mathsf{F}\)&#8221; appears twice?)  One might conjecture that these fifth, sixth, and seventh letters of the alphabet have fallen out of fashion precisely because they are so coordinate-dependent and hence carry little geometric meaning on their own.  Nonetheless, it is useful to be able to recognize these critters, because they do show up out there in the wild.</p>
+<p>Earlier on, we also looked at the <em>shape operator,</em> defined as the unique map \(S: TM \rightarrow TM\) satisfying</p>
+<p>\[ dN(X) = df(SX), \]</p>
+<p>and the <em>second fundamental form,</em> defined as</p>
+<p>\[ I\!I(u,v) = g(Su,v). \]</p>
+<p>(Remember that \(S\) <a href="index.html@p=214.html#appendixB">turned out to be self-adjoint</a> with respect to \(g\), and likewise \(I\!I\) turned out to be symmetric with respect to its arguments \(u\) and \(v\).)  If we let \(\mathsf{S}, \mathrm{I\!I} \in \mathbb{R}^{2 \times 2}\) be the matrix representations of \(S\) and \(I\!I\), respectively, then we have</p>
+<p>\[ \mathsf{u^T} \mathrm{I\!I} {v} = \mathsf{u^T}\mathrm{I}\mathsf{Sv} \]</p>
+<p>for all vectors \(\mathsf{u,v} \in \mathbb{R}^2\), or equivalently,</p>
+<p>\[ \mathrm{I\!I} = \mathrm{I}\mathsf{S}. \]</p>
+<p>Components of \(\mathrm{I\!I}\) are classically associated with <em>lowercase </em>letters from the Roman alphabet, namely</p>
+<p>\[ \mathrm{I\!I} = \left[ \begin{array}{cc} \mathsf{e} &#038; \mathsf{f} \\ \mathsf{f} &#038; g \end{array} \right], \]</p>
+<p>which in coordinates \((x,y)\) are given explicitly by</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      \mathsf{e} &#038;=&#038; N \cdot f_{xx}, \\<br />
+      \mathsf{f} &#038;=&#038; N \cdot f_{xy}, \\<br />
+      \mathsf{g} &#038;=&#038; N \cdot f_{yy}, \\<br />
+   \end{array}<br />
+\]</p>
+<p>where \(N\) is the unit surface normal and \(f_{xy}\) denotes the second partial derivative along directions \(x\) and \(y\).</p>
+<p>At this point we might want to stop and ask: how does a matrix like \(\mathsf{IS}\) transform with respect to a change of basis?  The first term, \(\mathrm{I}\), is a bilinear form, but the second term \(\mathsf{S}\) is a linear map!  As emphasized above, we can&#8217;t determine the answer by just staring at the matrices themselves &#8212; we need to remember what they represent.  In this case, we know that \(\mathsf{IS}\) corresponds to the second fundamental form, so it should transform like any other bilinear form: \(\mathsf{IS} \mapsto \mathsf{P}^{-\mathsf{T}} IS \mathsf{P}^{-1}\).  </p>
+<p>Finally, we can verify that classical geometric expressions using matrices correspond to the expressions we derived earlier using the differential.  For instance, the classical expression for normal curvature is</p>
+<p>\[ \kappa_n(u) = \frac{I\!I(u,u)}{I(u,u)}, \]</p>
+<p>which we can rewrite as</p>
+<p>\[ \frac{\mathsf{u}^\mathsf{T} \mathrm{I\!I} \mathsf{u}}{\mathsf{u}^\mathsf{T} \mathrm{I} \mathsf{u}} = \frac{\mathsf{u}^\mathsf{T} \mathsf{IS} \mathsf{u}}{\mathsf{u}^\mathsf{T} \mathrm{I} \mathsf{u}} = \frac{(\mathsf{Ju})^\mathsf{T} (\mathsf{J Su})}{(\mathsf{Ju})^\mathsf{T}(\mathsf{Ju})} = \frac{df(u) \cdot dN(u)}{|df(u)|^2}. \]</p>
+<p>Up to a choice of sign, this expression is the same one we <a href="index.html@p=214.html#appendixA">obtained earlier</a> by considering a curve embedded in the surface.</p>
+                </div>
+                <footer>
+                                         |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                <article class="post-214 post type-post status-publish format-standard hentry category-notes" id="post-214">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=214.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a></h2>
+                </header>
+                <div class="entry">
+                	<p>Let&#8217;s take a more in-depth look at the curvature of surfaces.  The word &#8220;curvature&#8221; really corresponds to our everyday understanding of what it means for something to be curved: eggshells, donuts, and <a href="http://en.wikipedia.org/wiki/Cavatappi">cavatappi pasta</a> have a lot of curvature;  floors, ceilings, and cardboard boxes do not.  But what about something like a beer bottle?  Along one direction the bottle quickly curves around in a circle; along another direction it&#8217;s completely flat and travels along a straight line:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_beer_bottle.svg"><img src="wp-content/uploads/2012/10/ddg_beer_bottle.svg" alt="" title="ddg_beer_bottle" class="aligncenter size-full wp-image-215" /></a></p>
+<p>This way of looking at curvature &#8212; in terms of curves traveling along the surface &#8212; is often how we treat curvature in general.  In particular, let \(X\) be a unit tangent direction at some distinguished point on the surface, and consider a plane containing both \(df(X)\) and the corresponding normal \(N\).  This plane intersects the surface in a curve, and the curvature \(\kappa_n\) of this curve is called the <em>normal curvature</em> in the direction \(X\):</p>
+<p><a href="wp-content/uploads/2012/10/ddg_normal_curvature.svg"><img src="wp-content/uploads/2012/10/ddg_normal_curvature.svg" alt="" title="ddg_normal_curvature" class="aligncenter size-full wp-image-216" /></a></p>
+<p>Remember the <a href="index.html@p=187.html">Frenet-Serret formulas</a>?  They tell us that the change in the normal along a <em>curve</em> is given by \(dN = -\kappa T + \tau B\).  We can therefore get the normal curvature along \(X\) by extracting the tangential part of \(dN\):</p>
+<p>\[ \kappa_n(X) = \frac{-df(X) \cdot dN(X)}{|df(X)|^2}. \]</p>
+<p>The factor \(|df(X)|^2\) in the denominator simply normalizes any &#8220;stretching out&#8221; that occurs as we go from the domain \(M\) into \(\mathbb{R}^3\) &#8212; a derivation of this formula can be found in Appendix A.  Note that normal curvature is <em>signed</em>, meaning the surface can bend toward the normal or away from it.</p>
+<p>&nbsp;</p>
+<p><b><u>Principal, Mean, and Gaussian Curvature</u></b></p>
+<p><a href="wp-content/uploads/2012/10/ddg_principal_curvature.svg"><img src="wp-content/uploads/2012/10/ddg_principal_curvature.svg" alt="" title="ddg_principal_curvature" class="aligncenter size-full wp-image-217" /></a></p>
+<p>At any given point we can ask: along which directions does the surface bend the most?  The unit vectors \(X_1\) and \(X_2\) along which we find the maximum and minimum normal curvatures \(\kappa_1\) and \(\kappa_2\) are called the <em>principal directions</em>; the curvatures \(\kappa_i\) are called the <em>principal curvatures</em>.  For instance, the beer bottle above might have principal curvatures \(\kappa_1 = 1\), \(\kappa_2 = 0\) at the marked point.</p>
+<p>We can also talk about principal curvature in terms of the <em>shape operator</em>, which is the unique map \(S: TM \rightarrow TM\) satisfying</p>
+<p>\[ df(SX) = dN(X) \]</p>
+<p>for all tangent vectors \(X\).  The shape operator \(S\) and the Weingarten map \(dN\) essentially represent the same idea: they both tell us how the normal changes as we travel along a direction \(X\).  The only difference is that \(S\) specifies this change in terms of a tangent vector on \(M\), whereas \(dN\) gives us the change as a tangent vector in \(\mathbb{R}^3\).  It&#8217;s worth noting that many authors do not make this distinction, and simply assume an isometric identification of tangent vectors on \(M\) and the corresponding tangent vectors in \(\mathbb{R}^3\).  However, we choose to be more careful so that we can explicitly account for the dependence of various quantities on the immersion \(f\) &#8212; this dependence becomes particularly important if you actually want to compute something!  (By the way, why can we always express the change in \(N\) in terms of a <em>tangent</em> vector? It&#8217;s because \(N\) is the <em>unit</em> normal, hence it cannot grow or shrink in the normal direction.)</p>
+<p>One important fact about the principal directions and principal curvatures is that they correspond to eigenvectors and eigenvalues (respectively) of the shape operator:</p>
+<p>\[ S X_i = \kappa_i X_i. \]</p>
+<p>Moreover, the principal directions are orthogonal with respect to the induced metric: \(g(X_1,X_2) = df(X_1) \cdot df(X_2) = 0\) &#8212; see Appendix B for a proof of these two facts.  The principal curvatures therefore tell us everything there is to know about normal curvature at a point, since we can express any tangent vector \(Y\) as a linear combination of the principal directions \(X_1\) and \(X_2\).  In particular, if \(Y\) is a unit vector offset from \(X_1\) by an angle \(\theta\), then the associated normal curvature is</p>
+<p>\[ \kappa_n(Y) = \kappa_1 \cos^2 \theta + \kappa_2 \sin^2 \theta, \]</p>
+<p>as you should be able to easily verify using the relationships above.  Often, however, working directly with principal curvatures is fairly inconvenient &#8212; especially in the discrete setting.</p>
+<p>On the other hand, two closely related quantities &#8212; called the <em>mean curvature</em> and the <em>Gaussian curvature</em> will show up over and over again (and have some particularly nice interpretations in the discrete world).  The mean curvature \(H\) is the arithmetic mean of principal curvatures:</p>
+<p>\[ H = \frac{\kappa_1 + \kappa_2}{2}, \]</p>
+<p>and the Gaussian curvature is the (square of the) geometric mean:</p>
+<p>\[ K = \kappa_1 \kappa_2. \]</p>
+<p>What do the values of \(H\) and \(K\) imply about the shape of the surface?  Perhaps the most elementary interpretation is that Gaussian curvature is like a logical &#8220;and&#8221; (is there curvature along <em>both</em> directions?) whereas mean curvature is more like a logical &#8220;or&#8221; (is there curvature along <em>at least one</em> direction?)  Of course, you have to be a little careful here since you can also get zero mean curvature when \(\kappa_1 = -\kappa_2\).</p>
+<p>It also helps to see pictures of surfaces with zero mean and Gaussian curvature.  Zero-curvature surfaces are so well-studied in mathematics that they have special names.  Surfaces with zero Gaussian curvature are called <em>developable surfaces</em> because they can be &#8220;developed&#8221; or flattened out into the plane without any stretching or tearing.  For instance, any piece of a cylinder is developable since one of the principal curvatures is zero:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_cylinder.svg"><img src="wp-content/uploads/2012/10/ddg_cylinder.svg" alt="" title="ddg_cylinder" class="aligncenter size-full wp-image-218" /></a></p>
+<p>Surfaces with zero mean curvature are called <em>minimal surfaces</em> because (as we&#8217;ll see later) they minimize surface area (with respect to certain constraints).  Minimal surfaces tend to be saddle-like since principal curvatures have equal magnitude but opposite sign:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_saddle.svg"><img src="wp-content/uploads/2012/10/ddg_saddle.svg" alt="" title="ddg_saddle" class="aligncenter size-full wp-image-219" /></a></p>
+<p>The saddle is also a good example of a surface with negative <em>Gaussian</em> curvature.  What does a surface with positive Gaussian curvature look like?  The hemisphere is one example:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_dome.svg"><img src="wp-content/uploads/2012/10/ddg_dome.svg" alt="" title="ddg_dome" class="aligncenter size-full wp-image-220" /></a></p>
+<p>Note that in this case \(\kappa_1 = \kappa_2\) and so principal directions are not uniquely defined &#8212; maximum (and minimum) curvature is achieved along <em>any</em> direction \(X\).  Any such point on a surface is called an <em>umbilic point</em>.</p>
+<p>There are plenty of cute theorems and relationships involving curvature, but those are the basic facts: the curvature of a surface is completely characterized by the <em>principal curvatures</em>, which are the maximum and minimum <em>normal curvatures</em>.  The Gaussian and mean curvature are simply averages of the two principal curvatures, but (as we&#8217;ll see) are often easier to get your hands on in practice.</p>
+<p>&nbsp;</p>
+<p><b><u>The Second Fundamental Form</u></b></p>
+<p>For historical reasons, it&#8217;s probably good to mention an object called the <em>second fundamental form</em>.  I&#8217;m actually not sure what&#8217;s so fundamental about this form, since it&#8217;s nothing more than a mashup of the metric \(g\) and the shape operator \(S\), which themselves are simple functions of two <em>truly</em> fundamental objects, namely the immersion \(f\) and the Gauss map \(N\):</p>
+<p>\[ I\!I(X,Y) = -g(SX,Y) = -dN(X) \cdot df(Y). \]</p>
+<p>(I suppose &#8220;the somewhat auxilliary form&#8221; didn&#8217;t have a nice ring to it&#8230;)  The most important thing to realize is that \(I\!I\) does not introduce any new <em>geometric</em> ideas &#8212; just another way of writing down things we&#8217;ve already seen.</p>
+<p><a name="appendixA"></a><br />
+&nbsp;</p>
+<p><b><u>Appendix A: A Nice Formula for Normal Curvature</u></b></p>
+<p><a href="wp-content/uploads/2012/10/ddg_normal_curvature_derivation.svg"><img src="wp-content/uploads/2012/10/ddg_normal_curvature_derivation.svg" alt="" title="ddg_normal_curvature_derivation" class="aligncenter size-full wp-image-221" /></a></p>
+<p>Consider a unit-speed curve \(c(t)\) on a domain \(M \subset \mathbb{R}^2\), and an immersion \(f\) of \(M\) into \(\mathbb{R}^3\); the composition \(\gamma = f(c)\) defines a curve in \(\mathbb{R}^3\).  Letting \(X = \dot{c}\) denote the time derivative of \(c\), we can express the unit tangent field on \(\gamma\) as</p>
+<p>\[ T = \frac{df(X)}{|df(X)|}. \]</p>
+<p>Recall from our <a href="index.html@p=187.html">notes on curves</a> that the curvature normal \(\kappa n\) is defined as the change in tangent direction as we travel along the curve at unit speed (we&#8217;ll use a lowercase &#8220;\(n\)&#8221; here to distinguish from the surface normal \(N\)).  In this case, however, the initially unit-speed curve \(c\) may get stretched out by the map \(f\).  Therefore, to get the curvature normal we have to evaluate</p>
+<p>\[ \kappa n = \frac{dT}{d\ell}, \]</p>
+<p>where \(\ell\) denotes the distance traveled in \(\mathbb{R}^3\) along \(\gamma\).  The <em>normal curvature</em> \(\kappa_n(\gamma)\) can be defined as the projection of the curvature normal onto the surface normal \(N\).  More explicitly, we have</p>
+<p>\[ \kappa_n = N \cdot \kappa n = N \cdot \frac{dT}{d\ell} = N \cdot \frac{dT}{dt}\frac{dt}{d\ell}. \]</p>
+<p>The quantity \(\tfrac{d\ell}{dt}\) is just the amount by which the curve gets stretched out as we go from \(M\) into \(\mathbb{R}^3\), which we can also write as \(|df(X)|\).  We therefore have</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      |df(X)| \kappa_N &#038;=&#038; N \cdot \frac{dT}{dt} \\<br />
+                               &#038;=&#038; N \cdot \frac{d}{dt}\left( df(X) |df(X)|^{-1} \right) \\<br />
+                               &#038;=&#038; N \cdot \left( \frac{d}{dt} df(X) \right) |df(X)|^{-1} + \underbrace{N \cdot df(X)}_{=0} \left( \frac{d}{dt} |df(X)|^{-1} \right) \\<br />
+                               &#038;=&#038; N \cdot \left( \frac{d}{dt} df(\dot{c}) \right) |df(\dot{c})|^{-1} \\<br />
+                               &#038;=&#038; \displaystyle\frac{N \cdot df(\ddot{c})}{|df(\dot{c})|}.<br />
+   \end{array}<br />
+\]</p>
+<p>Noting that \(N \cdot df(\dot{c}) = 0\) implies \(N \cdot df(\ddot{c}) = -\dot{N} \cdot df(\dot{c})\), and moreover that \(\dot{N} = dN(\dot{c})\), we get</p>
+<p>\[ |df(X)| \kappa_N = \frac{-dN(\dot{c}) \cdot df(\dot{c})}{|df(\dot{c})|}, \]</p>
+<p>or equivalently</p>
+<p>\[ \kappa_N = \frac{-dN(X) \cdot df(X)}{|df(X)|^2}, \]</p>
+<p>which is the formula introduced above.</p>
+<p><a name="appendixB"></a><br />
+&nbsp;</p>
+<p><b><u>Appendix B: Why Are Principal Directions Orthogonal?</u></b></p>
+<p>Earlier we stated that the unit principal directions \(X_1, X_2\) are orthogonal with respect to the metric \(g\) induced by the immersion \(f\), i.e.,</p>
+<p>\[ g(X_1,X_2) = df(X_1) \cdot df(X_2) = 0. \]</p>
+<p>First, let&#8217;s show that</p>
+<p>\[ g(SX,Y) = g(X,SY), \]</p>
+<p>i.e., \(S\) is <em>self-adjoint</em> with respect to the induced metric (equivalently: the second fundamental form \(I\!I\) is symmetric in its two arguments, i.e., \(I\!I(X,Y)=I\!I(Y,X)\)).  To see why, consider that (by definition) the normal \(N\) is orthogonal to any tangent vector \(df(X)\):</p>
+<p>\[ N \cdot df(X) = 0. \]</p>
+<p>Differentiating this expression with respect to some other direction \(Y\), we get</p>
+<p>\[ dN(Y) \cdot df(X) = -N \cdot d(df(X))(Y). \]</p>
+<p>Using the equality of mixed partial derivatives, we see that \(S\) is indeed self-adjoint with respect to \(g\):</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      g(SX,Y) &#038;=&#038; dN(X) \cdot df(Y) \\<br />
+              &#038;=&#038; -N \cdot d(df(X))(Y) \\<br />
+              &#038;=&#038; -N \cdot d(df(Y))(X) \\<br />
+              &#038;=&#038; dN(Y) \cdot df(X) \\<br />
+              &#038;=&#038; g(X,SY).<br />
+   \end{array}<br />
+\]</p>
+<p>(By the way, the essential trick we used here comes up all the time: if you see a product involving a derivative, try expressing it in terms of the derivative of a product.)  Returning to our original question, we have</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      \kappa_1 g(X_1,X_2) &#038;=&#038; \kappa_1 df(X_1) \cdot df(X_2) \\<br />
+                          &#038;=&#038; dN(X_1) \cdot df(X_2) \\<br />
+                          &#038;=&#038; dN(X_2) \cdot df(X_1) \\<br />
+                          &#038;=&#038; \kappa_2 df(X_2) \cdot df(X_1) \\<br />
+                          &#038;=&#038; \kappa_2 g(X_1,X_2).<br />
+   \end{array}<br />
+\]</p>
+<p>Therefore, either \(\kappa_1 = \kappa_2\) or else \(g(X_1,X_2)=0\).  But if \(\kappa_1 = \kappa_2\) (i.e., the maximum and minimum principle curvatures are equal) then we&#8217;re at an <em>umbilic point</em> where all normal curvatures are equal &#8212; in this case we&#8217;re free to pick the principal directions however we please &#8212; in particular, we can use an arbitrary pair of orthogonal directions.  The phenomenon we experience here reflects a more general phenomenon in linear algebra: roughly speaking, if \(A\) is self-adjoint with respect to \(B\), then \(A\)&#8217;s eigenvectors will be orthogonal with respect to \(B\).</p>
+<p>One final question: why should \(\kappa_1\) and \(\kappa_2\) be the <em>maximum</em> and <em>minimum</em> normal curvatures?  Well, think about what the largest and smallest eigenvalues of a linear map represent: they represent the largest and smallest amount of &#8220;stretch&#8221; experienced by a unit vector in any direction.  Hence, the normal curvature can be no larger than \(\kappa_1\) and no smaller than \(\kappa_2\).</p>
+                </div>
+                <footer>
+                                        October 22, 2012 |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                    <nav class="navigation">
+            <div class="alignleft"><a href="index.html@cat=5&amp;paged=3.html" ><span>&laquo;</span> Older Entries</a></div>
+        <div class="alignright"><a href="index.html@cat=5.html" >Newer Entries <span>&raquo;</span></a></div>
+    </nav>        </div>
+    <aside id="sidebar">
+	<ul>
+	    <li id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" action="index.html" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li><li id="meta-3" class="widget widget_meta"><h3 class="widgettitle">Meta</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html@feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html@feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li><li id="pages-2" class="widget widget_pages"><h3 class="widgettitle">Pages</h3>		<ul>
+			<li class="page_item page-item-4"><a href="index.html@page_id=4.html">Course Information</a></li>
+<li class="page_item page-item-11"><a href="index.html@page_id=11.html">Homework Assignments</a></li>
+<li class="page_item page-item-9"><a href="index.html@page_id=9.html">Lecture Slides</a></li>
+<li class="page_item page-item-13"><a href="index.html@page_id=13.html">Subscriptions</a></li>
+		</ul>
+		</li><li id="categories-3" class="widget widget_categories"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html@cat=4.html" title="View all posts filed under Administration">Administration</a> (2)
+</li>
+	<li class="cat-item cat-item-3"><a href="index.html@cat=3.html" title="View all posts filed under Homework">Homework</a> (6)
+</li>
+	<li class="cat-item cat-item-5 current-cat"><a href="index.html@cat=5.html" title="View all posts filed under Notes">Notes</a> (12)
+</li>
+		</ul>
+</li><li id="categoryposts-3" class="widget widget_categoryposts"><h3 class="widgettitle">Course Notes</h3><ul>
+		<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=104.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Surfaces">A Quick and Dirty Introduction to the Geometry of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=139.html" rel="bookmark" title="Permanent link to Derivatives and Tangent Vectors">Derivatives and Tangent Vectors</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=162.html" rel="bookmark" title="Permanent link to The Fundamental Polygon">The Fundamental Polygon</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=187.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Curves">A Quick and Dirty Introduction to the Geometry of Curves</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=214.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=235.html" rel="bookmark" title="Permanent link to Geometry in Coordinates">Geometry in Coordinates</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=262.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=272.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=294.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=296.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=298.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=307.html" rel="bookmark" title="Permanent link to Discrete Exterior Calculus">Discrete Exterior Calculus</a>
+			
+			
+						
+						
+					</li>
+	</ul>
+</li>	</ul>
+</aside></div><!-- id='content' -->
+    </div><!-- id='wrapcontent' -->
+    <div id="wrapfooter" class="wrapper">
+    	<footer id="footer">
+    		        	<p class="clear copy">
+            	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Introduction to Discrete Differential Geometry</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.        	</p>
+    	</footer>
+	</div>
+</div>
+</body>
+</html>

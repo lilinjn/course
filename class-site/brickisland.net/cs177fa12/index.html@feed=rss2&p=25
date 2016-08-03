@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CS 177: Discrete Differential Geometry</title>
+	<atom:link href="http://brickisland.net/cs177fa12/?feed=rss2&#038;p=25" rel="self" type="application/rss+xml" />
+	<link>http://brickisland.net/cs177fa12</link>
+	<description>Caltech &#124; Fall 2012 &#124; Tue/Thu 10:30-11:55 &#124; 314 ANB</description>
+	<lastBuildDate>Wed, 24 Apr 2013 00:32:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.2</generator>
+		<item>
+		<title>Homework 4: Curvature Flow</title>
+		<link>http://brickisland.net/cs177fa12/?p=320</link>
+		<comments>http://brickisland.net/cs177fa12/?p=320#comments</comments>
+		<pubDate>Fri, 07 Dec 2012 02:29:37 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320</guid>
+		<description><![CDATA[In this homework we&#8217;ll take a closer look at curvature flow. We already saw one example of curvature flow (mean curvature flow) while studying the Poisson equation. The general idea behind curvature flow is that we have an energy \(E\) measuring the smoothness of our geometry, and can reduce this energy by traveling along the [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=320</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+		<item>
+		<title>Discrete Exterior Calculus</title>
+		<link>http://brickisland.net/cs177fa12/?p=307</link>
+		<comments>http://brickisland.net/cs177fa12/?p=307#comments</comments>
+		<pubDate>Tue, 13 Nov 2012 17:11:09 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=307</guid>
+		<description><![CDATA[So far we&#8217;ve been exploring exterior calculus purely in the smooth setting. Unfortunately this theory was developed by some old-timers who did not know anything about computers, hence it cannot be used directly by machines that store only a finite amount of information. For instance, if we have a smooth vector field or a smooth [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=307</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Homework 3: The Discrete Laplacian</title>
+		<link>http://brickisland.net/cs177fa12/?p=302</link>
+		<comments>http://brickisland.net/cs177fa12/?p=302#comments</comments>
+		<pubDate>Tue, 13 Nov 2012 17:06:01 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=302</guid>
+		<description><![CDATA[In the course notes we mentioned that the Laplace-Beltrami operator (more commonly known as just the Laplacian) plays a fundamental role in a variety of geometric and physical equations. In this homework we&#8217;ll put the Laplacian to work by coming up with a discrete version for triangulated surfaces. Similar to the homework on vertex normals, [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=302</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</title>
+		<link>http://brickisland.net/cs177fa12/?p=298</link>
+		<comments>http://brickisland.net/cs177fa12/?p=298#comments</comments>
+		<pubDate>Wed, 31 Oct 2012 17:35:13 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=298</guid>
+		<description><![CDATA[In the last set of notes we talked about how to differentiate \(k\)-forms using the exterior derivative \(d\). We&#8217;d also like some way to integrate forms. Actually, there&#8217;s surprisingly little to say about integration given the setup we already have. Suppose we want to compute the total area \(A_\Omega\) of a region \(\Omega\) in the [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=298</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</title>
+		<link>http://brickisland.net/cs177fa12/?p=296</link>
+		<comments>http://brickisland.net/cs177fa12/?p=296#comments</comments>
+		<pubDate>Wed, 31 Oct 2012 17:34:47 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=296</guid>
+		<description><![CDATA[Originally we set out to develop exterior calculus. The objects we&#8217;ve looked at so far &#8212; \(k\)-forms, the wedge product \(\wedge\) and the Hodge star \(\star\) &#8212; actually describe a more general structure called an exterior algebra. To turn our algebra into a calculus, we also need to know how quantities change, as well as [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=296</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</title>
+		<link>http://brickisland.net/cs177fa12/?p=294</link>
+		<comments>http://brickisland.net/cs177fa12/?p=294#comments</comments>
+		<pubDate>Wed, 31 Oct 2012 17:34:11 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=294</guid>
+		<description><![CDATA[Previously we saw that a \(k\)-form measures the (signed) projected volume of a \(k\)-dimensional parallelpiped. For instance, a 2-form measures the area of a parallelogram projected onto some plane, as depicted above. But here&#8217;s a nice observation: a plane in \(\mathbb{R}^3\) can be described either by a pair of basis directions \((\alpha,\beta)\), or by a [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=294</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Homework 2: Normals of Discrete Surfaces</title>
+		<link>http://brickisland.net/cs177fa12/?p=285</link>
+		<comments>http://brickisland.net/cs177fa12/?p=285#comments</comments>
+		<pubDate>Tue, 30 Oct 2012 23:19:54 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=285</guid>
+		<description><![CDATA[[Homework 2 has been released (below) and is due next Thursday by 5pm. We suspect there will be a lot of questions about C++, libDDG, etc., so please do not hesitate to ask questions either in the comments (preferred) or via email. Finally, some of the exercises require knowledge of exterior calculus that we haven't [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=285</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Code for Next Assignment Posted</title>
+		<link>http://brickisland.net/cs177fa12/?p=281</link>
+		<comments>http://brickisland.net/cs177fa12/?p=281#comments</comments>
+		<pubDate>Wed, 24 Oct 2012 21:35:20 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=281</guid>
+		<description><![CDATA[Code for the next assignment can be downloaded here: ddg_normals.zip We&#8217;ll provide more details about the actual assignment later this week (including the due date), but for now just try to see if you can get the code to compile. Instructions on getting started can be found in the user guide &#8212; this precise sequence [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=281</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</title>
+		<link>http://brickisland.net/cs177fa12/?p=272</link>
+		<comments>http://brickisland.net/cs177fa12/?p=272#comments</comments>
+		<pubDate>Wed, 24 Oct 2012 20:08:19 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=272</guid>
+		<description><![CDATA[In our last set of notes we measured the length of a vector by projecting it onto different coordinate axes; this measurement process effectively defined what we call a 1-form. But what happens if we have a collection of vectors? For instance, consider a pair of vectors \(u, v\) sitting in \(\mathbb{R}^3\): We can think [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=272</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</title>
+		<link>http://brickisland.net/cs177fa12/?p=262</link>
+		<comments>http://brickisland.net/cs177fa12/?p=262#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 22:29:06 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=262</guid>
+		<description><![CDATA[Many important concepts in differential geometry can be nicely expressed in the language of exterior calculus. Initially these concepts will look exactly like objects you know and love from vector calculus, and you may question the value of giving them funky new names. For instance, scalar fields are no longer called scalar fields, but are [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=262</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

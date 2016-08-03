@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CS 177: Discrete Differential Geometry &#187; Homework</title>
+	<atom:link href="http://brickisland.net/cs177fa12/?feed=rss2&#038;cat=3" rel="self" type="application/rss+xml" />
+	<link>http://brickisland.net/cs177fa12</link>
+	<description>Caltech &#124; Fall 2012 &#124; Tue/Thu 10:30-11:55 &#124; 314 ANB</description>
+	<lastBuildDate>Wed, 24 Apr 2013 00:32:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.2</generator>
+		<item>
+		<title>Homework 4: Curvature Flow</title>
+		<link>http://brickisland.net/cs177fa12/?p=320</link>
+		<comments>http://brickisland.net/cs177fa12/?p=320#comments</comments>
+		<pubDate>Fri, 07 Dec 2012 02:29:37 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320</guid>
+		<description><![CDATA[In this homework we&#8217;ll take a closer look at curvature flow. We already saw one example of curvature flow (mean curvature flow) while studying the Poisson equation. The general idea behind curvature flow is that we have an energy \(E\) measuring the smoothness of our geometry, and can reduce this energy by traveling along the [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=320</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+		<item>
+		<title>Homework 3: The Discrete Laplacian</title>
+		<link>http://brickisland.net/cs177fa12/?p=302</link>
+		<comments>http://brickisland.net/cs177fa12/?p=302#comments</comments>
+		<pubDate>Tue, 13 Nov 2012 17:06:01 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=302</guid>
+		<description><![CDATA[In the course notes we mentioned that the Laplace-Beltrami operator (more commonly known as just the Laplacian) plays a fundamental role in a variety of geometric and physical equations. In this homework we&#8217;ll put the Laplacian to work by coming up with a discrete version for triangulated surfaces. Similar to the homework on vertex normals, [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=302</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Homework 2: Normals of Discrete Surfaces</title>
+		<link>http://brickisland.net/cs177fa12/?p=285</link>
+		<comments>http://brickisland.net/cs177fa12/?p=285#comments</comments>
+		<pubDate>Tue, 30 Oct 2012 23:19:54 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=285</guid>
+		<description><![CDATA[[Homework 2 has been released (below) and is due next Thursday by 5pm. We suspect there will be a lot of questions about C++, libDDG, etc., so please do not hesitate to ask questions either in the comments (preferred) or via email. Finally, some of the exercises require knowledge of exterior calculus that we haven't [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=285</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Code for Next Assignment Posted</title>
+		<link>http://brickisland.net/cs177fa12/?p=281</link>
+		<comments>http://brickisland.net/cs177fa12/?p=281#comments</comments>
+		<pubDate>Wed, 24 Oct 2012 21:35:20 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=281</guid>
+		<description><![CDATA[Code for the next assignment can be downloaded here: ddg_normals.zip We&#8217;ll provide more details about the actual assignment later this week (including the due date), but for now just try to see if you can get the code to compile. Instructions on getting started can be found in the user guide &#8212; this precise sequence [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=281</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+		<item>
+		<title>Homework 1: Topological Invariants of Discrete Surfaces</title>
+		<link>http://brickisland.net/cs177fa12/?p=51</link>
+		<comments>http://brickisland.net/cs177fa12/?p=51#comments</comments>
+		<pubDate>Tue, 09 Oct 2012 17:34:52 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=51</guid>
+		<description><![CDATA[Homework is due by 4:30 pm next Wednesday, October 17th and can be handed in outside 329 Annenberg, or electronically by emailing keenan@cs.caltech.edu. Homework will be graded not only on the basis of correctness, but also on presentation! Remember that proofs are meant for human beings, not for machines. Legible handwriting, complete sentences, an outline [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=51</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+		<item>
+		<title>Homework 0 Assigned</title>
+		<link>http://brickisland.net/cs177fa12/?p=25</link>
+		<comments>http://brickisland.net/cs177fa12/?p=25#comments</comments>
+		<pubDate>Tue, 09 Oct 2012 06:37:15 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Homework]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=25</guid>
+		<description><![CDATA[We&#8217;d like to encourage class participation through use of this blog.  Therefore, your first assignment is to: create an account, and leave a comment on this post. To make things interesting, your comment should include a description of your favorite mathematical formula typeset in $\LaTeX$.  If you don&#8217;t know how to use $\LaTeX$ this is [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=25</wfw:commentRss>
+		<slash:comments>15</slash:comments>
+		</item>
+	</channel>
+</rss>

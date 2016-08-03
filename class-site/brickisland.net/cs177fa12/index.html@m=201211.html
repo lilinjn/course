@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <title>November &raquo; 2012 &raquo;  CS 177: Discrete Differential Geometry</title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://brickisland.net/cs177fa12/wp-content/themes/constructor/js/html5.js"></script>
+    <![endif]-->
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="stylesheet" type="text/css" media="screen" href="wp-content/themes/constructor/style.css"/>
+    <link rel="stylesheet" type="text/css" media="print" href="wp-content/themes/constructor/print.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="wp-content/themes/constructor/style-480.css" />
+    <link rel="pingback" href="xmlrpc.php" />
+    	<link rel='archives' title='December 2012' href='index.html@m=201212.html' />
+	<link rel='archives' title='November 2012' href='index.html@m=201211.html' />
+	<link rel='archives' title='October 2012' href='index.html@m=201210.html' />
+    
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Feed" href="index.html@feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Comments Feed" href="index.html@feed=comments-rss2" />
+<link rel='stylesheet' id='constructor-style-css'  href='wp-content/uploads/constructor/cache/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='constructor-theme-css'  href='wp-content/uploads/constructor/themes/current/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#038;ver=3.4.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js@ver=1.7.2'></script>
+<script type='text/javascript' src='wp-content/themes/constructor/js/ready.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php@rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.4.2" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+<body class="archive date">
+	
+<div id="body">
+   <div id="wrapheader" class="wrapper">
+       <header id="header">
+                        <div id="title">
+					
+					<div id="name"><a href="index.html" title="CS 177: Discrete Differential Geometry &raquo; Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB">CS 177: Discrete Differential Geometry</a></div>
+				                <div id="description">Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB</div>
+            </div>
+       </header>
+   </div>
+   
+   <div id="wrapcontent" class="wrapper">
+       <div id="content" class="box shadow opacity layout-right">
+    <div id="container" >
+                            <article class="post-307 post type-post status-publish format-standard hentry category-notes" id="post-307">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=307.html" rel="bookmark" title="Permanent Link to Discrete Exterior Calculus">Discrete Exterior Calculus</a></h2>
+                </header>
+                <div class="entry">
+                	<p><a href="../cs177/wp-content/uploads/2011/11/ddg_pointwise_vs_integrated.svg"><img class="aligncenter size-full wp-image-275" title="ddg_pointwise_vs_integrated" src="../cs177/wp-content/uploads/2011/11/ddg_pointwise_vs_integrated.svg" alt="" /></a></p>
+<p>So far we&#8217;ve been exploring <a title="A Quick and Dirty Introduction to Exterior Calculus — Part I: Vectors and 1-Forms" href="index.html@p=262.html">exterior calculus</a> purely in the smooth setting. Unfortunately this theory was developed by some old-timers who did not know anything about computers, hence it cannot be used directly by machines that store only a finite amount of information. For instance, if we have a smooth vector field or a smooth 1-form we can&#8217;t possibly store the direction of every little &#8220;arrow&#8221; at each point &#8212; there are far too many of them! Instead, we need to keep track of a discrete (or really, <em>finite</em>) number of pieces of information that capture the essential behavior of the objects we&#8217;re working with; we call this scheme <em>discrete exterior calculus</em> (or <em>DEC</em> for short). The big secret about DEC is that it&#8217;s literally <em>nothing more</em> than the good-old fashioned (continuous) exterior calculus we&#8217;ve been learning about, except that we integrate differential forms over elements of our mesh.</p>
+<p><strong><span style="text-decoration: underline;">Discrete Differential Forms</span></strong></p>
+<p>One way to encode a 1-form might be to store a finite collection of &#8220;arrows&#8221; associated with some subset of points. Instead, we&#8217;re going to do something a bit different: we&#8217;re going to <em>integrate</em> our 1-form over each edge of a mesh, and store the resulting <em>numbers</em> (remember that the integral of an \(n\)-form always spits out a single number) on the corresponding edges. In other words, if \(\alpha\) is a 1-form and \(e\) is an edge, then we&#8217;ll associate the number</p>
+<p>\[ \hat{\alpha}_e := \int_e \alpha \]</p>
+<p>with \(e\), where the use of the hat (\(\ \hat{}\ \)) is supposed to suggest a <em>discrete</em> quantity (not to be confused with a unit-length vector).</p>
+<p>Does this procedure seem a bit abstract to you? It shouldn&#8217;t! Think about what this integral represents: it tells us how strongly the 1-form \(\alpha\) &#8220;flows along&#8221; the edge \(e\) <em>on average</em>. More specifically, remember how integration of a 1-form works: at each point along the edge we take the vector <em>tangent</em> to the edge, stick it into the 1-form \(\alpha\), and sum up the resulting values &#8212; each value tells us something about how well \(\alpha\) &#8220;lines up&#8221; with the direction of the edge. For instance, we could approximate the integral via the sum</p>
+<p>\[ \int_e \alpha \approx |e|\left(\frac{1}{N} \sum_{i=1}^N \alpha_{p_i}(\hat{e})\right), \]</p>
+<p>where \(|e|\) denotes the length of the edge, \(\{p_i\}\) is a sequence of points along the edge, and \(\hat{e} := e/|e|\) is a unit vector tangent to the edge:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_oneform_quadrature.svg"><img class="aligncenter size-full wp-image-276" title="ddg_oneform_quadrature" src="../cs177/wp-content/uploads/2011/11/ddg_oneform_quadrature.svg" alt="" /></a></p>
+<p>Of course, this quantity tells us <em>absolutely nothing</em> about the strength of the &#8220;flow&#8221; <em>orthogonal</em> to the edge: it could be zero, it could be enormous! We don&#8217;t really know, because we didn&#8217;t take any measurements along the orthogonal direction. However, the hope is that some of this information will still be captured by nearby edges (which are most likely not parallel to \(e\)).</p>
+<p>More generally, a \(k\)-form that has been integrated over each \(k\)-dimensional cell (edges in 1D, faces in 2D, etc.) is called a <em>discrete differential \(k\)-form</em>. (If you ever find the distinction confusing, you might find it helpful to substitute the word &#8220;integrated&#8221; for the word &#8220;discrete.&#8221;) In practice, however, not every discrete differential form has to originate from a continuous one &#8212; for instance, a bunch of arbitrary values assigned to each edge of a mesh is a perfectly good discrete 1-form.</p>
+<p><strong><span style="text-decoration: underline;">Orientation</span></strong></p>
+<p>One thing you may have noticed in all of our illustrations so far is that each edge is marked with a little arrow. Why? Well, one thing to remember is that <em>direction</em> matters when you integrate. For instance, the fundamental theorem of calculus (and common sense) tells us that the total change as you go from \(a\) to \(b\) is the opposite of the total change as you go from \(b\) to \(a\):</p>
+<p>\[ \int_a^b \frac{\partial\phi}{\partial x} dx = \phi(b)-\phi(a) = -(\phi(a)-\phi(b)) = -\int_b^a \frac{\partial\phi}{\partial x} dx. \]</p>
+<p>Said in a much less fancy way: the elevation gain as you go from Pasadena to Altadena is 151 meters, so of the elevation &#8220;gain&#8221; in the other direction must be -151 meters! Just keeping track of the number 151 does you little good &#8212; you have to say what that quantity represents.</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_elevation.svg"><img class="aligncenter size-full wp-image-277" title="ddg_elevation" src="../cs177/wp-content/uploads/2011/11/ddg_elevation.svg" alt="" /></a></p>
+<p>Therefore, when we store a discrete differential form it&#8217;s not enough to just store a number: we also have to specify a canonical <em>orientation</em> for each element of our mesh, corresponding to the orientation we used during integration. For an edge we&#8217;ve already seen that we can think about orientation as a little arrow pointing from one vertex to another &#8212; we could also just think of an edge as an <em>ordered</em> pair \((i,j)\), meaning that we always integrate from \(i\) to \(j\).</p>
+<p>More generally, suppose that each element of our mesh is an <em>oriented \(k\)-simplex</em> \(\sigma\), i.e., a collection of \(k+1\) vertices \(p_i \in \mathbb{R}^n\) given in some fixed order \((p_1, \ldots, p_{k+1})\). The geometry associated with \(\sigma\) is the <em>convex combination</em> of these points:</p>
+<p>\[ \left\{ \sum_{i=1}^{k+1} \lambda_i p_i \left| \sum_{i=1}^{k+1} \lambda_i = 1 \right. \right\} \subset \mathbb{R}^n \]</p>
+<p>(Convince yourself that a 0-simplex is a vertex, a 1-simplex is an edge, a 2-simplex is a triangle, and a 3-simplex is a tetrahedron.)</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_simplices.svg"><img class="aligncenter size-full wp-image-278" title="ddg_simplices" src="../cs177/wp-content/uploads/2011/11/ddg_simplices.svg" alt="" /></a></p>
+<p>Two oriented \(k\)-simplices have the same orientation if and only if the vertices of one are an <em>even</em> permutation of the vertices of another. For instance, the triangles \((p_1, p_2, p_3)\) and \((p_2, p_3, p_1)\) have the same orientation; \((p_1, p_2, p_3)\) and \((p_2, p_1, p_3)\) have opposite orientation.</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_twoform_orientation_plane.svg"><img class="aligncenter size-full wp-image-279" title="ddg_twoform_orientation_plane" src="../cs177/wp-content/uploads/2011/11/ddg_twoform_orientation_plane.svg" alt="" /></a></p>
+<p>If a simplex \(\sigma_1\) is a (not necessarily proper) subset of another simplex \(\sigma_2\), then we say that \(\sigma_1\) is a <em>face</em> of \(\sigma_2\). For instance, every vertex, edge, and triangle of a tetrahedron \(\sigma\) is a face of \(\sigma\); as is \(\sigma\) itself! Moreover, the orientation of a simplex <em>agrees with</em> the orientation of one of its faces as long as we see an even permutation on the shared vertices. For instance, the orientations of the edge \((p_2,p_1)\) and the triangle \((p_1,p_3,p_2)\) agree. Geometrically all we&#8217;re saying is that the two &#8220;point&#8221; in the same direction (as depicted above). To keep yourself sane while working with meshes, the most important thing is to <em>pick and orientation and stick with it</em>!</p>
+<p>So in general, how do we integrate a \(k\)-form over an oriented \(k\)-simplex? Remember that a \(k\)-form is going to &#8220;eat&#8221; \(k\) vectors at each point and spit out a number &#8212; a good canonical choice is to take the ordered collection of edge vectors \((p_2 &#8211; p_1, \ldots, p_{k+1}-p_1)\) and orthogonalize them (using, say the Gram-Schmidt algorithm) to get vectors \((u_1, \ldots, u_n)\). This way the sign of the integrand changes whenever the orientation changes. Numerically, we can then approximate the integral via a sum</p>
+<p>\[ \int_\sigma \alpha \approx \frac{|\sigma|}{N} \sum_{i=1}^N \alpha_{p_i}(u_1, \ldots, u_n) \]</p>
+<p>where \(\{p_i\}\) is a (usually carefully-chosen) collection of sample points. (Can you see why the orientation of \(\sigma\) affects the sign of the integrand?) Sounds like a lot of work, but in practice one rarely constructs discrete differential forms via integration: more often, discrete forms are constructed via input data that is already discrete (e.g., vertex positions in a triangle mesh).</p>
+<p>By the way, what&#8217;s a discrete 0-form? Give up? Well, it must be a 0-form (i.e., a function) that&#8217;s been integrated over every 0-simplex (i.e., vertex) of a mesh:</p>
+<p>\[ \hat{\phi}_i = \int_{v_i} \phi \]</p>
+<p>By convention, the integral of a function over a zero-dimensional set is simply the value of the function at that point: \(\hat{\phi}_i = \phi(v_i)\). In other words, in the case of 0-forms there is no difference between storing point samples and storing integrated quantities: the two coincide.</p>
+<p>It&#8217;s also important to remember that differential forms don&#8217;t have to be <em>real</em>-valued. For instance, we can think of a map \(f: M \rightarrow \mathbb{R}^3\) that encodes the geometry of a surface as an \(\mathbb{R}^3\)-valued 0-form; its differential \(df\) is then an \(\mathbb{R}^3\)-valued 1-form, etc. Likewise, when we say that a discrete differential form is a <em>number</em> stored on every mesh element, the word &#8220;number&#8221; is used in a fairly loose sense: a number could be a real value, a vector, a complex number, a quaternion, etc. For instance, the collection of \((x,y,z)\) vertex coordinates of a mesh can be viewed as an \(\mathbb{R}^3\)-valued discrete 0-form (namely, one that discretizes the map \(f\)). The only requirement, of course, is that we store the same <em>type</em> of number on each mesh element.</p>
+<p><strong><span style="text-decoration: underline;">The Discrete Exterior Derivative</span></strong></p>
+<p>One of the main advantages of working with integrated (i.e., &#8220;discrete&#8221;) differential forms instead of point samples is that we can easily take advantage of <a title="A Quick and Dirty Introduction to Exterior Calculus — Part V: Integration and Stokes’ Theorem" href="index.html@p=298.html">Stokes&#8217; theorem</a>. Remember that Stokes&#8217; theorem says</p>
+<p>\[ \int_\Omega d\alpha = \int_{\partial\Omega} \alpha, \]</p>
+<p>for any \(k\)-form \(\alpha\) and \(k+1\)-dimensional domain \(\Omega\). In other words, we can integrate the derivative of a differential form as long as we know its integral along the boundary. But that&#8217;s <em>exactly</em> the kind of information encoded by a discrete differential form! For instance, if \(\hat{\alpha}\) is a discrete 1-form stored on the three edges of a triangle \(\sigma\), then we have</p>
+<p>\[ \int_\sigma d\alpha = \int_{\partial\sigma} \alpha = \sum_{i=1}^3 \int_{e_i} \alpha = \sum_{i=1}^3 \hat{\alpha}_i. \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_discrete_exterior_derivative1.svg"><img class="aligncenter size-full wp-image-285" title="ddg_discrete_exterior_derivative" src="../cs177/wp-content/uploads/2011/11/ddg_discrete_exterior_derivative1.svg" alt="" /></a></p>
+<p>In other words, we can <em>exactly</em> evaluate the integral on the left by just adding up three numbers. Pretty cool! In fact, the thing on the left is <em>also</em> a discrete differential form: it&#8217;s the 2-form \(d\alpha\) integrated over the only triangle in our mesh. So for convenience, we&#8217;ll call this guy &#8220;\(\hat{d}\hat{\alpha}\)&#8221;, and we&#8217;ll call the operation \(\hat{d}\) the <em>discrete exterior derivative</em>. (In the future we will drop the hats from our notation when the meaning is clear from context.) In other words, the discrete exterior derivative takes a \(k\)-form that has <em>already been integrated</em> over each \(k\)-simplex and applies Stokes&#8217; theorem to get the integral of the derivative over each \(k+1\)-simplex.</p>
+<p>In practice (i.e., in code) you can see how this operation might be implemented by simply taking local sums over the appropriate mesh elements. However, in the example above we made life particularly easy on ourselves by giving each edge an orientation that agrees with the orientation of the triangle. Unfortunately assigning a consistent orientation to every simplex is not always possible, and in general we need to be more careful about <em>sign</em> when adding up our piecewise integrals. For instance, in the example below we&#8217;d have</p>
+<p>\[ (\hat{d}\hat{\alpha})_1 = \hat{\alpha}_1 + \hat{\alpha}_2 + \hat{\alpha}_3 \]</p>
+<p>and</p>
+<p>\[ (\hat{d}\hat{\alpha})_2 = \hat{\alpha}_4 + \hat{\alpha}_5 - \hat{\alpha}_2. \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_exterior_derivative_sign.svg"><img class="aligncenter size-full wp-image-281" title="ddg_exterior_derivative_sign" src="../cs177/wp-content/uploads/2011/11/ddg_exterior_derivative_sign.svg" alt="" /></a></p>
+<p><strong><span style="text-decoration: underline;">Discrete Hodge Star</span></strong></p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_simplicial_dual.svg"><img class="aligncenter size-full wp-image-282" title="ddg_simplicial_dual" src="../cs177/wp-content/uploads/2011/11/ddg_simplicial_dual.svg" alt="" /></a></p>
+<p>As hinted at above, a discrete \(k\)-form captures the behavior of a continuous \(k\)-form along \(k\) directions, but not along the remaining \(n-k\) directions &#8212; for instance, a discrete 1-form in 2D captures the flow along edges but not in the orthogonal direction. If you paid attention to our discussion of <a title="A Quick and Dirty Introduction to Exterior Calculus — Part III: Hodge Duality" href="index.html@p=294.html">Hodge duality</a>, this story starts to sound familiar! To capture Hodge duality in the discrete setting, we&#8217;ll need to define a <em>dual mesh</em>. In general, the dual of an \(n\)-dimensional simplicial mesh identifies every \(k\)-simplex in the primal (i.e., original) mesh with a unique \((n-k)\)-cell in the dual mesh. In a two-dimensional <em>simplicial</em> mesh, for instance, primal vertices are identified with dual faces, primal edges are identified with dual edges, and primal faces are identified with dual vertices. Note, however, that the dual cells are not always simplices! (See above.)</p>
+<p>So how do we talk about Hodge duality in discrete exterior calculus? Quite simply, the <em>discrete Hodge dual</em> of a (discrete) \(k\)-form on the primal mesh is an \((n-k)\)-form on the dual mesh. Similarly, the Hodge dual of an \(k\)-form on the dual mesh is a \(k\)-form on the primal mesh. Discrete forms on the primal mesh are called <em>primal forms</em> and discrete forms on the dual mesh are called <em>dual forms</em>. Given a discrete form \(\hat{\alpha}\) (whether primal or dual), its Hodge dual is typically written as \(\hat{\star} \hat{\alpha}\).</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_discrete_hodge_duality.svg"><img class="aligncenter size-full wp-image-283" title="ddg_discrete_hodge_duality" src="../cs177/wp-content/uploads/2011/11/ddg_discrete_hodge_duality.svg" alt="" /></a></p>
+<p>Unlike continuous forms, discrete primal and dual forms live in different places (so for instance, discrete primal \(k\)-forms and dual \(k\)-forms cannot be added to each other). In fact, primal and dual forms often have different physical interpretations. For instance, a primal 1-form might represent the total circulation along edges of the primal mesh, whereas in the same context a dual 1-form might represent the total flux through the corresponding dual edges (see illustration above).</p>
+<p>Of course, these two quantities (flux and circulation) are closely related, and naturally leads into one definition for a discrete Hodge star called the <em>diagonal Hodge star</em>. Consider a primal \(k\)-form \(\alpha\). If \(\hat{\alpha}_i\) is the value of \(\hat{\alpha}\) on the \(k\)-simplex \(\sigma_i\), then the diagonal Hodge star is defined by</p>
+<p>\[ \hat{\star} \hat{\alpha}_i = \frac{|\sigma_i^\star|}{|\sigma_i|} \hat{\alpha}_i \]</p>
+<p>for all \(i\), where \(|\sigma|\) indicates the (unsigned) volume of \(\sigma\) (which by convention equals <em>one</em> for a vertex!) and \(|\sigma^\star|\) is the volume of the corresponding dual cell. In other words, to compute the dual form we simply multiply the scalar value stored on each cell by the ratio of corresponding dual and primal volumes.</p>
+<p>If we remember that a discrete form can be thought of as a continuous form integrated over each cell, this definition for the Hodge star makes perfect sense: the primal and dual quantities should have the same <em>density</em>, but we need to account for the fact that they are integrated over cells of different volume. We therefore normalize by a <em>ratio</em> of volumes when mapping between primal and dual. This particular Hodge star is called <em>diagonal</em> since the \(i\)th element of the dual differential form depends only on the \(i\)th element of the primal differential form. It&#8217;s not hard to see, then, that Hodge star taking dual forms to primal forms (the <em>dual Hodge star</em>) is the inverse of the one that takes primal to dual (the <em>primal Hodge star</em>).</p>
+<p><strong><span style="text-decoration: underline;">That&#8217;s All, Folks!</span></strong></p>
+<p>Hey, wait a minute, what about our other operations, like the wedge product (\(\wedge\))? These operations can certainly be defined in the discrete setting, but we won&#8217;t go into detail here &#8212; the basic recipe is to integrate, integrate, integrate. Actually, even in <em>continuous</em> exterior calculus we omitted a couple operations like the <em>Lie derivative</em> (\(\mathcal{L}_X\)) and the <em>interior product</em> (\(i_\alpha\)). Coming up with a complete discrete calculus where the whole cast of characters \(d\), \(\wedge\), \(\star\), \(\mathcal{L}_X\), \(i_\alpha\), etc., plays well together is an active and ongoing area of research, which may be of interest to aspiring young researchers like you (yes, <em>you</em>)!</p>
+                </div>
+                <footer>
+                                        November 13, 2012 |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <a href="index.html@p=307.html#comments" class="comments-link"  title="Comment on Discrete Exterior Calculus">3 Comments &#187;</a>                </footer>
+            </article>
+                                <article class="post-302 post type-post status-publish format-standard hentry category-homework" id="post-302">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=302.html" rel="bookmark" title="Permanent Link to Homework 3: The Discrete Laplacian">Homework 3: The Discrete Laplacian</a></h2>
+                </header>
+                <div class="entry">
+                	<p>In the course notes we mentioned that the <em><a title="A Quick and Dirty Introduction to Exterior Calculus — Part IV: Differential Operators" href="index.html@p=296.html">Laplace-Beltrami operator</a></em> (more commonly known as just the <em>Laplacian</em>) plays a fundamental role in a variety of geometric and physical equations. In this homework we&#8217;ll put the Laplacian to work by coming up with a discrete version for triangulated surfaces. Similar to the homework on vertex normals, we&#8217;ll see that the same discrete expression for the Laplacian (via the <em>cotan formula</em>) arises from two very different ways of looking at the problem: using <em>test functions</em> (often known as <em>Galerkin projection</em>), or by integrating differential forms (often called <em>discrete exterior calculus</em>).</p>
+<p><strong><span style="text-decoration: underline;">Poisson Equations</span></strong></p>
+<p>Before we start talking about discretization, let&#8217;s establish a few basic facts about the Laplace operator \(\Delta\) and the standard <em>Poisson problem</em></p>
+<p>\[ \Delta \phi = \rho. \]</p>
+<p>Poisson equations show up all over the place &#8212; for instance, in physics \(\rho\) might represent a mass density in which case the solution \(\phi\) would (up to suitable constants) give the corresponding gravitational potential. Similarly, if \(\rho\) describes an charge density then \(\phi\) gives the corresponding electric potential (you&#8217;ll get to play around with these equations in the code portion of this assignment). In geometry processing a surprising number of things can be done by solving a Poisson equation (e.g., smoothing a surface, computing a vector field with prescribed singularities, or even computing the geodesic distance on a surface).</p>
+<p>Often we&#8217;ll be interested in solving Poisson equations on a compact surface \(M\) without boundary.</p>
+<p><strong>Exercise 3.1:</strong> A twice-differentiable function \(\phi: M \rightarrow \mathbb{R}\) is called <em>harmonic</em> if it sits in the kernel of the Laplacian, i.e., \(\Delta \phi = 0\). Argue that the <em>only</em> harmonic functions on a compact domain without boundary are the <em>constant</em> functions. (This argument does not have to be incredibly formal &#8212; there are a just couple simple observations that capture the main idea.)</p>
+<p>This fact is quite important because it means we can add a constant to any solution to a Poisson equation. In other words, if \(\phi\) satisfies \(\Delta \phi = \rho\), then so does \(\phi+c\) since \(\Delta(\phi+c) = \Delta\phi + \Delta c = \Delta\phi + 0 = \rho\).</p>
+<p><strong>Exercise 3.2:</strong> A separate fact is that on a compact domain without boundary, constant functions are not in the image of \(\Delta\). In other words, there is no function \(\phi\) such that \(\Delta \phi = c\). Why?</p>
+<p>This fact is also important because it tells us when a given Poisson equation admits a solution. In particular, if \(\rho\) has a constant component then the problem is not well-posed. In some situations, however, it may make sense to simply remove the constant component. I.e., instead of trying to solve \(\Delta \phi = \rho\) one can solve \(\Delta \phi = \rho &#8211; \bar{\rho}\), where \(\bar{\rho} := \int_M \rho\ dV / |M| \) and \(|M|\) is the total volume of \(M\). However, you <em>must</em> be certain that this trick makes sense in the context of your particular problem!</p>
+<p>When working with PDEs like the Poisson equation, it&#8217;s often useful to have an <em>inner product</em> between functions. An extremely common inner product is the <em>\(L^2\) inner product</em> \(\langle \cdot, \cdot \rangle\), which takes the integral of the pointwise product of two functions over the entire domain \(\Omega\):</p>
+<p>\[ \langle f, g \rangle := \int_\Omega f(x) g(x) dx. \]</p>
+<p>In spirit, this operation is similar to the usual <em>dot product</em> on \(\mathbb{R}^n\): it measures the degree to which two functions &#8220;line up.&#8221; For instance, the top two functions have a large inner product; the bottom two have a smaller inner product (as indicated by the dark blue regions):</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_l2_inner_product.svg"><img class="aligncenter size-full wp-image-310" title="ddg_l2_inner_product" src="../cs177/wp-content/uploads/2011/11/ddg_l2_inner_product.svg" alt="" /></a></p>
+<p>Similarly, for two vector fields \(X\) and \(Y\) we can define an \(L^2\) inner product</p>
+<p>\[ \langle X, Y \rangle := \int_\Omega X(x) \cdot Y(x) dx \]</p>
+<p>which measures how much the two fields &#8220;line up&#8221; at each point.</p>
+<p>Using the \(L^2\) inner product we can express an important relationship known as <em>Green&#8217;s first identity</em>. Green&#8217;s identity says that for any sufficiently differentiable functions \(f\) and \(g\)</p>
+<p>\[ \langle \Delta f, g \rangle = -\langle \nabla f, \nabla g \rangle + \langle N \cdot \nabla f, g \rangle_\partial, \]</p>
+<p>where \(\langle \cdot, \cdot \rangle_\partial\) denotes the inner product on the boundary and \(N\) is the outward unit normal.</p>
+<p><strong>Exercise 3.3:</strong> Using exterior calculus, show that Green&#8217;s identity holds. Hint: apply Stokes&#8217; theorem to the 1-form \(g df\).</p>
+<p>One last key fact about the Laplacian is that it is <em>positive-semidefinite</em>, i.e., \(\Delta\) satisfies</p>
+<p>\[ \langle \Delta \phi, \phi \rangle \geq 0 \]</p>
+<p>for all functions \(\phi\). (By the way, why isn&#8217;t this quantity <em>strictly</em> greater than zero?) Words cannot express the importance of positive-(semi)definiteness. Let&#8217;s think about a very simple example: functions of the form \(\phi(x,y) = ax^2 + bxy + cy^2\) in the plane. Any such function can also be expressed in matrix form:</p>
+<p>\[ \phi(x,y) = \underbrace{\left[ \begin{array}{cc} x &amp; y \end{array} \right]}_{\mathbf{x}^T} \underbrace{\left[ \begin{array}{cc} a &amp; b/2 \\ b/2 &amp; c \end{array} \right]}_{A} \underbrace{\left[ \begin{array}{c} x \\ y \end{array} \right]}_{\mathbf{x}} = ax^2 + bxy + cy^2, \]</p>
+<p>and we can likewise define positive-semidefiniteness for \(A\). But what does it actually look like? It looks like this &#8212; positive-definite matrices (\(\mathbf{x}^T A \mathbf{x} &gt; 0\)) look like a bowl, positive-semidefinite matrices (\(\mathbf{x}^T A \mathbf{x} \geq 0\)) look like a half-cylinder, and indefinite matrices (\(\mathbf{x}^T A \mathbf{x}\) might be positive or negative depending on \(\mathbf{x}\)) look like a saddle:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_definiteness.svg"><img class="aligncenter size-full wp-image-311" title="ddg_definiteness" src="../cs177/wp-content/uploads/2011/11/ddg_definiteness.svg" alt="" /></a></p>
+<p>Now suppose you&#8217;re a back country skiier riding down this kind of terrain in the middle of a howling blizzard. You&#8217;re cold and exhausted, and you know you parked your truck in a place where the ground levels out, but where exactly is it? The snow is blowing hard and visibility is low &#8212; all you can do is keep your fingers crossed and follow the slope of the mountain as you make your descent. (Trust me: this is really how one feels when doing numerical optimization!) If you were smart and went skiing in Pos Def Valley then you can just keep heading down and will soon arrive safely back at the truck. But maybe you were feeling a bit more adventurous that day and took a trip to Semi Def Valley. In that case you&#8217;ll still get to the bottom, but may have to hike back and forth along the length of the valley before you find your car. Finally, if your motto is &#8220;safety second&#8221; then you threw caution to the wind and took a wild ride in Indef Valley. In this case you may never make it home!</p>
+<p>In short: positive-definite matrices are nice because it&#8217;s easy to find the minimum of the quadratic functions they describe &#8212; many tools in numerical linear algebra are based on this idea. Same goes for positive definite <em>linear operators</em> like the Laplacian, which can often be thought of as sort of infinite-dimensional matrices (if you took some time to read about the <a href="http://en.wikipedia.org/wiki/Spectral_theorem">spectral theorem</a>, you&#8217;ll know that this analogy runs even deeper, especially on compact domains). Given the ubiquity of Poisson equations in geometry and physics, it&#8217;s a damn good thing \(\Delta\) is positive-semidefinite!</p>
+<p><strong>Exercise 3.4:</strong> Using Green&#8217;s first identity, show that \(\Delta\) is negative-semidefinite on any compact surface \(M\) without boundary. From a practical perspective, why are negative semi-definite operators just as good as positive semi-definite ones?</p>
+<p><strong><span style="text-decoration: underline;">Test Functions</span></strong></p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_fem_basis.svg"><img class="aligncenter size-full wp-image-312" title="ddg_fem_basis" src="../cs177/wp-content/uploads/2011/11/ddg_fem_basis.svg" alt="" /></a></p>
+<p>The solution to a geometric or physical problem is often described by a <em>function</em>: the temperature at each point on the Earth, the curvature at each point on a surface, the amount of light hitting each point of your retina, etc. Yet the space of <em>all possible</em> functions is mind-bogglingly large &#8212; too large to be represented on a computer. The basic idea behind the <em>finite element method</em> is to pick a smaller set of functions and try to find the best possible solution from within this set. More specifically, if \(u\) is the true solution to a problem and \(\{\phi_i\}\) is a collection of <em>basis functions</em>, then we seek the linear combination of these functions</p>
+<p>\[ \tilde{u} = \sum_i x_i \phi_i,\ x_i \in \mathbb{R} \]</p>
+<p>such that the difference \(||\tilde{u}-u||\) is as small as possible with respect to some norm. (Above we see a detailed curve \(u\) and its best approximation \(\tilde{u}\) by a collection of bump-like basis functions \(\phi_i\).)</p>
+<p>Let&#8217;s start out with a very simple question: suppose we have a vector \(v \in \mathbb{R}^3\), and want to find the best approximation \(\tilde{v}\) within a plane spanned by two basis vectors \(e_1, e_2 \in \mathbb{R}^3\):</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_solution_space.svg"><img class="aligncenter size-full wp-image-313" title="ddg_solution_space" src="../cs177/wp-content/uploads/2011/11/ddg_solution_space.svg" alt="" /></a></p>
+<p>Since \(\tilde{v}\) is forced to stay in the plane, the best we can do is make sure there&#8217;s error <em>only</em> in the normal direction. In other words, we want the error \(\tilde{v} &#8211; v\) to be orthogonal to both basis vectors \(e_1\) and \(e_2\):</p>
+<p>\[<br />
+\begin{array}{rcl}<br />
+(\tilde{v} - v) \cdot e_1 &amp;=&amp; 0, \\<br />
+(\tilde{v} - v) \cdot e_2 &amp;=&amp; 0. \\<br />
+\end{array}<br />
+\]</p>
+<p>In this case we get a system of two linear equations for two unknowns, and can easily compute the optimal vector \(\tilde{v}\).</p>
+<p>Now a harder question: suppose we want to solve a standard Poisson problem</p>
+<p>\[ \Delta u = f. \]</p>
+<p>How do we check whether a given function \(\tilde{u}\) is the best possible solution? The basic picture still applies, except that our bases are now <em>functions</em> \(\phi\) instead of finite-dimensional vectors \(e_i\), and the simple vector dot product \(\cdot\) gets replaced by the <em>\(L^2\) inner product</em>. Unfortunately, when trying to solve a Poisson equation we don&#8217;t know what the correct solution \(u\) looks like (otherwise we&#8217;d be done already!). So instead of the error \(\tilde{u} &#8211; u\), we&#8217;ll have to look at the <em>residual</em> \(\Delta \tilde{u} &#8211; f\), which measures how closely \(\tilde{u}\) satisfies our original equation. In particular, we want to &#8220;test&#8221; that the residual vanishes along each basis direction \(\phi_j\):</p>
+<p>\[ \langle \Delta \tilde{u} - f, \phi_j \rangle = 0, \]</p>
+<p>again resulting in a system of linear equations. This condition ensures that the solution behaves just as the true solution would over a large collection of possible &#8220;measurements.&#8221;</p>
+<p>Next, let&#8217;s work out the details of this system for a triangulated surface. The most natural choice of basis functions are the piecewise linear <em>hat functions</em> \(\phi_i\), which equal one at their associated vertex and zero at all other vertices:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_hat_function.svg"><img class="aligncenter size-full wp-image-314" title="ddg_hat_function" src="../cs177/wp-content/uploads/2011/11/ddg_hat_function.svg" alt="" /></a></p>
+<p>At this point you might object: if all our functions are piecewise linear, and \(\Delta\) is a <em>second</em> derivative, aren&#8217;t we just going to get zero every time we evaluate \(\Delta u\)? Fortunately we&#8217;re saved by Green&#8217;s identity &#8212; let&#8217;s see what happens if we apply this identity to our triangle mesh, by breaking up the integral into a sum over individual triangles \(\sigma\):</p>
+<p>\[<br />
+\begin{array}{rcl}<br />
+\langle \Delta u, \phi_j \rangle<br />
+&amp;=&amp; \sum_k \langle \Delta u, \phi_j \rangle_{\sigma_k} \\<br />
+&amp;=&amp; \sum_k \langle \nabla u, \nabla \phi_j \rangle_{\sigma_k} + \sum_k \langle N \cdot \nabla u, \phi_j \rangle_{\partial\sigma_k}. \\<br />
+\end{array}<br />
+\]</p>
+<p>If the mesh has no boundary then this final sum will disappear since the normals of adjacent triangles are oppositely oriented, hence the boundary integrals along shared edges cancel each-other out:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_greensidentity_cancellation.svg"><img class="aligncenter size-full wp-image-315" title="ddg_greensidentity_cancellation" src="../cs177/wp-content/uploads/2011/11/ddg_greensidentity_cancellation.svg" alt="" /></a></p>
+<p>In this case, we&#8217;re left with simply</p>
+<p>\[ \langle \nabla u, \nabla \phi_j \rangle \]</p>
+<p>in each triangle \(\sigma_k\). In other words, we can &#8220;test&#8221; \(\Delta u\) as long as we can compute the gradients of both the candidate solution \(u\) and each basis function \(\phi_j\). But remember that \(u\) is itself a linear combination of the bases \(\phi_i\), so we have</p>
+<p>\[ \langle \nabla u, \nabla \phi_j \rangle = \left\langle \nabla \sum_i x_i \phi_i, \nabla \phi_j \right\rangle = \sum_i x_i \langle \nabla \phi_i, \nabla \phi_j \rangle. \]</p>
+<p>The critical thing now becomes the inner product between the gradients of the basis functions in each triangle. If we can compute these, then we can simply build the matrix</p>
+<p>\[ A_{ij} := \langle \nabla \phi_i, \nabla \phi_j \rangle \]</p>
+<p>and solve the problem</p>
+<p>\[ A x = b \]</p>
+<p>for the coefficients \(x\), where the entries on the right-hand side are given by \(b_i = \langle f, \phi_i \rangle\) (i.e., we just take the same &#8220;measurements&#8221; on the right-hand side).</p>
+<p><strong>Exercise 3.5:</strong> Show that the aspect ratio of a triangle can be expressed as the sum of the cotangents of the interior angles at its base, i.e.,</p>
+<p>\[ \frac{w}{h} = \cot{\alpha} + \cot{\beta}. \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_triangle_ratio_cotans.svg"><img class="aligncenter size-full wp-image-316" title="ddg_triangle_ratio_cotans" src="../cs177/wp-content/uploads/2011/11/ddg_triangle_ratio_cotans.svg" alt="" /></a></p>
+<p><strong>Exercise 3.6:</strong> Let \(e\) be the edge vector along the base of a triangle. Show that the gradient of the hat function \(\phi\) on the opposite vertex is given by</p>
+<p>\[ \nabla \phi = \frac{e^\perp}{2A}, \]</p>
+<p>where \(e^\perp\) is the vector \(e\) rotated by a quarter turn in the counter-clockwise direction and \(A\) is the area of the triangle.</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_hatfunction_gradient.svg"><img class="aligncenter size-full wp-image-318" title="ddg_hatfunction_gradient" src="../cs177/wp-content/uploads/2011/11/ddg_hatfunction_gradient.svg" alt="" /></a></p>
+<p><strong>Exercise 3.7:</strong> Show that for any hat function \(\phi\) associated with a given vertex</p>
+<p>\[\langle \nabla \phi, \nabla \phi \rangle = \frac{1}{2}( \cot\alpha + \cot\beta )\]</p>
+<p>within a given triangle, where \(\alpha\) and \(\beta\) are the interior angles at the remaining two vertices.</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_hatfunction_selfgradient_cotan.svg"><img class="aligncenter size-full wp-image-319" title="ddg_hatfunction_selfgradient_cotan" src="../cs177/wp-content/uploads/2011/11/ddg_hatfunction_selfgradient_cotan.svg" alt="" /></a></p>
+<p><strong>Exercise 3.8:</strong> Show that for the hat functions \(\phi_i\) and \(\phi_j\) associated with vertices \(i\) and \(j\) (respectively) of the same triangle, we have</p>
+<p>\[ \langle \nabla \phi_i, \nabla \phi_j \rangle = -\frac{1}{2} \cot \theta, \]</p>
+<p>where \(\theta\) is the angle between the opposing edge vectors.</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_hatfunction_gradient_cotan.svg"><img class="aligncenter size-full wp-image-320" title="ddg_hatfunction_gradient_cotan" src="../cs177/wp-content/uploads/2011/11/ddg_hatfunction_gradient_cotan.svg" alt="" /></a></p>
+<p>Putting all these facts together, we find that we can express the Laplacian of \(u\) at vertex \(i\) via the infamous <em>cotan formula</em></p>
+<p>\[ (\Delta u)_i = \frac{1}{2} \sum_j (\cot \alpha_j + \cot \beta_j )( u_j - u_i ), \]</p>
+<p>where we sum over the immediate neighbors of vertex \(i\).</p>
+<p><strong><span style="text-decoration: underline;">Differential Forms</span></strong></p>
+<p>The &#8220;Galerkin&#8221; approach taken above reflects a fairly standard way to discretize partial differential equations. But let&#8217;s try a different approach, based on exterior calculus. Again we want to solve the Poisson equation \(\Delta u = f\), which (if you remember our discussion of differential operators) can also be expressed as</p>
+<p>\[ \star d \star d u = f. \]</p>
+<p>We already outlined how to discretize this kind of expression in the notes on discrete exterior calculus, but let&#8217;s walk through it step by step. We start out with a 0-form \(u\), which is specified as a number \(u_i\) at each vertex:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_cotan_laplace_0form.svg"><img class="aligncenter size-full wp-image-321" title="ddg_cotan_laplace_0form" src="../cs177/wp-content/uploads/2011/11/ddg_cotan_laplace_0form.svg" alt="" /></a></p>
+<p>Next, we compute the discrete exterior derivative \(d u\), which just means that we want to <em>integrate</em> the derivative along each edge:</p>
+<p>\[ (du)_{ij} = \int_{e_{ij}}\!du = \int_{\partial e_{ij}}\!u = u_j - u_i. \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_cotan_laplace_1form.svg"><img class="aligncenter size-full wp-image-346" title="ddg_cotan_laplace_1form" src="../cs177/wp-content/uploads/2011/11/ddg_cotan_laplace_1form.svg" alt="" /></a></p>
+<p>(Note that the boundary \(\partial e_{ij}\) of the edge is simply its two endpoints \(v_i\) and \(v_j\).) The Hodge star converts a circulation along the edge \(e_{ij}\) into the flux through the corresponding dual edge \(e^\star_{ij}\). In particular, we take the <em>total circulation</em> along the primal edge, divide it by the edge length to get the <em>average pointwise circulation</em>, then multiply by the dual edge length to get the <em>total flux</em> through the dual edge:</p>
+<p>\[ (\star du)_{ij} = \frac{|e^\star_{ij}|}{e_{ij}}(u_j - u_i). \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_cotan_laplace_dual1form1.svg"><img class="aligncenter size-full wp-image-323" title="ddg_cotan_laplace_dual1form" src="../cs177/wp-content/uploads/2011/11/ddg_cotan_laplace_dual1form1.svg" alt="" /></a></p>
+<p>Here \(|e_{ij}|\) and \(e^\star_{ij}\) denote the length of the primal and dual edges, respectively. Next, we take the derivative of \(\star d u\) and integrate over the whole dual cell:</p>
+<p>\[ (d \star d u)_i = \int_{C_i} d \star d u = \int_{\partial C_i} \star d u = \sum_j \frac{|e^\star_{ij}|}{|e_{ij}|}( u_j - u_i ). \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_cotan_laplace_dual2form.svg"><img class="aligncenter size-full wp-image-324" title="ddg_cotan_laplace_dual2form" src="../cs177/wp-content/uploads/2011/11/ddg_cotan_laplace_dual2form.svg" alt="" /></a></p>
+<p>The final Hodge star simply divides this quantity by the area of \(C_i\) to get the average value over the cell, and we end up with a system of linear equations</p>
+<p>\[ (\star d \star d u)_i = \frac{1}{|C_i|} \sum_j \frac{|e^\star_{ij}|}{|e_{ij}|}( u_j - u_i ) = f_i \]</p>
+<p>where \(f_i\) is the value of the right-hand side at vertex \(i\). In practice, however, it&#8217;s often preferable to move the area factor \(|C_i|\) to the right hand side, since the resulting system</p>
+<p>\[ (\star d \star d u)_i = \sum_j \frac{|e^\star_{ij}|}{|e_{ij}|}( u_j - u_i ) = |C_i| f_i \]</p>
+<p>can be represented by a <em>symmetric</em> matrix. (Symmetric matrices are often easier to deal with numerically and lead to more efficient algorithms.) Another way of looking at this transformation is to imagine that we discretized the system</p>
+<p>\[ d \star d u = \star f. \]</p>
+<p>In other words, we converted an equation in terms of 0-forms into an equation in terms of \(n\)-forms. When working with surfaces, the operator \(d \star d\) is sometimes referred to as the <em>conformal Laplacian</em>, because it does not change when we subject our surface to a conformal transformation. Alternatively, we can think of \(d \star d\) as simply an operator that gives us the value of the Laplacian integrated over each dual cell of the mesh (instead of the pointwise value).</p>
+<p><strong>Exercise 3.9:</strong> Consider a simplicial surface and suppose we place the vertices of the dual mesh at the circumcenters of the triangles (i.e., the center of the unique circle containing all three vertices):</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_hodge_cotan.svg"><img class="aligncenter size-full wp-image-325" title="ddg_hodge_cotan" src="../cs177/wp-content/uploads/2011/11/ddg_hodge_cotan.svg" alt="" /></a></p>
+<p>Demonstrate that the dual edge \(e^\star\) (i.e., the line between the two circumcenters) bisects the primal edge orthogonally, and use this fact to show that</p>
+<p>\[ \frac{|e^\star_{ij}|}{|e_{ij}|} = \frac{1}{2}(\cot \alpha_j + \cot \beta_j). \]</p>
+<p>Hence the DEC discretization yields precisely the same &#8220;cotan-Laplace&#8221; operator as the Galerkin discretization.</p>
+<p><strong><span style="text-decoration: underline;">Meshes and Matrices</span></strong></p>
+<p>So far we&#8217;ve been giving a sort of &#8220;algorithmic&#8221; description of operators like Laplace. For instance, we determined that the Laplacian of a scalar function \(u\) at a vertex \(i\) can be approximated as</p>
+<p>\[ (\Delta u)_i = \frac{1}{2} \sum_j (\cot\alpha_j+\cot\beta_j)(u_j - u_i), \]</p>
+<p>where the sum is taken over the immediate neighbors \(j\) of \(i\). In code, this sum could easily be expressed as a <em>loop</em> and evaluated at any vertex. However, a key aspect of working with discrete differential operators is building their <em>matrix representation</em>. The motivation for encoding an operator as a matrix is so that we can solve systems like</p>
+<p>\[ \Delta u = f \]</p>
+<p>using a standard numerical linear algebra package. (To make matters even more complicated, some linear solvers are perfectly happy to work with algorithmic representations of operators called <em>callback functions</em> &#8212; in general, however, we&#8217;ll need a matrix.)</p>
+<p>In the case of the Poisson equation, we want to construct a matrix \(L \in \mathbb{R}^{|V| \times |V|}\) (where \(|V|\) is the number of mesh vertices) such that for any vector \(u \in \mathbb{R}^{|V|}\) of values at vertices, the expression \(Lu\) effectively evaluates the formula above. But let&#8217;s start with something simpler &#8212; consider an operator \(B\) that computes the sum of all neighboring values:</p>
+<p>\[ (Bu)_i = \sum_j u_j \]</p>
+<p>How do we build the matrix representation of this operator? Think of \(B\) as a machine that takes a vector \(u\) of input values at each vertex and spits out another vector \(Bu\) of output values. In order for this story to make sense, we need to know which values correspond to which vertices. In other words, we need to assign a unique <em>index</em> to each vertex of our mesh, in the range \(1, \ldots, |V|\):</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_vertex_indices.svg"><img class="aligncenter size-full wp-image-326" title="ddg_vertex_indices" src="../cs177/wp-content/uploads/2011/11/ddg_vertex_indices.svg" alt="" /></a></p>
+<p>It doesn&#8217;t matter which numbers we assign to which vertices, so long as there&#8217;s one number for every vertex and one vertex for every number. This mesh has twelve vertices and vertex 1 is next to vertices 2, 3, 4, 5, and 9. So we could compute the sum of the neighboring values as</p>
+<p>\[ (Bu)_1 = \left[ \begin{array}{cccccccccccc} 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \end{array} \right]\left[ \begin{array}{c} u_1 \\ u_2 \\ u_3 \\ u_4 \\ u_5 \\ u_6 \\ u_7 \\ u_8 \\ u_9 \\ u_{10} \\ u_{11} \\ u_{12} \end{array} \right]. \]</p>
+<p>Here we&#8217;ve put a &#8220;1&#8243; in the \(j\)th place whenever vertex \(j\) is a neighbor of vertex \(i\) and a &#8220;0&#8243; otherwise. Since this row gives the &#8220;output&#8221; value at the first vertex, we&#8217;ll make it the first row of the matrix \(B\). The entire matrix looks like this:</p>
+<p>\[<br />
+B =<br />
+\left[<br />
+\begin{array}{cccccccccccc}<br />
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\<br />
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\<br />
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\<br />
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\<br />
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\<br />
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\<br />
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\<br />
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\<br />
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\<br />
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \\<br />
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\<br />
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\<br />
+\end{array}<br />
+\right]<br />
+\]</p>
+<p>(You could verify that this matrix is correct, or you could go outside and play in the sunshine. Your choice.) In practice, fortunately, we don&#8217;t have to build matrices &#8220;by hand&#8221; &#8212; we can simply start with a matrix of zeros and fill in the nonzero entries by looping over local neighborhoods of our mesh.</p>
+<p>Finally, one important thing to notice here is that many of the entries of \(B\) are <em>zero</em>. In fact, for most discrete operators the number of zeros far outnumbers the number of nonzeros. For this reason, it&#8217;s usually a good idea to use a <em>sparse matrix</em>, i.e., a data structure that stores only the location and value of nonzero entries (rather than explicitly storing every single entry of the matrix). The design of sparse matrix data structures is an interesting question all on its own, but conceptually you can imagine that a sparse matrix is simply a list of triples \((i,j,x)\) where \(i,j \in \mathbb{N}\) specify the row and column index of a nonzero entry and \(x \in \mathbb{R}\) gives its value.</p>
+<p><strong><span style="text-decoration: underline;">Scalar Poisson Equation</span></strong></p>
+<p>In the first part of the coding assignment you&#8217;ll build the cotan-Laplace operator and use it to solve the scalar Poisson equation</p>
+<p>\[ \Delta \phi = \rho \]</p>
+<p>on a triangle mesh, where \(\rho\) can be thought of as a (mass or charge) density and \(\phi\) can be thought of as a (gravitational or electric) potential. Once you&#8217;ve implemented the methods below, you can visualize the results via the <tt>libDDG</tt> GUI. (If you want to play with the density function \(\rho\), take a look at the method <tt>Viewer::updatePotential</tt>.)</p>
+<p><strong>Coding 3.1:</strong> Implement the method <tt>Mesh::indexVertices()</tt> which assigns a unique ID to each vertex in the range \(0, \ldots, |V|-1\).</p>
+<p><strong>Coding 3.2:</strong> Derive an expression for the cotangent of a given angle purely in terms of the two incident edge vectors and the standard Euclidean dot product \((\cdot)\) and cross product \((\times)\). Implement the method <tt>HalfEdge::cotan()</tt>, which computes the cotangent of the angle across from a given halfedge.</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_opposite_cotan.svg"><img class="aligncenter size-full wp-image-327" title="ddg_opposite_cotan" src="../cs177/wp-content/uploads/2011/11/ddg_opposite_cotan.svg" alt="" /></a></p>
+<p><strong>Coding 3.3:</strong> Implement the methods <tt>Face::area()</tt> and <tt>Vertex::dualArea()</tt>. For the dual area of a vertex you can simply use one-third the area of the incident faces &#8212; you do not need to compute the area of the circumcentric dual cell. (This choice of area will not affect the order of convergence.)</p>
+<p><strong>Coding 3.4:</strong> Using the methods you&#8217;ve written so far, implement the method <tt>Mesh::buildLaplacian()</tt> which builds a sparse matrix representing the cotan-Laplace operator. (Remember to initialize the matrix to the correct size!)</p>
+<p><strong>Coding 3.5:</strong> Implement the method <tt>Mesh::solveScalarPoissonProblem()</tt> which solves the problem \(\Delta\phi = \rho\) where \(\rho\) is a scalar density on vertices (stored in <tt>Vertex::rho</tt>). You can use the method <tt>solve</tt> from <tt>SparseMatrix.h</tt>; \(\rho\) and \(\phi\) should be represented by instances of <tt>DenseMatrix</tt> of the appropriate size. Be careful about appropriately incorporating <em>dual areas</em> into your computations; also remember that the right-hand side cannot have a constant component!</p>
+<p>You should verify that your code produces results that look something like these two images (density on the left; corresponding potential on the right):</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_bunny_potential.png"><img class="aligncenter size-full wp-image-328" title="ddg_bunny_potential" src="../cs177/wp-content/uploads/2011/11/ddg_bunny_potential.png" alt="" width="565" height="331" /></a></p>
+<p>(Take a look at the new menu items in the GUI.)</p>
+<p><strong><span style="text-decoration: underline;">Implicit Mean Curvature Flow</span></strong></p>
+<p>Next, you&#8217;ll use nearly identical code to smooth out geometric detail on a surface mesh (also known as <em>fairing</em> or <em>curvature flow</em>). The basic idea is captured by the <em>heat equation</em>, which describes the way heat diffuses over a domain. For instance, if \(u\) is a scalar function describing the temperature at every point on the real line, then the heat equation is given by</p>
+<p>\[ \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial x^2}. \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_heat_equation.svg"><img class="aligncenter size-full wp-image-329" title="ddg_heat_equation" src="../cs177/wp-content/uploads/2011/11/ddg_heat_equation.svg" alt="" /></a></p>
+<p>Geometrically this equation simply says that concave bumps get pushed down and convex bumps get pushed up &#8212; after a long time the heat distribution becomes completely flat. We also could have written this equation using the Laplacian: \(\frac{\partial u}{\partial t} = \Delta u\). In fact, this equation is exactly the one we&#8217;ll use to smooth out a surface, except that instead of considering the evolution of temperature, we consider the flow of the surface \(f: M \rightarrow \mathbb{R}^3\) itself:</p>
+<p>\[ \frac{\partial f}{\partial t} = \Delta f. \]</p>
+<p>Remember from <a title="Homework 2: Normals of Discrete Surfaces" href="index.html@p=285.html">our discussion of vertex normals</a> that \(\Delta f = 2HN,\) i.e., the Laplacian of position yields (twice) the mean curvature times the unit normal. Therefore, the equation above reads, &#8220;move the surface in the direction of the normal, with strength proportional to mean curvature.&#8221; In other words, it describes a <em>mean curvature flow</em>.</p>
+<p>So how do we compute this flow? We already know how to discretize the term \(\Delta f\) &#8212; just use the cotangent discretization of Laplace. But what about the time derivative \(\frac{\partial f}{\partial t}\)? There are all sorts of interesting things to say about discretizing time, but for now let&#8217;s use a very simple idea: the change over time can be approximated by the <em>difference</em> of two consecutive states:</p>
+<p>\[ \frac{\partial f}{\partial t} \approx \frac{f_h - f_0}{h}, \]</p>
+<p>where \(f_0\) is the initial state of our system (here the initial configuration of our mesh) and \(f_h\) is the configuration after a mean curvature flow of some duration \(h &gt; 0\). Our discrete mean curvature flow then becomes</p>
+<p>\[ \frac{f_h - f_0}{h} = \Delta f. \]</p>
+<p>The only remaining question is: which values of \(f\) do we use on the right-hand side? One idea is to use \(f_0\), which results in the system</p>
+<p>\[ f_h = f_0 + h\Delta f_0. \]</p>
+<p>This scheme, called <em>forward Euler</em>, is attractive because it can be evaluated directly using the known data \(f_0\) &#8212; we don&#8217;t have to solve a linear system. Unfortunately, forward Euler is not numerically stable, which means we can take only very small time steps \(h\). One attractive alternative is to use \(f_h\) as the argument to \(\Delta\), leading to the system</p>
+<p>\[ \underbrace{(I - h \Delta)}_A f_h = f_0, \]</p>
+<p>where \(I\) is the identity matrix (try the derivation yourself!) This scheme, called <em>backward Euler</em>, is far more stable, though we now have to solve a linear system \(A f_h = f_0\). Fortunately this system is highly <em>sparse</em>, which means it&#8217;s not too expensive to solve in practice. (Note that this system is not much different from the Poisson system.)</p>
+<p><strong>Coding 3.6:</strong> Implement the method <tt>Mesh::buildFlowOperator()</tt>, which should look very similar to <tt>Mesh::buildLaplacian</tt>.</p>
+<p><strong>Coding 3.7:</strong> Implement the method <tt>Mesh::computeImplicitMeanCurvatureFlow()</tt>. Note that you can treat each of the components of \(f\) (\(x\), \(y\), and \(z\)) as separate scalar quantities.</p>
+<p>You should verify that your code produces results that look something like these two images (original mesh on the left; smoothed mesh on the right):</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_smoothed_bunny.png"><img class="aligncenter size-full wp-image-330" title="ddg_smoothed_bunny" src="../cs177/wp-content/uploads/2011/11/ddg_smoothed_bunny.png" alt="" width="568" height="350" /></a></p>
+<p><strong><span style="text-decoration: underline;">Skeleton Code and Handin</span></strong></p>
+<p>Skeleton code for this assignment can be found here:</p>
+<p><a href="http://brickisland.net/cs177/wp-content/uploads/2011/11/ddg_poisson.zip">ddg_poisson.zip</a></p>
+<p>(You may want to use your Makefile from the last project!) You can easily locate all the methods that need to be implemented by searching for the string &#8220;TODO.&#8221; Please submit the <em>entire</em> project this time as a single zip file (i.e., not just the files you modify).</p>
+                </div>
+                <footer>
+                                         |                                                                 Posted in: <a href="index.html@cat=3.html" title="View all posts in Homework" rel="category">Homework</a> |                                                             <a href="index.html@p=302.html#comments" class="comments-link"  title="Comment on Homework 3: The Discrete Laplacian">2 Comments &#187;</a>                </footer>
+            </article>
+                                    <nav class="navigation">
+            <div class="alignleft"></div>
+        <div class="alignright"></div>
+    </nav>        </div>
+    <aside id="sidebar">
+	<ul>
+	    <li id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" action="index.html" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li><li id="meta-3" class="widget widget_meta"><h3 class="widgettitle">Meta</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html@feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html@feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li><li id="pages-2" class="widget widget_pages"><h3 class="widgettitle">Pages</h3>		<ul>
+			<li class="page_item page-item-4"><a href="index.html@page_id=4.html">Course Information</a></li>
+<li class="page_item page-item-11"><a href="index.html@page_id=11.html">Homework Assignments</a></li>
+<li class="page_item page-item-9"><a href="index.html@page_id=9.html">Lecture Slides</a></li>
+<li class="page_item page-item-13"><a href="index.html@page_id=13.html">Subscriptions</a></li>
+		</ul>
+		</li><li id="categories-3" class="widget widget_categories"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html@cat=4.html" title="View all posts filed under Administration">Administration</a> (2)
+</li>
+	<li class="cat-item cat-item-3"><a href="index.html@cat=3.html" title="View all posts filed under Homework">Homework</a> (6)
+</li>
+	<li class="cat-item cat-item-5"><a href="index.html@cat=5.html" title="View all posts filed under Notes">Notes</a> (12)
+</li>
+		</ul>
+</li><li id="categoryposts-3" class="widget widget_categoryposts"><h3 class="widgettitle">Course Notes</h3><ul>
+		<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=104.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Surfaces">A Quick and Dirty Introduction to the Geometry of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=139.html" rel="bookmark" title="Permanent link to Derivatives and Tangent Vectors">Derivatives and Tangent Vectors</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=162.html" rel="bookmark" title="Permanent link to The Fundamental Polygon">The Fundamental Polygon</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=187.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Curves">A Quick and Dirty Introduction to the Geometry of Curves</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=214.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=235.html" rel="bookmark" title="Permanent link to Geometry in Coordinates">Geometry in Coordinates</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=262.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=272.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=294.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=296.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=298.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=307.html" rel="bookmark" title="Permanent link to Discrete Exterior Calculus">Discrete Exterior Calculus</a>
+			
+			
+						
+						
+					</li>
+	</ul>
+</li>	</ul>
+</aside></div><!-- id='content' -->
+    </div><!-- id='wrapcontent' -->
+    <div id="wrapfooter" class="wrapper">
+    	<footer id="footer">
+    		        	<p class="clear copy">
+            	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Introduction to Discrete Differential Geometry</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.        	</p>
+    	</footer>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CS 177: Discrete Differential Geometry &#187; Notes</title>
+	<atom:link href="http://brickisland.net/cs177fa12/?feed=rss2&#038;cat=5" rel="self" type="application/rss+xml" />
+	<link>http://brickisland.net/cs177fa12</link>
+	<description>Caltech &#124; Fall 2012 &#124; Tue/Thu 10:30-11:55 &#124; 314 ANB</description>
+	<lastBuildDate>Wed, 24 Apr 2013 00:32:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.2</generator>
+		<item>
+		<title>Discrete Exterior Calculus</title>
+		<link>http://brickisland.net/cs177fa12/?p=307</link>
+		<comments>http://brickisland.net/cs177fa12/?p=307#comments</comments>
+		<pubDate>Tue, 13 Nov 2012 17:11:09 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=307</guid>
+		<description><![CDATA[So far we&#8217;ve been exploring exterior calculus purely in the smooth setting. Unfortunately this theory was developed by some old-timers who did not know anything about computers, hence it cannot be used directly by machines that store only a finite amount of information. For instance, if we have a smooth vector field or a smooth [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=307</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</title>
+		<link>http://brickisland.net/cs177fa12/?p=298</link>
+		<comments>http://brickisland.net/cs177fa12/?p=298#comments</comments>
+		<pubDate>Wed, 31 Oct 2012 17:35:13 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=298</guid>
+		<description><![CDATA[In the last set of notes we talked about how to differentiate \(k\)-forms using the exterior derivative \(d\). We&#8217;d also like some way to integrate forms. Actually, there&#8217;s surprisingly little to say about integration given the setup we already have. Suppose we want to compute the total area \(A_\Omega\) of a region \(\Omega\) in the [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=298</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</title>
+		<link>http://brickisland.net/cs177fa12/?p=296</link>
+		<comments>http://brickisland.net/cs177fa12/?p=296#comments</comments>
+		<pubDate>Wed, 31 Oct 2012 17:34:47 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=296</guid>
+		<description><![CDATA[Originally we set out to develop exterior calculus. The objects we&#8217;ve looked at so far &#8212; \(k\)-forms, the wedge product \(\wedge\) and the Hodge star \(\star\) &#8212; actually describe a more general structure called an exterior algebra. To turn our algebra into a calculus, we also need to know how quantities change, as well as [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=296</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</title>
+		<link>http://brickisland.net/cs177fa12/?p=294</link>
+		<comments>http://brickisland.net/cs177fa12/?p=294#comments</comments>
+		<pubDate>Wed, 31 Oct 2012 17:34:11 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=294</guid>
+		<description><![CDATA[Previously we saw that a \(k\)-form measures the (signed) projected volume of a \(k\)-dimensional parallelpiped. For instance, a 2-form measures the area of a parallelogram projected onto some plane, as depicted above. But here&#8217;s a nice observation: a plane in \(\mathbb{R}^3\) can be described either by a pair of basis directions \((\alpha,\beta)\), or by a [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=294</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</title>
+		<link>http://brickisland.net/cs177fa12/?p=272</link>
+		<comments>http://brickisland.net/cs177fa12/?p=272#comments</comments>
+		<pubDate>Wed, 24 Oct 2012 20:08:19 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=272</guid>
+		<description><![CDATA[In our last set of notes we measured the length of a vector by projecting it onto different coordinate axes; this measurement process effectively defined what we call a 1-form. But what happens if we have a collection of vectors? For instance, consider a pair of vectors \(u, v\) sitting in \(\mathbb{R}^3\): We can think [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=272</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</title>
+		<link>http://brickisland.net/cs177fa12/?p=262</link>
+		<comments>http://brickisland.net/cs177fa12/?p=262#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 22:29:06 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=262</guid>
+		<description><![CDATA[Many important concepts in differential geometry can be nicely expressed in the language of exterior calculus. Initially these concepts will look exactly like objects you know and love from vector calculus, and you may question the value of giving them funky new names. For instance, scalar fields are no longer called scalar fields, but are [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=262</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Geometry in Coordinates</title>
+		<link>http://brickisland.net/cs177fa12/?p=235</link>
+		<comments>http://brickisland.net/cs177fa12/?p=235#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 21:56:30 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=235</guid>
+		<description><![CDATA[So far we&#8217;ve given fairly abstract descriptions of the geometric objects we&#8217;ve been working with. For instance, we said that the differential \(df\) of an immersion \(f: M \rightarrow \mathbb{R}^3\) tells us how to stretch out tangent vectors as we go from the domain \(M \subset \mathbb{R}^2\) into the image \(f(M) \subset \mathbb{R}^3\). Alluding to [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=235</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to the Curvature of Surfaces</title>
+		<link>http://brickisland.net/cs177fa12/?p=214</link>
+		<comments>http://brickisland.net/cs177fa12/?p=214#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 00:43:08 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=214</guid>
+		<description><![CDATA[Let&#8217;s take a more in-depth look at the curvature of surfaces. The word &#8220;curvature&#8221; really corresponds to our everyday understanding of what it means for something to be curved: eggshells, donuts, and cavatappi pasta have a lot of curvature; floors, ceilings, and cardboard boxes do not. But what about something like a beer bottle? Along [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=214</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>A Quick and Dirty Introduction to the Geometry of Curves</title>
+		<link>http://brickisland.net/cs177fa12/?p=187</link>
+		<comments>http://brickisland.net/cs177fa12/?p=187#comments</comments>
+		<pubDate>Mon, 22 Oct 2012 16:54:42 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=187</guid>
+		<description><![CDATA[The picture we looked at for surfaces is actually a nice way of thinking about manifolds of any dimension. For instance, we can think of a one-dimensional curve as a map \(\gamma: I \rightarrow \mathbb{R}^3\) from an interval \(I = [0,T] \subset \mathbb{R}\) of the real line to \(\mathbb{R}^3\). Again the differential \(d\gamma\) tells us [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=187</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>The Fundamental Polygon</title>
+		<link>http://brickisland.net/cs177fa12/?p=162</link>
+		<comments>http://brickisland.net/cs177fa12/?p=162#comments</comments>
+		<pubDate>Sat, 20 Oct 2012 16:34:05 +0000</pubDate>
+		<dc:creator>Keenan Crane</dc:creator>
+				<category><![CDATA[Notes]]></category>
+
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=162</guid>
+		<description><![CDATA[Last week we received a couple questions on homework problem 1.3 regarding whether a constructive proof is necessary, i.e., did you need to actually come up with examples of triangulations that achieve the desired bounds? To reiterate what was said in the comments, the answer is no: you simply needed to show (algebraically) that these [...]]]></description>
+		<wfw:commentRss>http://brickisland.net/cs177fa12/?feed=rss2&#038;p=162</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

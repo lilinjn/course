@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <title>October &raquo; 2012 &raquo;  CS 177: Discrete Differential Geometry</title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://brickisland.net/cs177fa12/wp-content/themes/constructor/js/html5.js"></script>
+    <![endif]-->
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="stylesheet" type="text/css" media="screen" href="wp-content/themes/constructor/style.css"/>
+    <link rel="stylesheet" type="text/css" media="print" href="wp-content/themes/constructor/print.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="wp-content/themes/constructor/style-480.css" />
+    <link rel="pingback" href="xmlrpc.php" />
+    	<link rel='archives' title='December 2012' href='index.html@m=201212.html' />
+	<link rel='archives' title='November 2012' href='index.html@m=201211.html' />
+	<link rel='archives' title='October 2012' href='index.html@m=201210.html' />
+    
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Feed" href="index.html@feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Comments Feed" href="index.html@feed=comments-rss2" />
+<link rel='stylesheet' id='constructor-style-css'  href='wp-content/uploads/constructor/cache/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='constructor-theme-css'  href='wp-content/uploads/constructor/themes/current/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#038;ver=3.4.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js@ver=1.7.2'></script>
+<script type='text/javascript' src='wp-content/themes/constructor/js/ready.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php@rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.4.2" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+<body class="archive date paged paged-3 date-paged-3">
+	
+<div id="body">
+   <div id="wrapheader" class="wrapper">
+       <header id="header">
+                        <div id="title">
+					
+					<div id="name"><a href="index.html" title="CS 177: Discrete Differential Geometry &raquo; Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB">CS 177: Discrete Differential Geometry</a></div>
+				                <div id="description">Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB</div>
+            </div>
+       </header>
+   </div>
+   
+   <div id="wrapcontent" class="wrapper">
+       <div id="content" class="box shadow opacity layout-right">
+    <div id="container" >
+                            <article class="post-214 post type-post status-publish format-standard hentry category-notes" id="post-214">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=214.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a></h2>
+                </header>
+                <div class="entry">
+                	<p>Let&#8217;s take a more in-depth look at the curvature of surfaces.  The word &#8220;curvature&#8221; really corresponds to our everyday understanding of what it means for something to be curved: eggshells, donuts, and <a href="http://en.wikipedia.org/wiki/Cavatappi">cavatappi pasta</a> have a lot of curvature;  floors, ceilings, and cardboard boxes do not.  But what about something like a beer bottle?  Along one direction the bottle quickly curves around in a circle; along another direction it&#8217;s completely flat and travels along a straight line:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_beer_bottle.svg"><img src="wp-content/uploads/2012/10/ddg_beer_bottle.svg" alt="" title="ddg_beer_bottle" class="aligncenter size-full wp-image-215" /></a></p>
+<p>This way of looking at curvature &#8212; in terms of curves traveling along the surface &#8212; is often how we treat curvature in general.  In particular, let \(X\) be a unit tangent direction at some distinguished point on the surface, and consider a plane containing both \(df(X)\) and the corresponding normal \(N\).  This plane intersects the surface in a curve, and the curvature \(\kappa_n\) of this curve is called the <em>normal curvature</em> in the direction \(X\):</p>
+<p><a href="wp-content/uploads/2012/10/ddg_normal_curvature.svg"><img src="wp-content/uploads/2012/10/ddg_normal_curvature.svg" alt="" title="ddg_normal_curvature" class="aligncenter size-full wp-image-216" /></a></p>
+<p>Remember the <a href="index.html@p=187.html">Frenet-Serret formulas</a>?  They tell us that the change in the normal along a <em>curve</em> is given by \(dN = -\kappa T + \tau B\).  We can therefore get the normal curvature along \(X\) by extracting the tangential part of \(dN\):</p>
+<p>\[ \kappa_n(X) = \frac{-df(X) \cdot dN(X)}{|df(X)|^2}. \]</p>
+<p>The factor \(|df(X)|^2\) in the denominator simply normalizes any &#8220;stretching out&#8221; that occurs as we go from the domain \(M\) into \(\mathbb{R}^3\) &#8212; a derivation of this formula can be found in Appendix A.  Note that normal curvature is <em>signed</em>, meaning the surface can bend toward the normal or away from it.</p>
+<p>&nbsp;</p>
+<p><b><u>Principal, Mean, and Gaussian Curvature</u></b></p>
+<p><a href="wp-content/uploads/2012/10/ddg_principal_curvature.svg"><img src="wp-content/uploads/2012/10/ddg_principal_curvature.svg" alt="" title="ddg_principal_curvature" class="aligncenter size-full wp-image-217" /></a></p>
+<p>At any given point we can ask: along which directions does the surface bend the most?  The unit vectors \(X_1\) and \(X_2\) along which we find the maximum and minimum normal curvatures \(\kappa_1\) and \(\kappa_2\) are called the <em>principal directions</em>; the curvatures \(\kappa_i\) are called the <em>principal curvatures</em>.  For instance, the beer bottle above might have principal curvatures \(\kappa_1 = 1\), \(\kappa_2 = 0\) at the marked point.</p>
+<p>We can also talk about principal curvature in terms of the <em>shape operator</em>, which is the unique map \(S: TM \rightarrow TM\) satisfying</p>
+<p>\[ df(SX) = dN(X) \]</p>
+<p>for all tangent vectors \(X\).  The shape operator \(S\) and the Weingarten map \(dN\) essentially represent the same idea: they both tell us how the normal changes as we travel along a direction \(X\).  The only difference is that \(S\) specifies this change in terms of a tangent vector on \(M\), whereas \(dN\) gives us the change as a tangent vector in \(\mathbb{R}^3\).  It&#8217;s worth noting that many authors do not make this distinction, and simply assume an isometric identification of tangent vectors on \(M\) and the corresponding tangent vectors in \(\mathbb{R}^3\).  However, we choose to be more careful so that we can explicitly account for the dependence of various quantities on the immersion \(f\) &#8212; this dependence becomes particularly important if you actually want to compute something!  (By the way, why can we always express the change in \(N\) in terms of a <em>tangent</em> vector? It&#8217;s because \(N\) is the <em>unit</em> normal, hence it cannot grow or shrink in the normal direction.)</p>
+<p>One important fact about the principal directions and principal curvatures is that they correspond to eigenvectors and eigenvalues (respectively) of the shape operator:</p>
+<p>\[ S X_i = \kappa_i X_i. \]</p>
+<p>Moreover, the principal directions are orthogonal with respect to the induced metric: \(g(X_1,X_2) = df(X_1) \cdot df(X_2) = 0\) &#8212; see Appendix B for a proof of these two facts.  The principal curvatures therefore tell us everything there is to know about normal curvature at a point, since we can express any tangent vector \(Y\) as a linear combination of the principal directions \(X_1\) and \(X_2\).  In particular, if \(Y\) is a unit vector offset from \(X_1\) by an angle \(\theta\), then the associated normal curvature is</p>
+<p>\[ \kappa_n(Y) = \kappa_1 \cos^2 \theta + \kappa_2 \sin^2 \theta, \]</p>
+<p>as you should be able to easily verify using the relationships above.  Often, however, working directly with principal curvatures is fairly inconvenient &#8212; especially in the discrete setting.</p>
+<p>On the other hand, two closely related quantities &#8212; called the <em>mean curvature</em> and the <em>Gaussian curvature</em> will show up over and over again (and have some particularly nice interpretations in the discrete world).  The mean curvature \(H\) is the arithmetic mean of principal curvatures:</p>
+<p>\[ H = \frac{\kappa_1 + \kappa_2}{2}, \]</p>
+<p>and the Gaussian curvature is the (square of the) geometric mean:</p>
+<p>\[ K = \kappa_1 \kappa_2. \]</p>
+<p>What do the values of \(H\) and \(K\) imply about the shape of the surface?  Perhaps the most elementary interpretation is that Gaussian curvature is like a logical &#8220;and&#8221; (is there curvature along <em>both</em> directions?) whereas mean curvature is more like a logical &#8220;or&#8221; (is there curvature along <em>at least one</em> direction?)  Of course, you have to be a little careful here since you can also get zero mean curvature when \(\kappa_1 = -\kappa_2\).</p>
+<p>It also helps to see pictures of surfaces with zero mean and Gaussian curvature.  Zero-curvature surfaces are so well-studied in mathematics that they have special names.  Surfaces with zero Gaussian curvature are called <em>developable surfaces</em> because they can be &#8220;developed&#8221; or flattened out into the plane without any stretching or tearing.  For instance, any piece of a cylinder is developable since one of the principal curvatures is zero:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_cylinder.svg"><img src="wp-content/uploads/2012/10/ddg_cylinder.svg" alt="" title="ddg_cylinder" class="aligncenter size-full wp-image-218" /></a></p>
+<p>Surfaces with zero mean curvature are called <em>minimal surfaces</em> because (as we&#8217;ll see later) they minimize surface area (with respect to certain constraints).  Minimal surfaces tend to be saddle-like since principal curvatures have equal magnitude but opposite sign:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_saddle.svg"><img src="wp-content/uploads/2012/10/ddg_saddle.svg" alt="" title="ddg_saddle" class="aligncenter size-full wp-image-219" /></a></p>
+<p>The saddle is also a good example of a surface with negative <em>Gaussian</em> curvature.  What does a surface with positive Gaussian curvature look like?  The hemisphere is one example:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_dome.svg"><img src="wp-content/uploads/2012/10/ddg_dome.svg" alt="" title="ddg_dome" class="aligncenter size-full wp-image-220" /></a></p>
+<p>Note that in this case \(\kappa_1 = \kappa_2\) and so principal directions are not uniquely defined &#8212; maximum (and minimum) curvature is achieved along <em>any</em> direction \(X\).  Any such point on a surface is called an <em>umbilic point</em>.</p>
+<p>There are plenty of cute theorems and relationships involving curvature, but those are the basic facts: the curvature of a surface is completely characterized by the <em>principal curvatures</em>, which are the maximum and minimum <em>normal curvatures</em>.  The Gaussian and mean curvature are simply averages of the two principal curvatures, but (as we&#8217;ll see) are often easier to get your hands on in practice.</p>
+<p>&nbsp;</p>
+<p><b><u>The Second Fundamental Form</u></b></p>
+<p>For historical reasons, it&#8217;s probably good to mention an object called the <em>second fundamental form</em>.  I&#8217;m actually not sure what&#8217;s so fundamental about this form, since it&#8217;s nothing more than a mashup of the metric \(g\) and the shape operator \(S\), which themselves are simple functions of two <em>truly</em> fundamental objects, namely the immersion \(f\) and the Gauss map \(N\):</p>
+<p>\[ I\!I(X,Y) = -g(SX,Y) = -dN(X) \cdot df(Y). \]</p>
+<p>(I suppose &#8220;the somewhat auxilliary form&#8221; didn&#8217;t have a nice ring to it&#8230;)  The most important thing to realize is that \(I\!I\) does not introduce any new <em>geometric</em> ideas &#8212; just another way of writing down things we&#8217;ve already seen.</p>
+<p><a name="appendixA"></a><br />
+&nbsp;</p>
+<p><b><u>Appendix A: A Nice Formula for Normal Curvature</u></b></p>
+<p><a href="wp-content/uploads/2012/10/ddg_normal_curvature_derivation.svg"><img src="wp-content/uploads/2012/10/ddg_normal_curvature_derivation.svg" alt="" title="ddg_normal_curvature_derivation" class="aligncenter size-full wp-image-221" /></a></p>
+<p>Consider a unit-speed curve \(c(t)\) on a domain \(M \subset \mathbb{R}^2\), and an immersion \(f\) of \(M\) into \(\mathbb{R}^3\); the composition \(\gamma = f(c)\) defines a curve in \(\mathbb{R}^3\).  Letting \(X = \dot{c}\) denote the time derivative of \(c\), we can express the unit tangent field on \(\gamma\) as</p>
+<p>\[ T = \frac{df(X)}{|df(X)|}. \]</p>
+<p>Recall from our <a href="index.html@p=187.html">notes on curves</a> that the curvature normal \(\kappa n\) is defined as the change in tangent direction as we travel along the curve at unit speed (we&#8217;ll use a lowercase &#8220;\(n\)&#8221; here to distinguish from the surface normal \(N\)).  In this case, however, the initially unit-speed curve \(c\) may get stretched out by the map \(f\).  Therefore, to get the curvature normal we have to evaluate</p>
+<p>\[ \kappa n = \frac{dT}{d\ell}, \]</p>
+<p>where \(\ell\) denotes the distance traveled in \(\mathbb{R}^3\) along \(\gamma\).  The <em>normal curvature</em> \(\kappa_n(\gamma)\) can be defined as the projection of the curvature normal onto the surface normal \(N\).  More explicitly, we have</p>
+<p>\[ \kappa_n = N \cdot \kappa n = N \cdot \frac{dT}{d\ell} = N \cdot \frac{dT}{dt}\frac{dt}{d\ell}. \]</p>
+<p>The quantity \(\tfrac{d\ell}{dt}\) is just the amount by which the curve gets stretched out as we go from \(M\) into \(\mathbb{R}^3\), which we can also write as \(|df(X)|\).  We therefore have</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      |df(X)| \kappa_N &#038;=&#038; N \cdot \frac{dT}{dt} \\<br />
+                               &#038;=&#038; N \cdot \frac{d}{dt}\left( df(X) |df(X)|^{-1} \right) \\<br />
+                               &#038;=&#038; N \cdot \left( \frac{d}{dt} df(X) \right) |df(X)|^{-1} + \underbrace{N \cdot df(X)}_{=0} \left( \frac{d}{dt} |df(X)|^{-1} \right) \\<br />
+                               &#038;=&#038; N \cdot \left( \frac{d}{dt} df(\dot{c}) \right) |df(\dot{c})|^{-1} \\<br />
+                               &#038;=&#038; \displaystyle\frac{N \cdot df(\ddot{c})}{|df(\dot{c})|}.<br />
+   \end{array}<br />
+\]</p>
+<p>Noting that \(N \cdot df(\dot{c}) = 0\) implies \(N \cdot df(\ddot{c}) = -\dot{N} \cdot df(\dot{c})\), and moreover that \(\dot{N} = dN(\dot{c})\), we get</p>
+<p>\[ |df(X)| \kappa_N = \frac{-dN(\dot{c}) \cdot df(\dot{c})}{|df(\dot{c})|}, \]</p>
+<p>or equivalently</p>
+<p>\[ \kappa_N = \frac{-dN(X) \cdot df(X)}{|df(X)|^2}, \]</p>
+<p>which is the formula introduced above.</p>
+<p><a name="appendixB"></a><br />
+&nbsp;</p>
+<p><b><u>Appendix B: Why Are Principal Directions Orthogonal?</u></b></p>
+<p>Earlier we stated that the unit principal directions \(X_1, X_2\) are orthogonal with respect to the metric \(g\) induced by the immersion \(f\), i.e.,</p>
+<p>\[ g(X_1,X_2) = df(X_1) \cdot df(X_2) = 0. \]</p>
+<p>First, let&#8217;s show that</p>
+<p>\[ g(SX,Y) = g(X,SY), \]</p>
+<p>i.e., \(S\) is <em>self-adjoint</em> with respect to the induced metric (equivalently: the second fundamental form \(I\!I\) is symmetric in its two arguments, i.e., \(I\!I(X,Y)=I\!I(Y,X)\)).  To see why, consider that (by definition) the normal \(N\) is orthogonal to any tangent vector \(df(X)\):</p>
+<p>\[ N \cdot df(X) = 0. \]</p>
+<p>Differentiating this expression with respect to some other direction \(Y\), we get</p>
+<p>\[ dN(Y) \cdot df(X) = -N \cdot d(df(X))(Y). \]</p>
+<p>Using the equality of mixed partial derivatives, we see that \(S\) is indeed self-adjoint with respect to \(g\):</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      g(SX,Y) &#038;=&#038; dN(X) \cdot df(Y) \\<br />
+              &#038;=&#038; -N \cdot d(df(X))(Y) \\<br />
+              &#038;=&#038; -N \cdot d(df(Y))(X) \\<br />
+              &#038;=&#038; dN(Y) \cdot df(X) \\<br />
+              &#038;=&#038; g(X,SY).<br />
+   \end{array}<br />
+\]</p>
+<p>(By the way, the essential trick we used here comes up all the time: if you see a product involving a derivative, try expressing it in terms of the derivative of a product.)  Returning to our original question, we have</p>
+<p>\[<br />
+   \begin{array}{rcl}<br />
+      \kappa_1 g(X_1,X_2) &#038;=&#038; \kappa_1 df(X_1) \cdot df(X_2) \\<br />
+                          &#038;=&#038; dN(X_1) \cdot df(X_2) \\<br />
+                          &#038;=&#038; dN(X_2) \cdot df(X_1) \\<br />
+                          &#038;=&#038; \kappa_2 df(X_2) \cdot df(X_1) \\<br />
+                          &#038;=&#038; \kappa_2 g(X_1,X_2).<br />
+   \end{array}<br />
+\]</p>
+<p>Therefore, either \(\kappa_1 = \kappa_2\) or else \(g(X_1,X_2)=0\).  But if \(\kappa_1 = \kappa_2\) (i.e., the maximum and minimum principle curvatures are equal) then we&#8217;re at an <em>umbilic point</em> where all normal curvatures are equal &#8212; in this case we&#8217;re free to pick the principal directions however we please &#8212; in particular, we can use an arbitrary pair of orthogonal directions.  The phenomenon we experience here reflects a more general phenomenon in linear algebra: roughly speaking, if \(A\) is self-adjoint with respect to \(B\), then \(A\)&#8217;s eigenvectors will be orthogonal with respect to \(B\).</p>
+<p>One final question: why should \(\kappa_1\) and \(\kappa_2\) be the <em>maximum</em> and <em>minimum</em> normal curvatures?  Well, think about what the largest and smallest eigenvalues of a linear map represent: they represent the largest and smallest amount of &#8220;stretch&#8221; experienced by a unit vector in any direction.  Hence, the normal curvature can be no larger than \(\kappa_1\) and no smaller than \(\kappa_2\).</p>
+                </div>
+                <footer>
+                                        October 22, 2012 |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                <article class="post-187 post type-post status-publish format-standard hentry category-notes" id="post-187">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=187.html" rel="bookmark" title="Permanent Link to A Quick and Dirty Introduction to the Geometry of Curves">A Quick and Dirty Introduction to the Geometry of Curves</a></h2>
+                </header>
+                <div class="entry">
+                	<p><a href="wp-content/uploads/2012/10/ddg_curve.svg"><img src="wp-content/uploads/2012/10/ddg_curve.svg" alt="" title="ddg_curve" class="aligncenter size-full wp-image-188" /></a></p>
+<p>The picture we looked at for surfaces is actually a nice way of thinking about manifolds of any dimension.  For instance, we can think of a one-dimensional curve as a map \(\gamma: I \rightarrow \mathbb{R}^3\) from an interval \(I = [0,T] \subset \mathbb{R}\) of the real line to \(\mathbb{R}^3\).  Again the differential \(d\gamma\) tells us how tangent vectors get stretched out by \(\gamma\), and again the induced length of a tangent vector \(X\) is given by</p>
+<p>\[ |d\gamma(X)| = \sqrt{d\gamma(X) \cdot d\gamma(X)}. \]</p>
+<p>Working with curves is often easier if \(\gamma\) preserves <em>length</em>, i.e., if for every tangent vector \(X\) we have</p>
+<p>\[ |d\gamma(X)| = |X|. \]</p>
+<p>There are various names for such a parameterization (<em>&#8220;unit speed&#8221;</em>, <em>&#8220;arc-length&#8221;</em>, <em>&#8220;isometric&#8221;</em>) but the idea is simply that the curve doesn&#8217;t get stretched out when we go from \(\mathbb{R}\) to \(\mathbb{R}^3\) &#8212; think of \(\gamma\) as a completely relaxed rubber band.  This unit-speed view is also often the right one for the discrete setting where we have no notion of a base domain \(I\) &#8212; from the very beginning, the curve is given to us as a subset of \(\mathbb{R}^3\) and all we can do is assume that it sits there in a relaxed state.</p>
+<p>&nbsp;</p>
+<p><b><u>The Frenet Frame</u></b></p>
+<p><a href="wp-content/uploads/2012/10/ddg_frenet.svg"><img src="wp-content/uploads/2012/10/ddg_frenet.svg" alt="" title="ddg_frenet" class="aligncenter size-full wp-image-189" /></a></p>
+<p>Suppose we have a unit-speed curve \(\gamma\) and a positively-oriented unit vector \(X\) on the interval \(I\).  Then<br />
+\[ T = d\gamma(X) \]<br />
+is a unit vector in \(\mathbb{R}^3\) tangent to the curve.  Carrying this idea one step further, we can look at the change in tangent direction as we move along \(\gamma\).  Since \(T\) may change at any rate (or not at all!) we split up the change into two pieces: a unit vector \(N\) called the <em>principal normal</em> that expresses the direction of change, and a scalar \(\kappa \in \mathbb{R}\) called the <em>curvature</em> that expresses the magnitude of change:</p>
+<p>\[ dT(X) = \kappa N. \]</p>
+<p>One thing to realize is that \(T\) and \(N\) are always orthogonal.  Why?  Because if the change in \(T\) were <em>parallel</em> to \(T\), then it would cease to have unit length!  (This argument is a good one to keep in mind any time you work with unit vector fields.)  Together with a third vector \(B = T \times N\) called the <em>binormal</em>, we end up with a very natural orthonormal coordinate frame called the <em>Frenet frame</em>.</p>
+<p>How does this frame change as we move along the curve?  The answer is given by the <em>Frenet-Serret formula</em>:<br />
+\[ \underbrace{\left[ \begin{array}{c} \dot{T} \\ \dot{B} \\ \dot{N} \end{array} \right]}_{\dot{Q} \in \mathbb{R}^3} = \underbrace{\left[ \begin{array}{rrr} 0 &#038; \kappa &#038; 0 \\ -\kappa &#038; 0 &#038; \tau \\ 0 &#038; -\tau &#038; 0 \end{array} \right]}_{A \in \mathbb{R}^3} \underbrace{\left[ \begin{array}{c} T \\ N \\ B \end{array} \right]}_{Q \in \mathbb{R}^3}. \]<br />
+Here \(T\), \(N\), and \(B\) are interpreted as row vectors, and the superscript &#8220;\(\ \dot{}\ \)&#8221; is shorthand for &#8220;change in time,&#8221; i.e., the change in a quantity as we move along the curve.  For instance, \(\dot{T} = dT(X)\), where \(X\) is a positively-oriented unit vector on \(I\).  The quantity \(\tau\) is called the <em>torsion</em>, and describes the way the normal and binormal twist around the curve.</p>
+<p>A concise proof of this formula was given by Cartan.  First, since the vectors \(T\), \(N\), and \(B\) are mutually orthogonal, one can easily verify that \(Q Q^T = I\), i.e., \(Q\) is an orthogonal matrix.  Differentiating this relationship in time, we find that \(\dot{Q} Q^T = -(\dot{Q} Q^T)^T\), i.e., the matrix \(\dot{Q} Q^T\) is <em>skew-symmetric</em>.  But since \(A = \dot{Q} Q^T\), \(A\) must also be skew-symmetric.  Skew symmetry implies that the diagonal of \(A\) is zero (why?) and moreover, we already know what the top row (and hence the left column) looks like from our definition of \(\kappa\) and \(N\).  The remaining value \(A_{23} = -A_{32}\) is not constrained in any way, so we simply give it a name \(\tau \in \mathbb{R}\).</p>
+<p>What do you think about this proof?  On the one hand it&#8217;s easy to verify; on the other hand, it provides little geometric understanding.  For instance, why does \(N\) change in the direction of both \(T\) and \(B\), but \(B\) changes only in the direction of \(N\)?  Can you come up with more geometric arguments?</p>
+<p>&nbsp;</p>
+<p><b><u>Visualizing Curvature</u></b></p>
+<p>What&#8217;s the curvature of a circle \(S\)?  Well, if \(S\) has radius \(r\) then it takes time \(2\pi r\) to go all the way around the circle at unit speed. During this time the tangent turns around by an angle \(2\pi\).  Of course, since \(T\) has unit length the instantaneous change in \(T\) is described exclusively by the instantaneous change in angle.  So we end up with</p>
+<p>\[\kappa = |\kappa N| = |dT(X)| = 2\pi/2\pi r = 1/r.\]</p>
+<p>In other words, the curvature of a circle is simply the reciprocal of its radius.  This fact should make some intuitive sense: if we watch a circle grow bigger and bigger, it eventually looks just like a straight line with zero curvature: \(\lim_{r \rightarrow \infty} 1/r = 0\). Similarly, if we watch a circle grow smaller and smaller it eventually looks like a single point with infinite curvature: \(\lim_{r \rightarrow 0} 1/r = \infty\).</p>
+<p><a href="wp-content/uploads/2012/10/ddg_osculating_circle.svg"><img src="wp-content/uploads/2012/10/ddg_osculating_circle.svg" alt="" title="ddg_osculating_circle" class="aligncenter size-full wp-image-190" /></a></p>
+<p>Now consider a smooth curve \(\gamma\) in the plane.  At any point \(p \in \gamma\) there is a circle \(S\) called the <em>osculating circle</em> that best approximates \(\gamma\), meaning that it has the same tangent direction \(T\) and curvature vector \(\kappa N\).  In other words, the circle and the curve agree &#8220;up to second order.&#8221; (The phrase &#8220;agree up to \(n\)th order&#8221; is just shorthand for saying that the first \(n\) derivatives are equal.)  How do we know such a circle exists?  Easy: we can always construct a circle with the appropriate curvature by setting \(r = 1/\kappa\).  And of course, any circle has some tangent pointing in the direction \(T\).  Alternatively, we can consider the a circle passing through \(p\) and two other points: one approaching from the left, another approaching from the right.  Since these three points are shared by both \(\gamma\) and \(S\), the first and second derivatives will agree in the limit (consider that these points can be used to obtain consistent <a href="http://en.wikipedia.org/wiki/Finite_difference">finite difference approximations</a> of \(T\) and \(\kappa N\)).</p>
+<p>The radius and center of the osculating circle are often referred to as the <em>radius of curvature</em> and <em>center of curvature</em>, respectively.  We can tell this same story for any curve in \(\mathbb{R}^3\) by considering the <em>osculating plane</em> \(T \times N\), since this plane contains both the tangent and the curvature vector.</p>
+<p>For curves it makes little difference whether we express curvature in terms of a change in the tangent vector or a change in the (principal) normal, since the two vectors are the same up to a quarter-rotation in the osculating plane.  For surfaces, however, it will often make more sense to think of curvature as the change in the normal vector, since we typically don&#8217;t have a distinguished tangent vector to work with.</p>
+                </div>
+                <footer>
+                                         |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                <article class="post-185 post type-post status-publish format-standard hentry category-administration" id="post-185">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=185.html" rel="bookmark" title="Permanent Link to Bonus Points for Finding Errors in Notes">Bonus Points for Finding Errors in Notes</a></h2>
+                </header>
+                <div class="entry">
+                	<p>The notes in this blog are continually under development, and likely have a number of errors in them.  To make life better for everyone, I&#8217;m offering a (small) number of bonus points to anybody who identifies an error &#8212; a point for a typo in a mathematical formula, a half-point for a spelling/grammar mistake, and possibly more for larger (e.g., conceptual) issues.  These bonus points also provide a valid reflection of your mastery of the material, since you will have spent more time mulling over the notes.</p>
+<p>Please leave corrections in the comments, so that others can see which errors have already been identified.</p>
+                </div>
+                <footer>
+                                        October 20, 2012 |                                                                 Posted in: <a href="index.html@cat=4.html" title="View all posts in Administration" rel="category">Administration</a> |                                                             <span class="comments-link">Comments Closed</span>                </footer>
+            </article>
+                                <article class="post-162 post type-post status-publish format-standard hentry category-notes" id="post-162">
+                <header class="opacity box">
+                    <h2><a href="index.html@p=162.html" rel="bookmark" title="Permanent Link to The Fundamental Polygon">The Fundamental Polygon</a></h2>
+                </header>
+                <div class="entry">
+                	<p>Last week we received a couple questions on homework problem 1.3 regarding whether a constructive proof is necessary, i.e., did you need to actually come up with examples of triangulations that achieve the desired bounds? To reiterate what was said in the comments, the answer is <strong><em>no</em></strong>: <em>you simply needed to show (algebraically) that these bounds hold.</em>  But if you <em>were</em> looking for a constructive proof, a nice tool to know about is something called the <em>fundamental polygon</em>. The basic idea is that a surface of any genus can be cut into a single disk, which can be visualized as a polygon in the plane. Visualizing a triangulation (or other data) on the fundamental polygon is often much simpler than visualizing it on the embedded torus &#8212; consider this example, for instance:</p>
+<p>&nbsp;</p>
+<p><a href="wp-content/uploads/2012/10/ddg_six_triangle_torus.svg"><img src="wp-content/uploads/2012/10/ddg_six_triangle_torus.svg" alt="" title="ddg_six_triangle_torus" class="aligncenter size-full wp-image-163" /></a></p>
+<p>&nbsp;</p>
+<p>Here the arrows mark identifications of edges &#8212; for instance, the top and bottom edges get &#8220;glued&#8221; together along the positive \(x\)-axis. (Try convincing yourself that these gluings really do produce a torus &#8212; note that at some point you&#8217;ll need to make a \(180^\circ\) &#8220;twist.&#8221;) One way to visualize the identifications is to imagine that the fundamental polygon tiles the plane:</p>
+<p><a href="wp-content/uploads/2012/10/ddg_six_triangle_torus_tiling3.svg"><img src="wp-content/uploads/2012/10/ddg_six_triangle_torus_tiling3.svg" alt="" title="ddg_six_triangle_torus_tiling3" class="aligncenter size-full wp-image-164" /></a></p>
+<p>The torus is interesting because it actually admits two <em>different</em> fundamental polygons: the hexagon and the square (corresponding to two different tilings of the Euclidean plane). So we could also visualize the torus on the square, leading to an even simpler triangulation:</p>
+<p>&nbsp;</p>
+<p><a href="wp-content/uploads/2012/10/ddg_two_triangle_torus.svg"><img src="wp-content/uploads/2012/10/ddg_two_triangle_torus.svg" alt="" title="ddg_two_triangle_torus" class="aligncenter size-full wp-image-165" /></a></p>
+<p>&nbsp;</p>
+<p>(By the way, is this really what you&#8217;d call a triangulation? Each region certainly has three sides, but each &#8220;triangle&#8221; has only one vertex! What about the first example? There all triangles have three vertices, but they share the <em>same</em> three vertices. So combinatorially these triangles are not distinct &#8212; in other words, this tessellation cannot be described via a <a href="http://en.wikipedia.org/wiki/Simplicial_complex">simplicial complex</a>. What&#8217;s the smallest simplicial decomposition you can come up with for the torus?)</p>
+<p>&nbsp;</p>
+<p>In general the fundamental polygon for a torus of genus \(g\) has \(4g\) sides with identifications \(a_1 b_1 a_1^{-1} b_1^{-1} \cdots a_n b_n a^{-1}_n b_n\), where two edges with the same letter get identified and inverse just means that the edge direction is reversed. For instance, the fundamental polygon for the double torus looks like this:</p>
+<p>&nbsp;</p>
+<p><a href="wp-content/uploads/2012/10/ddg_doubletorus_fundamental_polygon.svg"><img src="wp-content/uploads/2012/10/ddg_doubletorus_fundamental_polygon.svg" alt="" title="ddg_doubletorus_fundamental_polygon" class="aligncenter size-full wp-image-166" /></a></p>
+<p>&nbsp;</p>
+<p>(Note that all the polygon vertices ultimately get identified with a single point on the surface.) From here it becomes easy to start playing around with tessellations &#8212; for instance, here&#8217;s how you decompose a surface of any genus into <em>quadrilaterals</em>, using only two irregular vertices (can you do better?):</p>
+<p>&nbsp;</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_fundamental_polygon_quadrangulated.svg"><img class="aligncenter size-full wp-image-103" title="ddg_fundamental_polygon_quadrangulated" src="../cs177/wp-content/uploads/2011/10/ddg_fundamental_polygon_quadrangulated.svg" alt="" /></a></p>
+<p>&nbsp;</p>
+<p>Tiling the Euclidean plane with the fundamental polygon is impossible for a surface of genus \(g \geq 2\), since the interior angles of the fundamental polygon don&#8217;t evenly divide \(2\pi\) (proof!). Fortunately, we can still tile the <em>hyperbolic plane</em>, i.e., the plane with constant negative curvature. For instance, here&#8217;s a tiling of the hyperbolic plane by octagons:</p>
+<p>&nbsp;</p>
+<p><a href="../cs177/wp-content/uploads/2011/10/ddg_hyperbolic_octagons.svg"><img class="aligncenter size-full wp-image-102" title="ddg_hyperbolic_octagons" src="../cs177/wp-content/uploads/2011/10/ddg_hyperbolic_octagons.svg" alt="" /></a></p>
+<p>&nbsp;</p>
+<p>From here there are all sorts of fascinating things to say about covering spaces, uniformization, and especially the <em>fundamental group</em> of a surface &#8212; if you&#8217;re interested I highly recommend you take a look at <a href="http://www.math.cornell.edu/~hatcher/AT/ATpage.html">Allen Hatcher&#8217;s (free!) book on algebraic topology</a>.</p>
+                </div>
+                <footer>
+                                         |                                                                 Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                             <a href="index.html@p=162.html#comments" class="comments-link"  title="Comment on The Fundamental Polygon">2 Comments &#187;</a>                </footer>
+            </article>
+                                    <nav class="navigation">
+            <div class="alignleft"><a href="index.html@m=201210&amp;paged=4.html" ><span>&laquo;</span> Older Entries</a></div>
+        <div class="alignright"><a href="index.html@m=201210&amp;paged=2.html" >Newer Entries <span>&raquo;</span></a></div>
+    </nav>        </div>
+    <aside id="sidebar">
+	<ul>
+	    <li id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" action="index.html" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li><li id="meta-3" class="widget widget_meta"><h3 class="widgettitle">Meta</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html@feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html@feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li><li id="pages-2" class="widget widget_pages"><h3 class="widgettitle">Pages</h3>		<ul>
+			<li class="page_item page-item-4"><a href="index.html@page_id=4.html">Course Information</a></li>
+<li class="page_item page-item-11"><a href="index.html@page_id=11.html">Homework Assignments</a></li>
+<li class="page_item page-item-9"><a href="index.html@page_id=9.html">Lecture Slides</a></li>
+<li class="page_item page-item-13"><a href="index.html@page_id=13.html">Subscriptions</a></li>
+		</ul>
+		</li><li id="categories-3" class="widget widget_categories"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html@cat=4.html" title="View all posts filed under Administration">Administration</a> (2)
+</li>
+	<li class="cat-item cat-item-3"><a href="index.html@cat=3.html" title="View all posts filed under Homework">Homework</a> (6)
+</li>
+	<li class="cat-item cat-item-5"><a href="index.html@cat=5.html" title="View all posts filed under Notes">Notes</a> (12)
+</li>
+		</ul>
+</li><li id="categoryposts-3" class="widget widget_categoryposts"><h3 class="widgettitle">Course Notes</h3><ul>
+		<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=104.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Surfaces">A Quick and Dirty Introduction to the Geometry of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=139.html" rel="bookmark" title="Permanent link to Derivatives and Tangent Vectors">Derivatives and Tangent Vectors</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=162.html" rel="bookmark" title="Permanent link to The Fundamental Polygon">The Fundamental Polygon</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=187.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Curves">A Quick and Dirty Introduction to the Geometry of Curves</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=214.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=235.html" rel="bookmark" title="Permanent link to Geometry in Coordinates">Geometry in Coordinates</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=262.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=272.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=294.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=296.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=298.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=307.html" rel="bookmark" title="Permanent link to Discrete Exterior Calculus">Discrete Exterior Calculus</a>
+			
+			
+						
+						
+					</li>
+	</ul>
+</li>	</ul>
+</aside></div><!-- id='content' -->
+    </div><!-- id='wrapcontent' -->
+    <div id="wrapfooter" class="wrapper">
+    	<footer id="footer">
+    		        	<p class="clear copy">
+            	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Introduction to Discrete Differential Geometry</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.        	</p>
+    	</footer>
+	</div>
+</div>
+</body>
+</html>

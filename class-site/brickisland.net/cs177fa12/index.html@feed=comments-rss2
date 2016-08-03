@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments for CS 177: Discrete Differential Geometry</title>
+	<atom:link href="http://brickisland.net/cs177fa12/?feed=comments-rss2" rel="self" type="application/rss+xml" />
+	<link>http://brickisland.net/cs177fa12</link>
+	<description>Caltech &#124; Fall 2012 &#124; Tue/Thu 10:30-11:55 &#124; 314 ANB</description>
+	<lastBuildDate>Fri, 14 Dec 2012 23:16:37 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.2</generator>
+	<item>
+		<title>Comment on Homework 4: Curvature Flow by Keenan Crane</title>
+		<link>http://brickisland.net/cs177fa12/?p=320#comment-67</link>
+		<dc:creator>Keenan Crane</dc:creator>
+		<pubDate>Fri, 14 Dec 2012 23:16:37 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320#comment-67</guid>
+		<description>You make a great point, Kevin.  The function \(&#124;\varphi&#124;\) isn&#039;t differentiable at zero, so it&#039;s no surprise that the gradient of the signed angle is ill-defined when \(u\) and \(v\) are parallel!
+
+If, as you suggest, you use the signed angle then things behave better -- in this case, the gradient is something like
+\[ \nabla_u \varphi = \frac{u^\perp}{&#124;u^\perp&#124;^2} \]
+where \(u^\perp\) means \(u\) rotated a quarter-turn in the counter-clockwise direction.
+
+For the assignment, you can get things to work by simply checking whether \(A\) is close to zero.  But I&#039;ll be sure to incorporate this observation into future versions of the assignment.</description>
+		<content:encoded><![CDATA[<p>You make a great point, Kevin.  The function \(|\varphi|\) isn&#8217;t differentiable at zero, so it&#8217;s no surprise that the gradient of the signed angle is ill-defined when \(u\) and \(v\) are parallel!</p>
+<p>If, as you suggest, you use the signed angle then things behave better &#8212; in this case, the gradient is something like<br />
+\[ \nabla_u \varphi = \frac{u^\perp}{|u^\perp|^2} \]<br />
+where \(u^\perp\) means \(u\) rotated a quarter-turn in the counter-clockwise direction.</p>
+<p>For the assignment, you can get things to work by simply checking whether \(A\) is close to zero.  But I&#8217;ll be sure to incorporate this observation into future versions of the assignment.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Homework 4: Curvature Flow by Kevin Shan</title>
+		<link>http://brickisland.net/cs177fa12/?p=320#comment-66</link>
+		<dc:creator>Kevin Shan</dc:creator>
+		<pubDate>Fri, 14 Dec 2012 20:42:49 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320#comment-66</guid>
+		<description>I&#039;m having some difficulty with the gradient expression in exercise 4.12 (which then gets used in exercise 4.14 and the coding exercise). Isn&#039;t this an expression for the gradient of the unsigned angle $&#124;\varphi&#124;$ rather than the signed angle $\varphi$?</description>
+		<content:encoded><![CDATA[<p>I&#8217;m having some difficulty with the gradient expression in exercise 4.12 (which then gets used in exercise 4.14 and the coding exercise). Isn&#8217;t this an expression for the gradient of the unsigned angle $|\varphi|$ rather than the signed angle $\varphi$?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Homework 4: Curvature Flow by Keenan Crane</title>
+		<link>http://brickisland.net/cs177fa12/?p=320#comment-65</link>
+		<dc:creator>Keenan Crane</dc:creator>
+		<pubDate>Fri, 14 Dec 2012 15:01:41 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320#comment-65</guid>
+		<description>It may be useful to know that there is a method &lt;tt&gt;inner( x, B, y )&lt;/tt&gt; (declared in &lt;tt&gt;DenseMatrix.h&lt;/tt&gt;) which evaluates the inner product with respect to a given matrix $B$.  Using this routine, you should be able to implement the routines &lt;tt&gt;IsometricWillmoreFlow1D::orthogonalizeConstraints()&lt;/tt&gt; and &lt;tt&gt;IsometricWillmoreFlow1D::enforceConstraints()&lt;/tt&gt; with a &lt;em&gt;very&lt;/em&gt; small number of lines of code -- something like eight lines for the former and three lines for the latter (depending on your indentation style!).</description>
+		<content:encoded><![CDATA[<p>It may be useful to know that there is a method <tt>inner( x, B, y )</tt> (declared in <tt>DenseMatrix.h</tt>) which evaluates the inner product with respect to a given matrix $B$.  Using this routine, you should be able to implement the routines <tt>IsometricWillmoreFlow1D::orthogonalizeConstraints()</tt> and <tt>IsometricWillmoreFlow1D::enforceConstraints()</tt> with a <em>very</em> small number of lines of code &#8212; something like eight lines for the former and three lines for the latter (depending on your indentation style!).</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Homework 4: Curvature Flow by Keenan Crane</title>
+		<link>http://brickisland.net/cs177fa12/?p=320#comment-64</link>
+		<dc:creator>Keenan Crane</dc:creator>
+		<pubDate>Fri, 14 Dec 2012 14:58:00 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320#comment-64</guid>
+		<description>Great, thanks for the info!</description>
+		<content:encoded><![CDATA[<p>Great, thanks for the info!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Homework 4: Curvature Flow by tale</title>
+		<link>http://brickisland.net/cs177fa12/?p=320#comment-63</link>
+		<dc:creator>tale</dc:creator>
+		<pubDate>Fri, 14 Dec 2012 03:25:18 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320#comment-63</guid>
+		<description>If you are having trouble compiling under Linux (due to new features), here&#039;s a couple things:
+1) Since this assignment uses GLSL shaders, if you&#039;re having issues with OpenGL shader commands, just put
+#define GL_GLEXT_PROTOTYPES
+where applicable
+2) If there&#039;s issues with umfpack, add -lumfpack to your Makefile</description>
+		<content:encoded><![CDATA[<p>If you are having trouble compiling under Linux (due to new features), here&#8217;s a couple things:<br />
+1) Since this assignment uses GLSL shaders, if you&#8217;re having issues with OpenGL shader commands, just put<br />
+#define GL_GLEXT_PROTOTYPES<br />
+where applicable<br />
+2) If there&#8217;s issues with umfpack, add -lumfpack to your Makefile</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Homework 4: Curvature Flow by Keenan Crane</title>
+		<link>http://brickisland.net/cs177fa12/?p=320#comment-62</link>
+		<dc:creator>Keenan Crane</dc:creator>
+		<pubDate>Fri, 07 Dec 2012 13:51:23 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320#comment-62</guid>
+		<description>Yes - please come to office hours if you&#039;d like a copy.</description>
+		<content:encoded><![CDATA[<p>Yes &#8211; please come to office hours if you&#8217;d like a copy.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Homework 4: Curvature Flow by Kevin Shan</title>
+		<link>http://brickisland.net/cs177fa12/?p=320#comment-61</link>
+		<dc:creator>Kevin Shan</dc:creator>
+		<pubDate>Fri, 07 Dec 2012 05:32:41 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320#comment-61</guid>
+		<description>Are there solutions available for the previous homeworks?</description>
+		<content:encoded><![CDATA[<p>Are there solutions available for the previous homeworks?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Homework 4: Curvature Flow by Keenan Crane</title>
+		<link>http://brickisland.net/cs177fa12/?p=320#comment-60</link>
+		<dc:creator>Keenan Crane</dc:creator>
+		<pubDate>Fri, 07 Dec 2012 02:36:58 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=320#comment-60</guid>
+		<description>Homework 4 (which will serve as your final) has been assigned and is due at 5:30pm on Friday, December 14th.  As you can probably tell there is a lot to do, so get started early!
+
+Since I suspect there will be a lot of questions this time around, I will be holding office hours &lt;b&gt;every work day until the 14th from 4-6pm&lt;/b&gt; in my office, 329 Annenberg.
+
+Finally, the code has changed somewhat since the previous homework.  I would suggest modifying the new Makefile using whatever flags, etc., were necessary for your previous assignments.  If you have any trouble, let it be known either here on the blog (which is more helpful to your fellow students) or via email.
+
+Good luck!</description>
+		<content:encoded><![CDATA[<p>Homework 4 (which will serve as your final) has been assigned and is due at 5:30pm on Friday, December 14th.  As you can probably tell there is a lot to do, so get started early!</p>
+<p>Since I suspect there will be a lot of questions this time around, I will be holding office hours <b>every work day until the 14th from 4-6pm</b> in my office, 329 Annenberg.</p>
+<p>Finally, the code has changed somewhat since the previous homework.  I would suggest modifying the new Makefile using whatever flags, etc., were necessary for your previous assignments.  If you have any trouble, let it be known either here on the blog (which is more helpful to your fellow students) or via email.</p>
+<p>Good luck!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Homework 3: The Discrete Laplacian by connor</title>
+		<link>http://brickisland.net/cs177fa12/?p=302#comment-57</link>
+		<dc:creator>connor</dc:creator>
+		<pubDate>Tue, 20 Nov 2012 21:12:10 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=302#comment-57</guid>
+		<description>Hi Keenan,
+Were you intending on having any OH for this set today or tomorrow? I have a couple of questions, but if not, I could probably just ask them here.</description>
+		<content:encoded><![CDATA[<p>Hi Keenan,<br />
+Were you intending on having any OH for this set today or tomorrow? I have a couple of questions, but if not, I could probably just ask them here.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on The Fundamental Polygon by Keenan Crane</title>
+		<link>http://brickisland.net/cs177fa12/?p=162#comment-56</link>
+		<dc:creator>Keenan Crane</dc:creator>
+		<pubDate>Thu, 15 Nov 2012 17:37:02 +0000</pubDate>
+		<guid isPermaLink="false">http://brickisland.net/cs177fa12/?p=162#comment-56</guid>
+		<description>Sure thing!  I&#039;ll be in my office later this afternoon.</description>
+		<content:encoded><![CDATA[<p>Sure thing!  I&#8217;ll be in my office later this afternoon.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

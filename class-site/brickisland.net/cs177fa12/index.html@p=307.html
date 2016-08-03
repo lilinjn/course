@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <title>Discrete Exterior Calculus &raquo;  CS 177: Discrete Differential Geometry</title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://brickisland.net/cs177fa12/wp-content/themes/constructor/js/html5.js"></script>
+    <![endif]-->
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="stylesheet" type="text/css" media="screen" href="wp-content/themes/constructor/style.css"/>
+    <link rel="stylesheet" type="text/css" media="print" href="wp-content/themes/constructor/print.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="wp-content/themes/constructor/style-480.css" />
+    <link rel="pingback" href="xmlrpc.php" />
+    	<link rel='archives' title='December 2012' href='index.html@m=201212.html' />
+	<link rel='archives' title='November 2012' href='index.html@m=201211.html' />
+	<link rel='archives' title='October 2012' href='index.html@m=201210.html' />
+    
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Feed" href="index.html@feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Comments Feed" href="index.html@feed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="CS 177: Discrete Differential Geometry &raquo; Discrete Exterior Calculus Comments Feed" href="index.html@feed=rss2&amp;p=307" />
+<link rel='stylesheet' id='constructor-style-css'  href='wp-content/uploads/constructor/cache/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='constructor-theme-css'  href='wp-content/uploads/constructor/themes/current/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='wp-includes/js/comment-reply.js@ver=3.4.2'></script>
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#038;ver=3.4.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js@ver=1.7.2'></script>
+<script type='text/javascript' src='wp-content/themes/constructor/js/ready.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php@rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Homework 3: The Discrete Laplacian' href='index.html@p=302.html' />
+<link rel='next' title='Homework 4: Curvature Flow' href='index.html@p=320.html' />
+<meta name="generator" content="WordPress 3.4.2" />
+<link rel='canonical' href='index.html@p=307.html' />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+<body class="single single-post postid-307 single-format-standard">
+	
+<div id="body">
+   <div id="wrapheader" class="wrapper">
+       <header id="header">
+                        <div id="title">
+					
+					<div id="name"><a href="index.html" title="CS 177: Discrete Differential Geometry &raquo; Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB">CS 177: Discrete Differential Geometry</a></div>
+				                <div id="description">Caltech | Fall 2012 | Tue/Thu 10:30-11:55 | 314 ANB</div>
+            </div>
+       </header>
+   </div>
+   
+   <div id="wrapcontent" class="wrapper">
+       <div id="content" class="box shadow opacity layout-right">
+    <div id="container" >
+    
+                        <article class="post-307 post type-post status-publish format-standard hentry category-notes" id="post-307">
+                <header class="opacity box">
+                    <h1><a href="index.html@p=307.html" rel="bookmark" title="Permanent Link to Discrete Exterior Calculus">Discrete Exterior Calculus</a></h1>
+                </header>
+                <div class="entry">
+                    <p><a href="../cs177/wp-content/uploads/2011/11/ddg_pointwise_vs_integrated.svg"><img class="aligncenter size-full wp-image-275" title="ddg_pointwise_vs_integrated" src="../cs177/wp-content/uploads/2011/11/ddg_pointwise_vs_integrated.svg" alt="" /></a></p>
+<p>So far we&#8217;ve been exploring <a title="A Quick and Dirty Introduction to Exterior Calculus — Part I: Vectors and 1-Forms" href="index.html@p=262.html">exterior calculus</a> purely in the smooth setting. Unfortunately this theory was developed by some old-timers who did not know anything about computers, hence it cannot be used directly by machines that store only a finite amount of information. For instance, if we have a smooth vector field or a smooth 1-form we can&#8217;t possibly store the direction of every little &#8220;arrow&#8221; at each point &#8212; there are far too many of them! Instead, we need to keep track of a discrete (or really, <em>finite</em>) number of pieces of information that capture the essential behavior of the objects we&#8217;re working with; we call this scheme <em>discrete exterior calculus</em> (or <em>DEC</em> for short). The big secret about DEC is that it&#8217;s literally <em>nothing more</em> than the good-old fashioned (continuous) exterior calculus we&#8217;ve been learning about, except that we integrate differential forms over elements of our mesh.</p>
+<p><strong><span style="text-decoration: underline;">Discrete Differential Forms</span></strong></p>
+<p>One way to encode a 1-form might be to store a finite collection of &#8220;arrows&#8221; associated with some subset of points. Instead, we&#8217;re going to do something a bit different: we&#8217;re going to <em>integrate</em> our 1-form over each edge of a mesh, and store the resulting <em>numbers</em> (remember that the integral of an \(n\)-form always spits out a single number) on the corresponding edges. In other words, if \(\alpha\) is a 1-form and \(e\) is an edge, then we&#8217;ll associate the number</p>
+<p>\[ \hat{\alpha}_e := \int_e \alpha \]</p>
+<p>with \(e\), where the use of the hat (\(\ \hat{}\ \)) is supposed to suggest a <em>discrete</em> quantity (not to be confused with a unit-length vector).</p>
+<p>Does this procedure seem a bit abstract to you? It shouldn&#8217;t! Think about what this integral represents: it tells us how strongly the 1-form \(\alpha\) &#8220;flows along&#8221; the edge \(e\) <em>on average</em>. More specifically, remember how integration of a 1-form works: at each point along the edge we take the vector <em>tangent</em> to the edge, stick it into the 1-form \(\alpha\), and sum up the resulting values &#8212; each value tells us something about how well \(\alpha\) &#8220;lines up&#8221; with the direction of the edge. For instance, we could approximate the integral via the sum</p>
+<p>\[ \int_e \alpha \approx |e|\left(\frac{1}{N} \sum_{i=1}^N \alpha_{p_i}(\hat{e})\right), \]</p>
+<p>where \(|e|\) denotes the length of the edge, \(\{p_i\}\) is a sequence of points along the edge, and \(\hat{e} := e/|e|\) is a unit vector tangent to the edge:</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_oneform_quadrature.svg"><img class="aligncenter size-full wp-image-276" title="ddg_oneform_quadrature" src="../cs177/wp-content/uploads/2011/11/ddg_oneform_quadrature.svg" alt="" /></a></p>
+<p>Of course, this quantity tells us <em>absolutely nothing</em> about the strength of the &#8220;flow&#8221; <em>orthogonal</em> to the edge: it could be zero, it could be enormous! We don&#8217;t really know, because we didn&#8217;t take any measurements along the orthogonal direction. However, the hope is that some of this information will still be captured by nearby edges (which are most likely not parallel to \(e\)).</p>
+<p>More generally, a \(k\)-form that has been integrated over each \(k\)-dimensional cell (edges in 1D, faces in 2D, etc.) is called a <em>discrete differential \(k\)-form</em>. (If you ever find the distinction confusing, you might find it helpful to substitute the word &#8220;integrated&#8221; for the word &#8220;discrete.&#8221;) In practice, however, not every discrete differential form has to originate from a continuous one &#8212; for instance, a bunch of arbitrary values assigned to each edge of a mesh is a perfectly good discrete 1-form.</p>
+<p><strong><span style="text-decoration: underline;">Orientation</span></strong></p>
+<p>One thing you may have noticed in all of our illustrations so far is that each edge is marked with a little arrow. Why? Well, one thing to remember is that <em>direction</em> matters when you integrate. For instance, the fundamental theorem of calculus (and common sense) tells us that the total change as you go from \(a\) to \(b\) is the opposite of the total change as you go from \(b\) to \(a\):</p>
+<p>\[ \int_a^b \frac{\partial\phi}{\partial x} dx = \phi(b)-\phi(a) = -(\phi(a)-\phi(b)) = -\int_b^a \frac{\partial\phi}{\partial x} dx. \]</p>
+<p>Said in a much less fancy way: the elevation gain as you go from Pasadena to Altadena is 151 meters, so of the elevation &#8220;gain&#8221; in the other direction must be -151 meters! Just keeping track of the number 151 does you little good &#8212; you have to say what that quantity represents.</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_elevation.svg"><img class="aligncenter size-full wp-image-277" title="ddg_elevation" src="../cs177/wp-content/uploads/2011/11/ddg_elevation.svg" alt="" /></a></p>
+<p>Therefore, when we store a discrete differential form it&#8217;s not enough to just store a number: we also have to specify a canonical <em>orientation</em> for each element of our mesh, corresponding to the orientation we used during integration. For an edge we&#8217;ve already seen that we can think about orientation as a little arrow pointing from one vertex to another &#8212; we could also just think of an edge as an <em>ordered</em> pair \((i,j)\), meaning that we always integrate from \(i\) to \(j\).</p>
+<p>More generally, suppose that each element of our mesh is an <em>oriented \(k\)-simplex</em> \(\sigma\), i.e., a collection of \(k+1\) vertices \(p_i \in \mathbb{R}^n\) given in some fixed order \((p_1, \ldots, p_{k+1})\). The geometry associated with \(\sigma\) is the <em>convex combination</em> of these points:</p>
+<p>\[ \left\{ \sum_{i=1}^{k+1} \lambda_i p_i \left| \sum_{i=1}^{k+1} \lambda_i = 1 \right. \right\} \subset \mathbb{R}^n \]</p>
+<p>(Convince yourself that a 0-simplex is a vertex, a 1-simplex is an edge, a 2-simplex is a triangle, and a 3-simplex is a tetrahedron.)</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_simplices.svg"><img class="aligncenter size-full wp-image-278" title="ddg_simplices" src="../cs177/wp-content/uploads/2011/11/ddg_simplices.svg" alt="" /></a></p>
+<p>Two oriented \(k\)-simplices have the same orientation if and only if the vertices of one are an <em>even</em> permutation of the vertices of another. For instance, the triangles \((p_1, p_2, p_3)\) and \((p_2, p_3, p_1)\) have the same orientation; \((p_1, p_2, p_3)\) and \((p_2, p_1, p_3)\) have opposite orientation.</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_twoform_orientation_plane.svg"><img class="aligncenter size-full wp-image-279" title="ddg_twoform_orientation_plane" src="../cs177/wp-content/uploads/2011/11/ddg_twoform_orientation_plane.svg" alt="" /></a></p>
+<p>If a simplex \(\sigma_1\) is a (not necessarily proper) subset of another simplex \(\sigma_2\), then we say that \(\sigma_1\) is a <em>face</em> of \(\sigma_2\). For instance, every vertex, edge, and triangle of a tetrahedron \(\sigma\) is a face of \(\sigma\); as is \(\sigma\) itself! Moreover, the orientation of a simplex <em>agrees with</em> the orientation of one of its faces as long as we see an even permutation on the shared vertices. For instance, the orientations of the edge \((p_2,p_1)\) and the triangle \((p_1,p_3,p_2)\) agree. Geometrically all we&#8217;re saying is that the two &#8220;point&#8221; in the same direction (as depicted above). To keep yourself sane while working with meshes, the most important thing is to <em>pick and orientation and stick with it</em>!</p>
+<p>So in general, how do we integrate a \(k\)-form over an oriented \(k\)-simplex? Remember that a \(k\)-form is going to &#8220;eat&#8221; \(k\) vectors at each point and spit out a number &#8212; a good canonical choice is to take the ordered collection of edge vectors \((p_2 &#8211; p_1, \ldots, p_{k+1}-p_1)\) and orthogonalize them (using, say the Gram-Schmidt algorithm) to get vectors \((u_1, \ldots, u_n)\). This way the sign of the integrand changes whenever the orientation changes. Numerically, we can then approximate the integral via a sum</p>
+<p>\[ \int_\sigma \alpha \approx \frac{|\sigma|}{N} \sum_{i=1}^N \alpha_{p_i}(u_1, \ldots, u_n) \]</p>
+<p>where \(\{p_i\}\) is a (usually carefully-chosen) collection of sample points. (Can you see why the orientation of \(\sigma\) affects the sign of the integrand?) Sounds like a lot of work, but in practice one rarely constructs discrete differential forms via integration: more often, discrete forms are constructed via input data that is already discrete (e.g., vertex positions in a triangle mesh).</p>
+<p>By the way, what&#8217;s a discrete 0-form? Give up? Well, it must be a 0-form (i.e., a function) that&#8217;s been integrated over every 0-simplex (i.e., vertex) of a mesh:</p>
+<p>\[ \hat{\phi}_i = \int_{v_i} \phi \]</p>
+<p>By convention, the integral of a function over a zero-dimensional set is simply the value of the function at that point: \(\hat{\phi}_i = \phi(v_i)\). In other words, in the case of 0-forms there is no difference between storing point samples and storing integrated quantities: the two coincide.</p>
+<p>It&#8217;s also important to remember that differential forms don&#8217;t have to be <em>real</em>-valued. For instance, we can think of a map \(f: M \rightarrow \mathbb{R}^3\) that encodes the geometry of a surface as an \(\mathbb{R}^3\)-valued 0-form; its differential \(df\) is then an \(\mathbb{R}^3\)-valued 1-form, etc. Likewise, when we say that a discrete differential form is a <em>number</em> stored on every mesh element, the word &#8220;number&#8221; is used in a fairly loose sense: a number could be a real value, a vector, a complex number, a quaternion, etc. For instance, the collection of \((x,y,z)\) vertex coordinates of a mesh can be viewed as an \(\mathbb{R}^3\)-valued discrete 0-form (namely, one that discretizes the map \(f\)). The only requirement, of course, is that we store the same <em>type</em> of number on each mesh element.</p>
+<p><strong><span style="text-decoration: underline;">The Discrete Exterior Derivative</span></strong></p>
+<p>One of the main advantages of working with integrated (i.e., &#8220;discrete&#8221;) differential forms instead of point samples is that we can easily take advantage of <a title="A Quick and Dirty Introduction to Exterior Calculus — Part V: Integration and Stokes’ Theorem" href="index.html@p=298.html">Stokes&#8217; theorem</a>. Remember that Stokes&#8217; theorem says</p>
+<p>\[ \int_\Omega d\alpha = \int_{\partial\Omega} \alpha, \]</p>
+<p>for any \(k\)-form \(\alpha\) and \(k+1\)-dimensional domain \(\Omega\). In other words, we can integrate the derivative of a differential form as long as we know its integral along the boundary. But that&#8217;s <em>exactly</em> the kind of information encoded by a discrete differential form! For instance, if \(\hat{\alpha}\) is a discrete 1-form stored on the three edges of a triangle \(\sigma\), then we have</p>
+<p>\[ \int_\sigma d\alpha = \int_{\partial\sigma} \alpha = \sum_{i=1}^3 \int_{e_i} \alpha = \sum_{i=1}^3 \hat{\alpha}_i. \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_discrete_exterior_derivative1.svg"><img class="aligncenter size-full wp-image-285" title="ddg_discrete_exterior_derivative" src="../cs177/wp-content/uploads/2011/11/ddg_discrete_exterior_derivative1.svg" alt="" /></a></p>
+<p>In other words, we can <em>exactly</em> evaluate the integral on the left by just adding up three numbers. Pretty cool! In fact, the thing on the left is <em>also</em> a discrete differential form: it&#8217;s the 2-form \(d\alpha\) integrated over the only triangle in our mesh. So for convenience, we&#8217;ll call this guy &#8220;\(\hat{d}\hat{\alpha}\)&#8221;, and we&#8217;ll call the operation \(\hat{d}\) the <em>discrete exterior derivative</em>. (In the future we will drop the hats from our notation when the meaning is clear from context.) In other words, the discrete exterior derivative takes a \(k\)-form that has <em>already been integrated</em> over each \(k\)-simplex and applies Stokes&#8217; theorem to get the integral of the derivative over each \(k+1\)-simplex.</p>
+<p>In practice (i.e., in code) you can see how this operation might be implemented by simply taking local sums over the appropriate mesh elements. However, in the example above we made life particularly easy on ourselves by giving each edge an orientation that agrees with the orientation of the triangle. Unfortunately assigning a consistent orientation to every simplex is not always possible, and in general we need to be more careful about <em>sign</em> when adding up our piecewise integrals. For instance, in the example below we&#8217;d have</p>
+<p>\[ (\hat{d}\hat{\alpha})_1 = \hat{\alpha}_1 + \hat{\alpha}_2 + \hat{\alpha}_3 \]</p>
+<p>and</p>
+<p>\[ (\hat{d}\hat{\alpha})_2 = \hat{\alpha}_4 + \hat{\alpha}_5 - \hat{\alpha}_2. \]</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_exterior_derivative_sign.svg"><img class="aligncenter size-full wp-image-281" title="ddg_exterior_derivative_sign" src="../cs177/wp-content/uploads/2011/11/ddg_exterior_derivative_sign.svg" alt="" /></a></p>
+<p><strong><span style="text-decoration: underline;">Discrete Hodge Star</span></strong></p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_simplicial_dual.svg"><img class="aligncenter size-full wp-image-282" title="ddg_simplicial_dual" src="../cs177/wp-content/uploads/2011/11/ddg_simplicial_dual.svg" alt="" /></a></p>
+<p>As hinted at above, a discrete \(k\)-form captures the behavior of a continuous \(k\)-form along \(k\) directions, but not along the remaining \(n-k\) directions &#8212; for instance, a discrete 1-form in 2D captures the flow along edges but not in the orthogonal direction. If you paid attention to our discussion of <a title="A Quick and Dirty Introduction to Exterior Calculus — Part III: Hodge Duality" href="index.html@p=294.html">Hodge duality</a>, this story starts to sound familiar! To capture Hodge duality in the discrete setting, we&#8217;ll need to define a <em>dual mesh</em>. In general, the dual of an \(n\)-dimensional simplicial mesh identifies every \(k\)-simplex in the primal (i.e., original) mesh with a unique \((n-k)\)-cell in the dual mesh. In a two-dimensional <em>simplicial</em> mesh, for instance, primal vertices are identified with dual faces, primal edges are identified with dual edges, and primal faces are identified with dual vertices. Note, however, that the dual cells are not always simplices! (See above.)</p>
+<p>So how do we talk about Hodge duality in discrete exterior calculus? Quite simply, the <em>discrete Hodge dual</em> of a (discrete) \(k\)-form on the primal mesh is an \((n-k)\)-form on the dual mesh. Similarly, the Hodge dual of an \(k\)-form on the dual mesh is a \(k\)-form on the primal mesh. Discrete forms on the primal mesh are called <em>primal forms</em> and discrete forms on the dual mesh are called <em>dual forms</em>. Given a discrete form \(\hat{\alpha}\) (whether primal or dual), its Hodge dual is typically written as \(\hat{\star} \hat{\alpha}\).</p>
+<p><a href="../cs177/wp-content/uploads/2011/11/ddg_discrete_hodge_duality.svg"><img class="aligncenter size-full wp-image-283" title="ddg_discrete_hodge_duality" src="../cs177/wp-content/uploads/2011/11/ddg_discrete_hodge_duality.svg" alt="" /></a></p>
+<p>Unlike continuous forms, discrete primal and dual forms live in different places (so for instance, discrete primal \(k\)-forms and dual \(k\)-forms cannot be added to each other). In fact, primal and dual forms often have different physical interpretations. For instance, a primal 1-form might represent the total circulation along edges of the primal mesh, whereas in the same context a dual 1-form might represent the total flux through the corresponding dual edges (see illustration above).</p>
+<p>Of course, these two quantities (flux and circulation) are closely related, and naturally leads into one definition for a discrete Hodge star called the <em>diagonal Hodge star</em>. Consider a primal \(k\)-form \(\alpha\). If \(\hat{\alpha}_i\) is the value of \(\hat{\alpha}\) on the \(k\)-simplex \(\sigma_i\), then the diagonal Hodge star is defined by</p>
+<p>\[ \hat{\star} \hat{\alpha}_i = \frac{|\sigma_i^\star|}{|\sigma_i|} \hat{\alpha}_i \]</p>
+<p>for all \(i\), where \(|\sigma|\) indicates the (unsigned) volume of \(\sigma\) (which by convention equals <em>one</em> for a vertex!) and \(|\sigma^\star|\) is the volume of the corresponding dual cell. In other words, to compute the dual form we simply multiply the scalar value stored on each cell by the ratio of corresponding dual and primal volumes.</p>
+<p>If we remember that a discrete form can be thought of as a continuous form integrated over each cell, this definition for the Hodge star makes perfect sense: the primal and dual quantities should have the same <em>density</em>, but we need to account for the fact that they are integrated over cells of different volume. We therefore normalize by a <em>ratio</em> of volumes when mapping between primal and dual. This particular Hodge star is called <em>diagonal</em> since the \(i\)th element of the dual differential form depends only on the \(i\)th element of the primal differential form. It&#8217;s not hard to see, then, that Hodge star taking dual forms to primal forms (the <em>dual Hodge star</em>) is the inverse of the one that takes primal to dual (the <em>primal Hodge star</em>).</p>
+<p><strong><span style="text-decoration: underline;">That&#8217;s All, Folks!</span></strong></p>
+<p>Hey, wait a minute, what about our other operations, like the wedge product (\(\wedge\))? These operations can certainly be defined in the discrete setting, but we won&#8217;t go into detail here &#8212; the basic recipe is to integrate, integrate, integrate. Actually, even in <em>continuous</em> exterior calculus we omitted a couple operations like the <em>Lie derivative</em> (\(\mathcal{L}_X\)) and the <em>interior product</em> (\(i_\alpha\)). Coming up with a complete discrete calculus where the whole cast of characters \(d\), \(\wedge\), \(\star\), \(\mathcal{L}_X\), \(i_\alpha\), etc., plays well together is an active and ongoing area of research, which may be of interest to aspiring young researchers like you (yes, <em>you</em>)!</p>
+				                    </div>
+                                <footer>
+                                                November 13, 2012 |                                                                             Posted in: <a href="index.html@cat=5.html" title="View all posts in Notes" rel="category">Notes</a> |                                                                         <a href="index.html@p=307.html#comments" class="comments-link"  title="Comment on Discrete Exterior Calculus">3 Comments &#187;</a>                </footer>
+            </article>
+                
+
+
+<section id="comments">
+	<h3>3 Responses to &#8220;Discrete Exterior Calculus&#8221;</h3>
+
+	<ol class="commentlist">
+	    		<li class="comment byuser comment-author-ajerves even thread-even depth-1 parent" id="comment-52">
+				<div id="div-comment-52" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/66128cd5aec0b1339192cb62ee308567?s=64&amp;d=monsterid&amp;r=G' class='avatar avatar-64 photo' height='64' width='64' />		<cite class="fn">ajerves</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="index.html@p=307.html#comment-52">
+			November 14, 2012 at 6:56 pm</a>		</div>
+
+		<p>The primal and dual quantities should have the same density? Why? How do you explain density for a point (0-form) which is the dual of a primal volume, say, 3-form, 3-space.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-keenan bypostauthor odd alt depth-2" id="comment-53">
+				<div id="div-comment-53" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/fec1801488e5fae09c34a8923f85872e?s=64&amp;d=monsterid&amp;r=G' class='avatar avatar-64 photo' height='64' width='64' />		<cite class="fn"><a href='http://www.cs.caltech.edu/~keenan' rel='external nofollow' class='url'>Keenan Crane</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="index.html@p=307.html#comment-53">
+			November 14, 2012 at 8:16 pm</a>		</div>
+
+		<p>Hey Alex.  Here&#8217;s a little experiment that hopefully makes this idea clear.  Consider a 2-simplex \(\sigma\) in \(\mathbb{R}^3\) and its dual \(\sigma^\star\), which is a line segment orthogonal to \(\sigma\).  Suppose we want to discretize a continuous \(k\)-form \(\alpha\) &#8212; for the moment, assume that \(\alpha\) is constant over all of \(\mathbb{R}^3\), i.e.,</p>
+<p>\[ \alpha = a dy \wedge dz + b dz \wedge dx + c dx \wedge dy\]</p>
+<p>for constant coefficients \(a,b,c \in \mathbb{R}\).  Then the value of our discrete form \(\hat{\alpha}\) associated with \(\sigma\) is</p>
+<p>\[ \hat{\alpha} = \int_\sigma \alpha = |\sigma|\alpha(u,v), \]</p>
+<p>where \(|\sigma|\) denotes the area of \(\sigma\) and \(u,v\) is an orthonormal basis for the plane containing \(\sigma\).  Similarly,</p>
+<p>\[ \star\hat{\alpha} = \int_{\sigma^\star} \star\alpha = |\star\sigma|\star\alpha(w), \]</p>
+<p>where \(w\) is a unit vector along \(\star\sigma\) &#8212; in particular, \(w = u \times v\).  From here it&#8217;s not hard to show that</p>
+<p>\[ \frac{\hat{\alpha}}{\star\hat{\alpha}} = \frac{|\sigma|}{|\star\sigma|}, \]</p>
+<p>in other words, the values of the primal and dual discrete forms differ only by the ratio of the volumes.  (It would be a good exercise to work this out in coordinates!)</p>
+<p>In general, of course, not every \(k\)-form \(\alpha\) is constant.  So this relationship is only an approximation.  But if \(\alpha\) is a nice and smooth, then we can use simplices small enough that \(\alpha\) is locally very close to constant.  In other words, as we refine our mesh this relationship approaches the truth! <img src='wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>In general there may be more accurate ways of going between primal and dual discrete \(k\)-forms, i.e., it&#8217;s possible to construct more accurate discrete Hodge stars.  But for now, the diagonal Hodge star is good enough!</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment byuser comment-author-ajerves even thread-odd thread-alt depth-1" id="comment-54">
+				<div id="div-comment-54" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/66128cd5aec0b1339192cb62ee308567?s=64&amp;d=monsterid&amp;r=G' class='avatar avatar-64 photo' height='64' width='64' />		<cite class="fn">ajerves</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="index.html@p=307.html#comment-54">
+			November 15, 2012 at 12:12 am</a>		</div>
+
+		<p>Very nice Keenan, thanks! That helps a lot!</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+	</ol>
+        								</section>        <nav class="navigation">
+            <div class="alignleft"><a href="index.html@p=320.html" rel="next"><span>&laquo;</span> Homework 4: Curvature Flow</a></div>
+        <div class="alignright"><a href="index.html@p=302.html" rel="prev">Homework 3: The Discrete Laplacian <span>&raquo;</span></a></div>
+    </nav>        </div><!-- id='container' -->
+    <aside id="sidebar">
+	<ul>
+	    <li id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" action="index.html" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li><li id="meta-3" class="widget widget_meta"><h3 class="widgettitle">Meta</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html@feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html@feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li><li id="pages-2" class="widget widget_pages"><h3 class="widgettitle">Pages</h3>		<ul>
+			<li class="page_item page-item-4"><a href="index.html@page_id=4.html">Course Information</a></li>
+<li class="page_item page-item-11"><a href="index.html@page_id=11.html">Homework Assignments</a></li>
+<li class="page_item page-item-9"><a href="index.html@page_id=9.html">Lecture Slides</a></li>
+<li class="page_item page-item-13"><a href="index.html@page_id=13.html">Subscriptions</a></li>
+		</ul>
+		</li><li id="categories-3" class="widget widget_categories"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html@cat=4.html" title="View all posts filed under Administration">Administration</a> (2)
+</li>
+	<li class="cat-item cat-item-3"><a href="index.html@cat=3.html" title="View all posts filed under Homework">Homework</a> (6)
+</li>
+	<li class="cat-item cat-item-5"><a href="index.html@cat=5.html" title="View all posts filed under Notes">Notes</a> (12)
+</li>
+		</ul>
+</li><li id="categoryposts-3" class="widget widget_categoryposts"><h3 class="widgettitle">Course Notes</h3><ul>
+		<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=104.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Surfaces">A Quick and Dirty Introduction to the Geometry of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=139.html" rel="bookmark" title="Permanent link to Derivatives and Tangent Vectors">Derivatives and Tangent Vectors</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=162.html" rel="bookmark" title="Permanent link to The Fundamental Polygon">The Fundamental Polygon</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=187.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Geometry of Curves">A Quick and Dirty Introduction to the Geometry of Curves</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=214.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to the Curvature of Surfaces">A Quick and Dirty Introduction to the Curvature of Surfaces</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=235.html" rel="bookmark" title="Permanent link to Geometry in Coordinates">Geometry in Coordinates</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=262.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part I: Vectors and 1-Forms</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=272.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part II: Differential Forms and the Wedge Product</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=294.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part III: Hodge Duality</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=296.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part IV: Differential Operators</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=298.html" rel="bookmark" title="Permanent link to A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem">A Quick and Dirty Introduction to Exterior Calculus &#8212; Part V: Integration and Stokes&#8217; Theorem</a>
+			
+			
+						
+						
+					</li>
+			<li class="cat-post-item">
+			<a class="post-title" href="index.html@p=307.html" rel="bookmark" title="Permanent link to Discrete Exterior Calculus">Discrete Exterior Calculus</a>
+			
+			
+						
+						
+					</li>
+	</ul>
+</li>	</ul>
+</aside></div><!-- id='content' -->    </div><!-- id='wrapcontent' -->
+    <div id="wrapfooter" class="wrapper">
+    	<footer id="footer">
+    		        	<p class="clear copy">
+            	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Introduction to Discrete Differential Geometry</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.        	</p>
+    	</footer>
+	</div>
+</div>
+</body>
+</html>
